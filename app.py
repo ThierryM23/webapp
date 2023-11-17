@@ -447,8 +447,9 @@ def carta_up(id):
                 db.session.commit() # Hacer commit a la solicitud
                 app.logger.info("actualizado el campo de image en la base por el product " + id) 
                 flash('Image ajoutée !','alert-success')
-            app.logger.info("Image refoule pour format incorrect ! ")
-            flash('Image refoule pour format incorrect !','alert-danger')
+            else:
+                app.logger.info("Image refoule pour format incorrect ! ")
+                flash('Image refoule pour format incorrect !','alert-danger')
             
         elif data['accion']=='save':
             app.logger.info("******** carta_up <string:id> " + id + "  POST  Accion = save   *************")
