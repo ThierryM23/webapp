@@ -1,0 +1,33 @@
+Carte;ordre;cat;subcat;description;prix
+Boissons;10;Apéritifs;BIÈRES ;Bière pression (25cl). ;3
+Boissons;20;Apéritifs;BIÈRES ;Bière pression spéciale (25cl).;"3,7"
+Boissons;30;Apéritifs;BIÈRES ;Bière pression Picon (25cl) ;"3,5"
+Boissons;35;Apéritifs;BIÈRES ;"Monaco, Panaché.";"3,3"
+Boissons;40;Apéritifs;BIÈRES ;Bière sans alcool.;"2,5"
+Boissons;45;Apéritifs;BIÈRES ;"Bière bouteille Mont blanc Génépi, Mont blanc blanche, Hapkin (33cl).";4
+Boissons;50;Apéritifs;Alcool;Martini rouge ou blanc (4cl) ;"3,5"
+Boissons;55;Apéritifs;Alcool;Vin de noix (6cl);"3,5"
+Boissons;60;Apéritifs;Alcool;Suze (6cl);"3,5"
+Boissons;65;Apéritifs;Alcool;Gentiane (4cl);"3,5"
+Boissons;70;Apéritifs;Alcool;Ricard (4cl);"3,5"
+Boissons;75;Apéritifs;Alcool;"Gin (4cl),  Vodka (4cl),   Whisky (4cl),  Rhum (4cl) ";6
+Boissons;110;Boissons chaudes ;;Café;2
+Boissons;120;Boissons chaudes ;;Chocolat;2
+Boissons;125;Boissons chaudes ;;"Thés, infusions";"2,3"
+Boissons;130;Boissons chaudes ;;Café crème;"2,1"
+Boissons;135;Boissons chaudes ;;Cappuccino;"2,4"
+Boissons;210;Softs;;Eau plate bouteille (1L) ;"4,5"
+Boissons;215;Softs;;Eau gazeuse Orezza (1L);"4,5"
+Boissons;220;Softs;;Sirop;2
+Boissons;230;Softs;;Diabolo;"2,5"
+Boissons;235;Softs;;"Coca, coca zero, Orangina, Schweppes tonic ou agrumes, Ice-Tea, Perrier";"3,5"
+Boissons;240;Digestifs;;Get 27 ou 31 (6cl) ;6
+Boissons;245;Digestifs;;Whisky 12 ans d’âge (4cl) ;8
+Boissons;250;Digestifs;;Cognac VS (4cl);8
+Boissons;255;Digestifs;;Armagnac VSOP (4cl);8
+Boissons;260;Digestifs;;Rhum Diplomatico (4cl);8
+Boissons;265;Digestifs;;Poire (4cl);8
+Boissons;270;Digestifs;;Chartreuse verte ou jaune (4cl);9
+Boissons;275;Digestifs;;Chartreuse MOF (4cl) ;11
+Boissons;280;Digestifs;;Chartreuse VEP (4cl) ;12
+Boissons;285;Digestifs;;Chartreuse 9ème centenaire (4cl) ;11

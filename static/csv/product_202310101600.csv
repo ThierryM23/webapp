@@ -1,0 +1,32 @@
+"id","idcat","titre","description","prix","image","categorie"
+1,1,Tartare de thon et avocat,accompagné de roquette,15.0,accompagné de roquette,Entrées
+2,2,Gravelax de truite,sauce aneth,15.0,sauce aneth,Entrées
+3,3,Rosace de tomate et sa burrata,glace basilic.,13.0,glace basilic.,Entrées
+5,4,Tarte fine,selon marché.,12.0,selon marché.,Entrées
+6,5,Salade fraîcheur,"100% végétal",12.0,"100% végétal",Entrées
+7,1,Tartare de boeuf au couteau,"environ 200gr, frites maison, salade.",17.5,"environ 200gr, frites maison, salade.",Plats
+8,2,Tataki de boeuf,"Environ 200gr, tagliatelles, pesto à l ail des ours.",18.5,"Environ 200gr, tagliatelles, pesto à l ail des ours.",Plats
+9,3,Filet de bar rôti au thym,fondue de poireaux.,22.5,fondue de poireaux.,Plats
+10,4,Filet de truite à la Grenobloise,"câpres, oignons, croutons.",20.0,"câpres, oignons, croutons.",Plats
+12,5,Côte de bœuf pour 2 personnes,"environ 1,2kg, frites, salade.",55.0,image.jpeg,Plats
+13,6,Burger Végétarien,"galette de PDT, légumes du moment.",15.0,image.jpeg,Plats
+14,7,Cheeseburger,"buns maison, cheddar, salade, tomate, oignons.",16.5,image.jpeg,Plats
+15,8,Double Cheeseburger,"buns maison, cheddar, salade, tomate, oignons.",20.0,image.jpeg,Plats
+16,1,Camembert rôti (pour deux),"",10.5,image.jpeg,Fromages & Planches
+17,2,Assiette 3 fromages,"",7.0,image.jpeg,Fromages & Planches
+18,3,Faiselle de pays,crème ou coulis,6.0,image.jpeg,Fromages & Planches
+19,4,Planche de charcuterie,"",16.0,image.jpeg,Fromages & Planches
+20,5,Planche de fromage de nos région,"",16.0,image.jpeg,Fromages & Planches
+21,6,Planche mixte,"",17.0,image.jpeg,Fromages & Planches
+22,1,Entremets aux 2 chartreuses,"",8.5,"",Desserts
+23,2,Snicker maison,"",7.5,"",Desserts
+24,3,Café gourmand,"",8.5,"",Desserts
+25,4,Tarte aux pommes,boule de glace vanille.,6.5,boule de glace vanille.,Desserts
+26,5,Crème brûlée,"",6.0,image.jpeg,desserts
+27,6,crumble aux fruits de saison,"",6.5,image.jpeg,desserts
+28,1,Bueno,"2 boules noisette, 1 boule vanille, éclats de Kinder.",10.0,image.jpeg,Coupes de glaces
+29,2,Pêche Melba,"3 boules vanille, pêche, coulis de fruits rouges, chantilly.",10.0,image.jpeg,Coupes de glaces
+30,3,Colonel,"3 boules citrons, vodka.",12.0,image.jpeg,Coupes de glaces
+31,4,Chartreusette,"3 boules chartreuse, liqueur de chartreuse verte.",12.0,image.jpeg,Coupes de glaces
+32,5,Suplements une unité,"Vanille, chocolat, noisette, noix de coco, citron, Barbe à papa, fraise, framboise, rhum/raisin, caramel, melon.",2.5,image.jpeg,Coupes de glaces
+33,6,Suplements 2 boules,"Vanille, chocolat, noisette, noix de coco, citron, Barbe à papa, fraise, framboise, rhum/raisin, caramel, melon.",4.0,image.jpeg,Coupes de glaces

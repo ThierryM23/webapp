@@ -1,0 +1,199 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <style type="text/css"> 
+        *{
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
+        body{
+          background: #1D1F20;
+        }
+        
+        .wrap{
+            width: 1100px;
+            margin: 50px auto;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+        
+        .tarjeta-wrap{
+            margin: 10px;
+            -webkit-perspective: 800;
+            perspective: 800;
+        }
+        
+        .tarjeta{
+            width: 300px;
+            height: 350px;
+            background: #F29720;
+            position: relative;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: .7s ease;
+            transition: .7s ease;
+            -webkit-box-shadow: 0px 10px 15px -5px rgba(0,0,0,0.65);
+            box-shadow: 0px 10px 15px -5px rgba(0,0,0,0.65);
+        
+        }
+        
+        .adelante, .atras{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        
+        .adelante{
+            width: 100%;
+        }
+        
+        .menu{
+            padding: 6em 1.7em 1em 1.7em;
+            
+        }
+        .card-text{
+            margin-bottom: 2em;
+        }
+
+        .atras{
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        
+            padding: 15px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;        
+            text-align: center;
+            color: #fff;
+            font-family: "open sans";
+          background: #F29720;
+        }
+        
+        .tarjeta-wrap:hover .tarjeta{
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+            display: flex;
+        }
+        
+        .card1{
+            background-image: url("{{ url_for('static', filename='images/new1.jpeg') }}" );
+            background-size: cover;
+        }
+        
+        .card2{
+            background-image: url("{{ url_for('static', filename='images/photos/cocktails-louna.png') }}" );
+            background-size: cover;
+        }
+        
+        .card3{
+            background-image: url("{{ url_for('static', filename='images/photos/Steak7.jpg') }}" );
+            background-size: cover;
+        }
+        
+        .card4{
+            background-image: url("{{ url_for('static', filename='images/photos/tableaunoir.jpg') }}" );
+            background-size: cover;   
+            color: #fff;
+            font-family: 'Dancing Script', cursive;    
+                       
+        }
+        .card-title{
+            padding:0;
+        }
+
+        @media screen and (max-width: 1100px) {
+            .wrap{
+              grid-template-columns: 1fr;
+              color: red;
+            }
+          }
+
+    </style>
+{% endblock %}
+<!--bg-light p-5 text-dark bg-opacity-25 -->
+{% block content %}
+<div class="row">
+    <div class="col-md-4 p-3">
+      <!-- MESSAGE -->
+      {% include 'partials/_message.html' %}
+    </div>
+</div>
+<div class="wrap ">
+    <div class="tarjeta-wrap ">
+        <div class="tarjeta ">
+            <div class="card-body adelante card4 menu">
+             {% for registro in registros %}
+             <div class="">
+                    <h5 class="card-title">{{ registro.titre }} &nbsp; $&nbsp;{{ registro["prix"]|float|round(2) }}</h5>
+                    <h6 class="card-text"> {{ registro.description }}</h6>
+                    <h7></h7>
+             </div>     
+               
+                
+                {% endfor %}
+            </div>
+            <div class="atras">
+                <p><h3>Notre carte! <br>sa cuisine traditionnelle de terroir composée principalement de produits frais de la région.<br>
+                    Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois</h3></p>
+            </div>
+        </div>
+    </div>
+    <div class="tarjeta-wrap">
+        <div class="tarjeta">
+            <div class="adelante card2"><h1>COCKTAILS</h1></div>
+            <div class="atras">
+                <p><h3>Rencontrez notre barmaid talentueuse, Louna, qui vous concoctera des cocktails délicieux à chaque visite 🍹🍸🌺</h3></p>
+            </div>
+        </div>
+    </div>
+    <div class="tarjeta-wrap">
+        <div class="tarjeta">
+            <div class="adelante card1"></div>
+            <div class="atras">
+                <p><h3>Notre restaurant vous offre un service complet, et vous pouvez aprecier la vue de notre salon ou de la térrasse..</h3></p>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="tarjeta-wrap">
+        <div class="tarjeta">
+            <div class="adelante card3"></div>
+            <div class="atras">
+                <p><h3>Notre carte! <br>sa cuisine traditionnelle de terroir composée principalement de produits frais de la région.<br>
+                    Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois</h3></p>
+            </div>
+        </div>
+    </div>-->
+</div>
+
+
+{% endblock %}

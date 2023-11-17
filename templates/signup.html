@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="col-md-5 p-5">
+    <!-- MESSAGE -->
+    {% include 'partials/_message.html' %}
+</div>
+
+
+{% if ok=='True' %}
+    <div class="col-md-6">
+        <div class="p-5 bg-light border rounded-3">
+            <h2>Signup</h2>
+            <p> Congratulations to <h3>{{ data.username }} </h3>  <br>
+            </br
+        >Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure
+                to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both
+                column's content for equal-height.</p>
+            <button class="btn btn-outline-secondary" type="button">Example button</button>
+        </div>
+    </div>
+{% else %}
+<div class="col-md-6">
+    <div class="p-5 bg-light border rounded-3">
+        <h2>Signup</h2>
+        <p> Desolé  <h3>{{ data.username }} </h3>  <br>
+        </br
+    >vous n'etes pas autorizer a administrar la web. Mais vous pouvez consuler notre carte ou notre gallerie de photos</p>
+        <button class="btn btn-outline-secondary" type="button">Example button</button>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+html>

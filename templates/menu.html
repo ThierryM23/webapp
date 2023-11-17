@@ -1,0 +1,166 @@
+{% extends "layout.html" %}
+
+{% block head %} 
+{{ super() }}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<style>
+h1 {
+    color: #333;
+}
+
+form {
+    max-width: 300px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #888888;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.wrap{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgb(0 0 0 / .5),rgb(0 0 0 / .5)),url(../static/images/photos/tableaunoir.jpg);
+    background-size: contain;
+    background-position: top;
+    font-family: 'Dancing Script', cursive;
+    }
+
+    .wrap-texto{
+        color: #fff;
+        text-align: top;
+        width: 50%;
+    }
+    
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-6 p-3">
+      <!-- MESSAGE -->
+      {% include 'partials/_message.html' %}
+    </div>
+</div>
+<div class="bg-light w-100 text-dark border rounded-3 p-2"  style="--bs-bg-opacity: .55;">
+    <h1>Menu du jour</h1>
+    <form  action={{ url_for('menu')  }} method="POST" class=""  enctype="multipart/form-data" >
+        <select name="categorie" class="form-control rounded-2 bg-dark border-0 text-white" required >
+            <option value="Entrées" >Entrées</option>
+            <option value="Plats" >Plats</option>
+            <option value="Fromages & Planches" >Fromages & Planches</option>
+            <option value="Desserts" >Desserts</option>
+            <option value="Coupes de glaces"  >Coupes de glaces</option>
+          </select>
+        <div class="form-group">
+            <label for="titre">Titre:</label>
+            <input type="text" id="titre" name="titre" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea type="text" id="description" name="description" required>
+            </textarea>
+        <div class="form-group"><label for="prix">Prix:</label>
+            <input  type="number" name="prix" min ="1.00" step ="0.10"
+            value ="10" class="" placeholder="12.50" required /></div>
+        <div class="form-group">
+            <label for="fecha_presentacion">jour:</label>
+            <input type="date" id="fecha_presentacion" name="fecha_presentacion" value="{{hoy}}" required></input>
+        </div>
+        <div class="form-group">
+            <label for="fecha_fin">jusqu'au:</label>
+            <input type="date" id="fecha_fin" name="fecha_fin" value="{{hoy}}" required></input>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+
+
+<!--
+
+    id          = db.Column(db.Integer, primary_key=True)
+    titre       = db.Column(db.String(124), nullable=False)
+    description = db.Column(db.String(256))
+    prix        = db.Column(db.Numeric, nullable=False)
+    image       = db.Column(db.String(128))
+    categorie   = db.Column(db.String(128))
+    ordercat    = db.Column(db.Integer)
+    fecha_created       = db.Column(db.Datetime)
+    fecha_presentacion  = db.Column(db.Datetime)
+    fecha_fin           = db.Column(db.Datetime)
+
+
+
+    <html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Formulario Elegante</title>
+</head>
+<body>
+    <h1>Formulario Elegante</h1>
+    <form>
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
+-->
+{% endblock %}
+
+

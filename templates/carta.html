@@ -1,0 +1,145 @@
+{% extends "layout.html" %} {% block title %}Carte saisoniere{% endblock %} 
+{% block head
+%} {{ super() }}
+<style type="text/css"></style>
+<script src="../static/js/jquery-3.2.1.js"></script>
+	
+<script>
+  $(document).ready(function(){
+
+    // AGREGANDO CLASE ACTIVE AL PRIMER ENLACE ====================
+    $('.category_list .category_item[category="all"]').addClass('ct_item-active');
+   
+    // FILTRANDO PRODUCTOS  ============================================
+  
+    $('.category_item').click(function(){
+      var catProduct = $(this).attr('category');
+      console.log(catProduct);
+  
+      // AGREGANDO CLASE ACTIVE AL ENLACE SELECCIONADO
+      $('.category_item').removeClass('ct_item-active');
+      $(this).addClass('ct_item-active');
+  
+      // OCULTANDO PRODUCTOS =========================
+      $('.product-item').css('transform', 'scale(0)');
+      function hideProduct(){
+        $('.product-item').hide();
+      } setTimeout(hideProduct,400);
+  
+      // MOSTRANDO PRODUCTOS =========================
+      function showProduct(){
+        $('.product-item[category="'+catProduct+'"]').show();
+        $('.product-item[category="'+catProduct+'"]').css('transform', 'scale(1)');
+      } setTimeout(showProduct,400);
+    });
+  
+    // MOSTRANDO TODOS LOS PRODUCTOS =======================
+  
+    $('.category_item[category="all"]').click(function(){
+      function showAll(){
+        $('.product-item').show();
+        $('.product-item').css('transform', 'scale(1)');
+      } setTimeout(showAll,400);
+    });
+  });
+
+</script>
+{% endblock %} 
+
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-4 p-3">
+    <!-- MESSAGE -->
+    {% include 'partials/_message.html' %}
+
+    <!-- FORM -->
+    {% include 'partials/_taskForm.html' %}
+  </div>
+
+  <div class="col-md-8">
+      <div class="row">
+        <div class="col-2"><a href="#" class="btn btn-primary category_item" category="all" >Tous</a></div >
+        <div class="col-2"><a href="#" class="btn btn-primary category_item" category="Entrées" >Entrées</a></div >
+        <div class="col-2"><a href="#" class="btn btn-primary category_item" category="Plats" >Plats</a></div >
+        <div class="col-2"><a href="#" class="btn btn-primary category_item" category="Fromages & Planches" >Fromage</a></div >
+        <div class="col-2"><a href="#" class="btn btn-primary category_item" category="Desserts" >Desserts</a></div >
+        <div class="col-2"><a href="#" class="btn btn-primary category_item" category="Coupes de glaces" >Coupes</a></div >
+      </div>
+    
+    {% for result in results %}
+      <!--<div class="card mb-1 bg-black text-white border border-white">-->
+        <form action={{ url_for('carta_up', id=result['id'])  }} method="POST" class="card bg-black text-light product-item border-white"  enctype="multipart/form-data" category="{{result['categorie']}}">
+        <div class="card-body py-2 px-3 bg-black text-light">
+          <div class="d-flex justify-content-between">
+                <div class="col-4 p-1 ">
+                    <select name="categorie" class="form-control rounded-2 bg-dark border-0 text-white" required >
+                    <option value="Entrées" {{ "SELECTED"  if result['categorie'] == "Entrées" else "" }} >Entrées</option>
+                    <option value="Plats" {{ "SELECTED" if result['categorie'] == "Plats" else "" }}>Plats</option>
+                    <option value="Fromages & Planches" {{ "SELECTED" if result['categorie'] == "Fromages & Planches" else "" }}>Fromages & Planches</option>
+                    <option value="Desserts" {{ "SELECTED" if result['categorie'] == "Desserts" else "" }}>Desserts</option>
+                    <option value="Coupes de glaces"  {{ "SELECTED" if result['categorie'] == "Coupes de glaces" else "" }}>Coupes de glaces</option>
+                  </select></div>
+                <div class="col-2 p-1 ">
+                    <input
+                    type="number"
+                    name="idcat"
+                    min ="1"
+                    step ="1"
+                    value = "{{ result['idcat'] }}"
+                    class="form-control rounded-2 bg-dark border-0 text-white"
+                    placeholder="10"
+                    />
+                </div>
+                <div class="col-6 p-1 ">
+                    <input
+                        type="text"
+                        name="titre"
+                        class="form-control rounded-2 bg-dark border-0 text-white"
+                        placeholder="le plat"
+                        value = "{{ result['titre'] }}"
+                        required
+                    />
+                </div>
+                
+          </div>
+          <div>
+            <p class="card-text"><input
+                type="text"
+                name="descripcion"
+                class="form-control rounded-2 bg-dark border-0 text-white"
+                placeholder="descripcion"
+                value = "{{ result['description'] }}"
+              /></p>
+            
+            <img class="img-rounded rounded-2" src="\static\images\photos\{{ result['image'] }}" alt="image" width="100"/>
+            <input type="hidden" name="nombre_archivo" value="{{ result['image'] }}" >
+            <input type="file" name="archivo" id="fileInput{{ result['id']}}">
+            <button type="submit" class="btn btn-warning btn-sm"  name="accion" value="upload" >Subir</button>
+            
+            
+            <div class="d-flex justify-content-end ">
+                <p class="card-text  mr-auto col-3"><input
+                    type="number"
+                    name="prix"
+                    min ="1.00"
+                    step ="0.10"
+                    value ={{ result['prix']|float|round(2)  }}
+                    class="form-control rounded-2 bg-dark border-0 text-white"
+                    placeholder="12.50"
+                  /></p>
+                 
+                <button type="submit" class="btn btn-primary btn-sm" name="accion" value="save">Enregistrer</button>
+                <button type="submit"  class="btn btn-danger btn-sm" name="accion" value="Delete">Eliminer</button>
+                </div>
+          </div>
+      </div>
+    </form>
+    {% endfor %}
+  </div>
+
+{% endblock %}
+
+{% block script%}
+{% endblock %}

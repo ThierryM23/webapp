@@ -1,0 +1,86 @@
+<!--<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Fotos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+</head>
+<body>-->
+    {% extends "layout.html" %}
+    {% block title %}  {{ func }}{% endblock %}
+    
+    {% block head %}
+        {{ super() }}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <style >
+            .img-thumbnail:hover{
+                border-radius:50%;
+                -webkit-border-radius:50%;
+                box-shadow: 0px 0px 15px 15px #ec731e;
+                -webkit-box-shadow: 0px 0px 15px 15px #ec731e;
+                transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+                }
+    
+            .gallery-item-classic img {           
+                padding: 1px;
+                background-image: linear-gradient(to bottom, rgba(45, 230, 12, 1) 0%, rgba(45, 230, 12, 1) 100%), linear-gradient(to bottom, rgba(45, 230, 12, 1) 0%, rgb(230, 121, 12) 100%);
+                background-clip: content-box, padding-box;
+                height: 200px;
+                width: 200px;
+                object-fit: cover;   
+                }
+        </style>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% endblock %}
+    
+    {% block content %}
+    {% if func == 'upload' %}
+    <div>Uploaded
+        <img src="{{ url_for('send_image', filename=image_name) }}">
+    </div>
+    <form id="Accept-form" action="{{ url_for('add_gallery') }}" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="filename" value="{{image_name}}"></input>
+        <input class="btn btn-primary " name="btn" value="ok" type="submit" ></input>
+        <input class="btn btn-danger " name="btn" value="cancel" type="submit"></input>
+       
+    </form>
+{% endif %}
+{% if func == 'gallery' %}
+
+<div class="row isotope-wrap">
+    {% for image in images %}
+    <div class="col-12 col-sm-12 col-md-3 col-lg-2 isotope-item wow-outer p-1" data-filter="Category 3">
+        <div class="wow slideInDown" >                                   
+            <div class="gallery-item-classic">
+                <img  src="{{ image }}" alt="Imagen {{ loop.index }}" width="200">
+                <div class="gallery-item-classic-caption">
+                    <a href="{{ image }}" data-lightbox="gallery" data-title="Imagen {{ loop.index }}"  data-lightgallery="item">zoom  </a>
+                </div>
+            </div>
+        </div>
+    </div>
+ {% endfor %}
+</div>
+{% endif %}
+{% if current_user.is_authenticated %}
+    {% if func != 'upload' %}
+        <div class="row">
+            <p class="text-light">
+            <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+                <input class="btn btn-primary" id="file-picker" type="file" name="file" accept="image/*" multiple>
+                <div class="text-light" id="msg"></div>
+                <input class="btn btn-primary" type="submit" value="Upload!" id="upload-button">
+            </form>
+
+        </div>
+    {% endif %}
+{% endif%}
+{% endblock %}
+
+{% block script %}  
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+{% endblock %}

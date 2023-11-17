@@ -1,0 +1,34 @@
+id,idcat,titre,description,prix,image,categorie,ordercat
+1,1,Tartare de thon et avocat,accompagné de roquette,15.0,pistachio.jpg,Entrées,1
+2,2,Gravelax de truite,sauce aneth,15.0,1502849508-FNBlogSandwiches.jpg,Entrées,1
+3,3,Rosace de tomate et sa burrata,glace basilic.,13.0,4ceca163fa0fecde361a508fdec2cc15.jpg,Entrées,1
+5,4,Tarte fine,selon marché.,12.0,tiramisu.jpeg,Entrées,1
+6,5,Salade fraîcheur,100% végétal,12.0,chicken-caesar-salad-6sq.jpg,Entrées,1
+7,1,Tartare de boeuf au couteau et autres,"environ 200gr, frites maison, salade.",17.5,salade-de-chevre-chaud-au-miel.jpeg,Plats,5
+8,2,Tataki de boeuf,"Environ 200gr, tagliatelles, pesto à l ail des ours.",18.5,fondo.png,Plats,5
+9,3,Filet de bar rôti au thym,fondue de poireaux.,22.5,fondo.png,Plats,5
+10,4,Filet de truite à la Grenobloise,"câpres, oignons, croutons.",20.0,negroni-coctel.jpg,Plats,5
+12,5,Côte de bœuf pour 2 personnes,"environ 1,2kg, frites, salade.",55.0,01_letoile_272-2017-09-25.jpg,Plats,5
+13,6,Burger Végétarien,"galette de PDT, légumes du moment.",15.0,coctel_de_gambas_con_pina_73915_600.jpg,Plats,5
+14,7,Cheeseburger,"buns maison, cheddar, salade, tomate, oignons.",16.5,fondo.png,Plats,5
+15,8,Double Cheeseburger,"buns maison, cheddar, salade, tomate, oignons.",20.0,fondo.png,Plats,5
+16,1,Camembert rôti (pour deux),,10.5,fondo.png,Fromages & Planches,7
+17,2,Assiette 3 fromages,,7.0,fondo.png,Fromages & Planches,7
+18,3,Faiselle de pays,crème ou coulis,6.0,fondo.png,Fromages & Planches,7
+19,4,Planche de charcuterie,,16.0,fondo.png,Fromages & Planches,7
+20,5,Planche de fromage de nos région,,16.0,fondo.png,Fromages & Planches,7
+21,6,Planche mixte,,17.0,fondo.png,Fromages & Planches,7
+35,10,ssdsdsdsdsdsdsd,sdsdsdsdsdsdsdsdsdsdsdsdsdsfsdsdsdsdsdsdsdsds s d d  sd s s s ,11.6,fondo.png,Fromages & Planches,7
+22,1,Entremets aux 2 chartreuses,,8.5,fondo.png,Desserts,8
+23,2,Snicker maison,,7.5,chocolatepistachio.jpg,Desserts,8
+24,3,Café gourmand,,8.5,fondo.png,Desserts,8
+25,4,Tarte aux pommes,boule de glace vanille.,6.5,fondo.png,Desserts,8
+26,5,Crème brûlée,,6.0,fondo.png,Desserts,8
+27,6,crumble aux fruits de saison,,6.5,fondo.png,Desserts,8
+28,1,Bueno,"2 boules noisette, 1 boule vanille, éclats de Kinder.",10.0,fondo.png,Coupes de glaces,9
+29,2,Pêche Melba,"3 boules vanille, pêche, coulis de fruits rouges, chantilly.",10.0,fondo.png,Coupes de glaces,9
+30,3,Colonel,"3 boules citrons, vodka.",12.0,fondo.png,Coupes de glaces,9
+31,4,Chartreusette,"3 boules chartreuse, liqueur de chartreuse verte.",12.0,fondo.png,Coupes de glaces,9
+32,5,Suplements une unité,"Vanille, chocolat, noisette, noix de coco, citron, Barbe à papa, fraise, framboise, rhum/raisin, caramel, melon.",2.5,fondo.png,Coupes de glaces,9
+33,6,Suplements 2 boules,"Vanille, chocolat, noisette, noix de coco, citron, Barbe à papa, fraise, framboise, rhum/raisin, caramel, melon.",4.0,fondo.png,Coupes de glaces,9
+34,10,coupe de glace nueva y rica,muy pero muy rica,11.3,tiramisu.jpeg,Coupes de glaces,9

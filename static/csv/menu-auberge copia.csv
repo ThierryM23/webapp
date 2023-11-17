@@ -1,0 +1,55 @@
+﻿Carte;Ordre;Categories;titre;description;prix
+Saisonniere;11;Entrées;Tartare de veau;Tartare de veau, lait d’amande, caviar de citron vert et ciboulette.;14
+Saisonniere;13;Entrées;Salade d'endives;Salade d’endives revisitées à la dauphinoise : cuites servies froides, noix, tomates, croutons et sauce au bleu de Sassenage.;11
+Saisonniere;15;Entrées;Carpaccio de truite;Carpaccio de truite, vierge de légumes de saison.;13
+Saisonniere;17;Entrées;Cassolette d’escargots;Cassolette d’escargots avec beurre persillé ou piment d’Espelette.;12
+Saisonniere;21;Plats;Filets de truite à la Grenobloise;Filets de truite à la Grenobloise : câpres, croutons, beurre monté au vin blanc, riz noir.;19,5
+Saisonniere;23;Plats;Suprême de volaille fermier;Suprême de volaille fermier, sauce forestière, gratin dauphinois.;19,5
+Saisonniere;25;Plats;Côte de bœuf pour 2 ;Côte de bœuf pour 2 personnes environ 1kg, frites, haricots verts.;42
+Saisonniere;27;Plats;Burger;Burger : steak haché, pain à l’encre de seiche, salade, tomate, oignons, fromage, frites.;16
+Saisonniere;29;Plats;Burger végétarien;Burger végétarien : galette de pomme de terre et légumes de saison. ;15
+Saisonniere;31;Plats;Gratin de ravioles aux écrevisses;Gratin de ravioles aux écrevisses,  méli-mélo de salade.;15
+Saisonniere;33;Plats;Gratin de ravioles aux morilles;Gratin de ravioles aux morilles, méli-mélo de salade.;14
+Saisonniere;41;Fromages & desserts ;Assiette de fromages;Assiette de fromages.;6,5
+Saisonniere;43;Fromages & desserts ;Fromage blanc;Fromage blanc.;5
+Saisonniere;45;Fromages & desserts ;Parfait à la chartreuse;Parfait à la chartreuse.;7
+Saisonniere;47;Fromages & desserts ;Cœur coulant aux 2 chocolats;Cœur coulant aux 2 chocolats (blanc et noir) . ;6,5
+Saisonniere;49;Fromages & desserts ;Café gourmand;Café gourmand;7
+Saisonniere;51;Fromages & desserts ;Tartelette aux fruits de saison.;Tartelette aux fruits de saison.;6
+Saisonniere;53;Fromages & desserts ;Boule de glace;une Boule de glace;2
+Saisonniere;101;Menus enfants ;;Pièce du boucher (haché), frites, riz ou légumes.;
+Saisonniere;101;Menus enfants ;;Spaghetti bolognaise;
+Saisonniere;101;Menus enfants ;;Plat au choix + sirop + boule de glace ;10
+Saisonniere;101;Menus enfants ;;Supplément Chantilly.;1
+Boissons;;Apéritifs;BIÈRES ;Bière pression (25cl) : 3€;3
+Boissons;;Apéritifs;BIÈRES ;Bière pression spéciale (25cl) : 3.70€.;3,7
+Boissons;;Apéritifs;BIÈRES ;Bière pression Picon (25cl) : 3.50€;3,5
+Boissons;;Apéritifs;BIÈRES ;Monaco : 3.30€ Panaché : 3.20€;3,2
+Boissons;;Apéritifs;BIÈRES ;Bière sans alcool : 2.50€;2,5
+Boissons;;Apéritifs;BIÈRES ;Bière bouteille Mont blanc Génépi, Mont blanc blanche, Hapkin (33cl) : 4€ ;4
+Boissons;;Apéritifs;;Martini rouge ou blanc (4cl) ;3,5
+Boissons;;Apéritifs;;Vin de noix (6cl);3,5
+Boissons;;Apéritifs;;Suze (6cl);3,5
+Boissons;;Apéritifs;;Gentiane (4cl);3,5
+Boissons;;Apéritifs;;Ricard (4cl);3,5
+Boissons;;Apéritifs;;Gin (4cl),  Vodka (4cl),   Whisky (4cl),  Rhum (4cl) ;6
+Boissons;;Boissons chaudes ;;Café;2
+Boissons;;Boissons chaudes ;;Chocolat;2
+Boissons;;Boissons chaudes ;;Thés, infusions;2,3
+Boissons;;Boissons chaudes ;;Café crème;2,1
+Boissons;;Boissons chaudes ;;Cappuccino;2,4
+Boissons;;Softs;;Eau plate bouteille (1L) ;4,5
+Boissons;;Softs;;Eau gazeuse Orezza (1L);4,5
+Boissons;;Softs;;Sirop;2
+Boissons;;Softs;;Diabolo;2,5
+Boissons;;Softs;;Coca, coca zero, Orangina, Schweppes tonic ou agrumes, Ice-Tea, Perrier;3,5
+Boissons;;Digestifs;;Get 27 ou 31 (6cl) ;6
+Boissons;;Digestifs;;Whisky 12 ans d’âge (4cl) ;8
+Boissons;;Digestifs;;Cognac VS (4cl);8
+Boissons;;Digestifs;;Armagnac VSOP (4cl);8
+Boissons;;Digestifs;;Rhum Diplomatico (4cl);8
+Boissons;;Digestifs;;Poire (4cl);8
+Boissons;;Digestifs;;Chartreuse verte ou jaune (4cl);9
+Boissons;;Digestifs;;Chartreuse MOF (4cl) ;11
+Boissons;;Digestifs;;Chartreuse VEP (4cl) ;12
+Boissons;;Digestifs;;Chartreuse 9ème centenaire (4cl) ;11

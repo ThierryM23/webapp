@@ -1,0 +1,103 @@
+{% extends "layout.html" %} 
+{% block title %}Search{% endblock %} 
+{% block head %} 
+{{ super() }}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Libre+Baskerville&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  .row {
+    font-family: "Libre Baskerville", serif;
+  }
+</style>
+<style type="text/css"></style>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+        <h1 class="text-white">Carte Saisonnière</h1>
+
+        {% set count = namespace(value=1) %} {% set vars = {'categorie': 'Entrées'} %}
+    <div class="row align-items-center rounded-3 bg-danger m-2">
+        <div class="col-12 col-sm-3">
+            <img  src="static/images/gallery/chicken-caesar-salad-6sq.jpg" width="90" />
+        </div>
+        <div class="col-auto text-light col-sm-9"  style="min-width: 14rem">
+            <h1>{{ vars['categorie'] }}</h1>
+            <p class=""></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row align-items-start m-1 p-1">           
+            {% for row in resultados %} 
+                {% if row['ordercat']|int == count.value %}     
+                    <div class="col-12 col-md-6 col-lg-4">  
+
+                        <div class="card" style="width: 15rem">
+                            {% if row['image'] != 'fondo.png' %}
+                                    <img
+                                        src="static/images/photos/{{ row['image'] }}"
+                                        class="card-img-top"
+                                        style="max-width: 100%; height: auto;"
+                                        alt="..."
+                                    />
+                            {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-bold text-danger">{{ row['titre'] }}</h5>
+                                    <p class="card-text">{{ row['description'] }}</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item text-end">
+                                    <span class="badge fs-5 bg-secondary"
+                                        >{{ row['prix']|float|round(2) }}€</span
+                                    >
+                                    </li>
+                                </ul>
+                        </div> 
+
+                    </div>  
+                {% else %} 
+                {% set count.value = count.value + 1 %}
+        <!--</div>-->
+    <div class="row align-items-center rounded-3 bg-danger m-2">
+        <div class="col-12 col-sm-3">
+        <img src="static/images/photos/{{ row['categorie'] }}.jpg" width="90" />
+        </div>
+        <div class="col-auto text-light col-sm-9"> <h1>{{ row['categorie'] }}</h1> <p class=""></p>
+        </div>
+    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card" style="width: 15rem">
+                            {% if row['image'] != 'fondo.png' %}
+                                    <img
+                                        src="static/images/photos/{{ row['image'] }}"
+                                        class="card-img-top"
+                                        style="max-width: 100%; height: auto;"
+                                        alt="..."
+                                    />
+                            {% endif %}
+                            <div class="card-body">
+                            <h5 class="card-title font-weight-bold text-danger">{{ row['titre'] }}</h5>
+                            <p class="card-text">{{ row['description'] }}</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                            <li class="list-group-item text-end">
+                                <span class="badge fs-5 bg-secondary"
+                                >{{ row['prix']|float|round(2) }}€</span
+                                >
+                            </li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %} 
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
