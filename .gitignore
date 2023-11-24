@@ -1,9 +1,10 @@
-_pycache_/
-models/
-node_modules/
-old/
-routes/
-venv/
+_pycache_/**
+__pycache__/**
+models/**
+node_modules/**
+old/**
+routes/**
+venv/**
 templates/voy.html
 templates/upload.html
 templates/upcsv.html
@@ -27,3 +28,6 @@ templates/csvimport.html
 templates/form1.html
 templates/form2.html
 config.py
+app.log
+
+

@@ -142,7 +142,6 @@ class Product(db.Model):
     def get_by_categorie(categorie):
         return Product.query.filter_by(categorie=categorie).all()
 
-
 class Menudia(db.Model):
     __tablename__ = "menu_dia" 
     id                  = db.Column(db.Integer, primary_key=True)
@@ -189,10 +188,8 @@ def listamenudia():
         #flash(f"ID: {resultado.id},Titre: {resultado.titre}, Descrip: {resultado.description}, Fecha Presentación: {resultado.fecha_presentacion}, Fecha Fin: {resultado.fecha_fin}", "alert-success")
     return resultados
 
-
 with app.app_context():
     db.create_all()
-
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -217,11 +214,6 @@ def signup():
         return redirect(url_for('home'))
     return redirect(url_for('home'))        
 
-#@app.route('/profile')
-#@login_required
-#def profile():
-    #return f'Hello, {current_user.username}! You are logged in.'
-
 @app.route('/logout')
 @login_required
 def logout():
@@ -236,15 +228,13 @@ def products():
     user_products = Product.query.filter_by(user_id=user_id).all()
     return render_template('products.html', products=user_products)
 
-
-
 @app.route('/')
 def home():
     nombre_funcion = inspect.currentframe().f_code.co_name
     app.logger.info(nombre_funcion)
     registros = listamenudia()
     if len(registros) == 0:
-        registro = Menudia("Consultez nos serveuses", 12, "elles se feront un plaisir de vous renseigner")
+        registro = Menudia("Menu du jour á ", 16, "Consultez nos serveuses, elles se feront un plaisir de vous renseigner")
         registros.append(registro)
     #return "Bienvenue"
     return render_template("home.html", titulo="Bienvenue", registros=registros)
@@ -256,13 +246,11 @@ def about():
     titulo: str = "About Page"
     return render_template('about.html', titulo="Le mot du chef", bg_image="modif-2.jpeg")
 
-
 @app.route('/location')
 def locate():
     nombre_funcion = inspect.currentframe().f_code.co_name
     app.logger.info(nombre_funcion)
     return render_template("location.html", titulo="Bienvenue", bg_image="stEtienne1.jpg")
-
 
 @app.route('/upload/<filename>')
 def send_image(filename):
@@ -277,7 +265,6 @@ def send_image(filename):
         return send_from_directory(app.config["CLIENT_IMAGES"], filename)
     except FileNotFoundError:
         abort(404)
-
 
 @app.route('/upload', methods=['POST'])
 def upload():
@@ -309,7 +296,6 @@ def upload():
     # return send_from_directory("images", filename, as_attachment=True)
     return render_template("gallery.html", func='upload', image_name=filename)
 
-
 @app.route('/gallery')
 def get_gallery():
     # Directorio de imágenes
@@ -318,9 +304,6 @@ def get_gallery():
     images = [os.path.join('/static/images/gallery', file) for file in os.listdir(image_directory) if file.endswith(('.jpg', '.png', '.jpeg'))]
 
     return render_template('galeria1.html', titulo="Gallery Page", func='gallery', images=images)
-
-
-
 
 @app.route('/galerie')
 def galerie():
@@ -333,7 +316,6 @@ def galerie():
 
     image_names = os.listdir(APP_ROOT + '/static/images/gallery')
     return render_template('gallery.html', titulo="Gallery Page", func='gallery', image_names=image_names)
-
 
 @app.route('/add_gallery', methods=['POST'])
 def add_gallery():
@@ -370,10 +352,6 @@ def menuqr():
     #app.logger.info(registros)
     return render_template('menuqr.html', resultados=registros)
     
-    
-
-
-
 @app.route('/carta')
 @login_required
 def carta():
@@ -387,8 +365,6 @@ def carta():
         del registro['_sa_instance_state']
         
     return render_template("carta.html", titulo="Bienvenue", results=registros_dict)
-
-
 
 @app.route('/newplat', methods=['POST'])
 def newplat():    
@@ -412,7 +388,6 @@ def newplat():
         app.logger.info(product_new)
         return redirect(url_for('carta'))
     return redirect(url_for('carta'))
-
 
 @app.route('/carta_up/<string:id>', methods=['GET', 'POST'])
 def carta_up(id):
@@ -518,8 +493,6 @@ def subir_foto(id):
         nuevo_nombre = 'nuevo_nombre' + os.path.splitext(archivo.filename)[1]
         archivo.save(os.path.join(app.config['UPLOAD_FOLDER'], nuevo_nombre))
         return 'Archivo subido exitosamente como {}'.format(nuevo_nombre)
-
-
 
 @app.route('/menu', methods=['GET', 'POST'])
 def menu():
