@@ -153,7 +153,7 @@
             <div class="card-body adelante card4 menu">
              {% for registro in registros %}
              <div class="">
-                    <h5 class="card-title">{{ registro.titre }} &nbsp; $&nbsp;{{ registro["prix"]|float|round(2) }}</h5>
+                    <h5 class="card-title">{{ registro.titre }} &nbsp; <small>€&nbsp;{{ registro["prix"]|float|round(2) }}</small></h5>
                     <h6 class="card-text"> {{ registro.description }}</h6>
                     <h7></h7>
              </div>     
