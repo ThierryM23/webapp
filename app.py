@@ -469,6 +469,17 @@ def carta_up(id):
             app.logger.info(" se borro el registro numero " + id)
             app.logger.info("******** carta_up <string:id>  POST  Accion = delete  fin  *************")
             return redirect(url_for('carta'))  
+        
+        elif data['accion']=='eliminer':
+            app.logger.info("******** carta_up <string:id>  POST  Accion = eliminer   *************")       
+            producto = Product.query.get(id) 
+            producto.image = 'fondo.png'
+            app.logger.info(producto)
+            db.session.add(producto)
+            db.session.commit()
+            app.logger.info(" se borro la image del plato numero " + id)
+            app.logger.info("******** carta_up <string:id>  POST  Accion = eliminer  fin  *************")
+            return redirect(url_for('carta'))  
         else:
             return redirect(request.url)
     

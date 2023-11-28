@@ -129,3 +129,74 @@
 2023-11-27 14:47:49,552 - app - INFO - home
 2023-11-27 14:47:49,555 - app - INFO - 2023-11-27 14:47:49.555466
 2023-11-27 14:47:49,556 - app - INFO - 0
+2023-11-28 13:01:32,310 - app - INFO - home
+2023-11-28 13:01:32,311 - app - INFO - 2023-11-28 13:01:32.311791
+2023-11-28 13:01:32,327 - app - INFO - 0
+2023-11-28 13:01:36,827 - app - INFO - carta
+2023-11-28 13:01:36,831 - app - INFO - <class 'list'>
+2023-11-28 13:01:47,616 - app - INFO - carta_up
+2023-11-28 13:01:47,616 - app - INFO - 14
+2023-11-28 13:01:47,618 - app - INFO - {'categorie': 'Plats', 'idcat': '7', 'titre': 'Cheeseburger', 'descripcion': 'buns maison, cheddar, salade, tomate, oignons.', 'nombre_archivo': 'fondo.png', 'eliminer': 'Eliminer', 'prix': '16.5'}
+2023-11-28 13:01:47,619 - app - INFO - ******** inicio de la funcion carta_up <string:id> 14 accion:  *************
+2023-11-28 13:01:47,630 - app - INFO - carta
+2023-11-28 13:01:47,632 - app - INFO - <class 'list'>
+2023-11-28 13:59:29,298 - app - INFO - home
+2023-11-28 13:59:29,299 - app - INFO - 2023-11-28 13:59:29.299597
+2023-11-28 13:59:29,314 - app - INFO - 0
+2023-11-28 13:59:35,284 - app - INFO - carta
+2023-11-28 13:59:35,288 - app - INFO - <class 'list'>
+2023-11-28 13:59:41,658 - app - INFO - carta_up
+2023-11-28 13:59:41,659 - app - INFO - 3
+2023-11-28 13:59:41,660 - app - INFO - {'categorie': 'Entrées', 'idcat': '3', 'titre': 'Rosace de tomate et sa burrata', 'descripcion': 'glace basilic', 'nombre_archivo': 'negroni-coctel.jpg', 'eliminer': 'eliminer', 'prix': '13.0'}
+2023-11-28 13:59:41,661 - app - INFO - ******** inicio de la funcion carta_up <string:id> 3 accion:  *************
+2023-11-28 13:59:41,670 - app - INFO - carta
+2023-11-28 13:59:41,672 - app - INFO - <class 'list'>
+2023-11-28 14:00:34,415 - app - INFO - carta_up
+2023-11-28 14:00:34,416 - app - INFO - 3
+2023-11-28 14:00:34,417 - app - INFO - {'categorie': 'Entrées', 'idcat': '3', 'titre': 'Rosace de tomate et sa burrata', 'descripcion': 'glace basilic', 'nombre_archivo': 'negroni-coctel.jpg', 'eliminer': 'eliminer', 'prix': '13.0'}
+2023-11-28 14:00:34,417 - app - INFO - ******** inicio de la funcion carta_up <string:id> 3 accion:  *************
+2023-11-28 14:00:34,427 - app - INFO - carta
+2023-11-28 14:00:34,429 - app - INFO - <class 'list'>
+2023-11-28 14:00:39,277 - app - INFO - carta_up
+2023-11-28 14:00:39,277 - app - INFO - 3
+2023-11-28 14:00:39,279 - app - INFO - {'categorie': 'Entrées', 'idcat': '3', 'titre': 'Rosace de tomate et sa burrata', 'descripcion': 'glace basilic', 'nombre_archivo': 'negroni-coctel.jpg', 'eliminer': 'eliminer', 'prix': '13.0'}
+2023-11-28 14:00:39,279 - app - INFO - ******** inicio de la funcion carta_up <string:id> 3 accion:  *************
+2023-11-28 14:00:39,287 - app - INFO - carta
+2023-11-28 14:00:39,289 - app - INFO - <class 'list'>
+2023-11-28 14:05:14,093 - app - INFO - carta_up
+2023-11-28 14:05:14,094 - app - INFO - 3
+2023-11-28 14:05:14,096 - app - INFO - {'categorie': 'Entrées', 'idcat': '3', 'titre': 'Rosace de tomate et sa burrata', 'descripcion': 'glace basilic', 'nombre_archivo': 'negroni-coctel.jpg', 'eliminer': 'eliminer', 'prix': '13.0'}
+2023-11-28 14:05:14,096 - app - INFO - ******** inicio de la funcion carta_up <string:id> 3 accion:  *************
+2023-11-28 14:05:14,110 - app - INFO - carta
+2023-11-28 14:05:14,112 - app - INFO - <class 'list'>
+2023-11-28 14:05:22,396 - app - INFO - carta_up
+2023-11-28 14:05:22,396 - app - INFO - 3
+2023-11-28 14:05:22,398 - app - INFO - {'categorie': 'Entrées', 'idcat': '3', 'titre': 'Rosace de tomate et sa burrata', 'descripcion': 'glace basilic', 'nombre_archivo': 'negroni-coctel.jpg', 'accion': 'eliminer', 'prix': '13.0'}
+2023-11-28 14:05:22,399 - app - INFO - ******** inicio de la funcion carta_up <string:id> 3 accion:  *************
+2023-11-28 14:05:22,399 - app - INFO - ******** carta_up <string:id>  POST  Accion = eliminer   *************
+2023-11-28 14:05:22,402 - app - INFO - <Product 3>
+2023-11-28 14:05:22,416 - app - INFO -  se borro la image numero 3
+2023-11-28 14:05:22,418 - app - INFO - ******** carta_up <string:id>  POST  Accion = eliminer  fin  *************
+2023-11-28 14:05:22,428 - app - INFO - carta
+2023-11-28 14:05:22,429 - app - INFO - <class 'list'>
+2023-11-28 14:07:42,070 - app - INFO - carta
+2023-11-28 14:07:42,071 - app - INFO - <class 'list'>
+2023-11-28 14:11:10,024 - app - INFO - carta_up
+2023-11-28 14:11:10,025 - app - INFO - 12
+2023-11-28 14:11:10,028 - app - INFO - {'categorie': 'Plats', 'idcat': '5', 'titre': 'Côte de bœuf pour 2 personnes', 'descripcion': 'environ 1,2kg, frites, salade.', 'nombre_archivo': 'fondo.png', 'accion': 'upload', 'prix': '55.0'}
+2023-11-28 14:11:10,030 - app - INFO - ******** inicio de la funcion carta_up <string:id> 12 accion:  *************
+2023-11-28 14:11:10,030 - app - INFO - ******** POST  Accion = Upload   *************
+2023-11-28 14:11:10,030 - app - INFO - cotedeboeuf.jpeg
+2023-11-28 14:11:10,031 - app - INFO - cotedeboeuf.jpeg
+2023-11-28 14:11:10,031 - app - INFO - UPDATE product SET image = 'cotedeboeuf.jpeg' WHERE product.id=12
+2023-11-28 14:11:10,034 - app - INFO - <Product 12>
+2023-11-28 14:11:10,047 - app - INFO - actualizado el campo de image en la base por el product 12
+2023-11-28 14:11:10,055 - app - INFO - carta
+2023-11-28 14:11:10,057 - app - INFO - <class 'list'>
+2023-11-28 14:12:52,271 - app - INFO - home
+2023-11-28 14:12:52,271 - app - INFO - 2023-11-28 14:12:52.271954
+2023-11-28 14:12:52,279 - app - INFO - 0
+2023-11-28 14:12:53,999 - app - INFO - menu
+2023-11-28 14:12:54,000 - app - INFO - 2023-11-28
+2023-11-28 14:12:55,149 - app - INFO - carta
+2023-11-28 14:12:55,150 - app - INFO - <class 'list'>

@@ -114,9 +114,10 @@
               /></p>
             
             <img class="img-rounded rounded-2" src="\static\images\photos\{{ result['image'] }}" alt="image" width="100"/>
+            <button type="submit" class="btn btn-warning btn-sm"  name="accion" value="eliminer" >Eliminer image</button>
             <input type="hidden" name="nombre_archivo" value="{{ result['image'] }}" >
             <input type="file" name="archivo" id="fileInput{{ result['id']}}">
-            <button type="submit" class="btn btn-warning btn-sm"  name="accion" value="upload" >Subir</button>
+            <button type="submit" class="btn btn-warning btn-sm"  name="accion" value="upload" >Envoyer photo</button>
             
             
             <div class="d-flex justify-content-end ">
