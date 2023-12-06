@@ -29,4 +29,3 @@ templates/form1.html
 templates/form2.html
 config.py
 entorno.sh
-app.log
