@@ -16,16 +16,21 @@
     <style>
         body {
             min-height: 100vh;
-            {% if bg_image %}
-            background: url('{{ url_for('static', filename='images/' + bg_image) }}') #000000 no-repeat center;
+            {% if bg_image %}            
+            background-image: url('https://myappauberge.s3.us-east-2.amazonaws.com/general/{{bg_image}}' );
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #000000       ;       
             background-size: cover;
             min-height: 100vh;
-            {% else %}
-            background: url('{{ url_for('static', filename='images/Entree_principL.jpeg') }}') #000000 no-repeat center;
+            {% else %}                       
+            background-image: url('https://myappauberge.s3.us-east-2.amazonaws.com/general/Entree_principL.jpeg');   
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #000000;          
             background-size: cover;
             min-height: 100vh;
             {% endif %}
-
         }
 
         .wrapper {
@@ -103,7 +108,7 @@
     <!-- navbar navbar-expand-md navbar-light bg-opacity-50 fixed-top -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="customNavbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='images/logoauberge.jpeg') }}"  width="120px" alt="Website Python"></a>
+            <a class="navbar-brand" href="/"><img src="https://myappauberge.s3.us-east-2.amazonaws.com/general/logoauberge.jpeg"  width="120px" alt="Website Python"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                     aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -120,7 +125,7 @@
                         <a class="nav-link" href="{{ url_for('get_gallery') }} ">Gallerie de photos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('locate') }} ">Location</a>
+                        <a class="nav-link" href="{{ url_for('location') }} ">Location</a>
                     </li>                                                           
             
                 {% if current_user.is_authenticated %}

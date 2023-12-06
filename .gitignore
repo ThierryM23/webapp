@@ -28,6 +28,4 @@ templates/csvimport.html
 templates/form1.html
 templates/form2.html
 config.py
-app.log
-
-
+entorno.sh

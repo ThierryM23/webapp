@@ -7,29 +7,82 @@
 {% endblock %}
 <!--bg-light p-5 text-dark bg-opacity-25 -->
 {% block content %}
-
+<div class="row">
+    <div class="col-md-4 p-3">
+      <!-- MESSAGE -->
+      {% include 'partials/_message.html' %}
+    </div>
 <section>
     <div class="container">
-        <div class="wow fadeInLeft text-white py-2" style="visibility: visible; animation-name: fadeInLeft;">
-            <h3>Suivez le guide pour nous rejoindre!! </h3>
-            <h4> 📞 +33 6 15 08 90 39 à Saint etienne de Crossey</h4>
+        <div class="wow fadeInLeft text-white bg-dark bg-opacity-75 py-2 m-1" style="visibility: visible; animation-name: fadeInLeft;">            
+        {% for result in results if result.seccion == 1 %}            
+            {% if result.titulo %}<h3>{{ result.titulo }}</h3>{% endif %}       
+            <div> <b><h4> 📞 {{ result.texto}}</h4></b>
+            </div>
+        {% endfor %}
+    
+            {% if current_user.is_authenticated %}
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"> Editer cette section? </a>
+              
+            <div class="collapse" id="collapseExample">
+                <div class="bg-dark bg-opacity-75 ">
+                    {% for result in results if result.seccion == 1 %}
+                    <form action={{ url_for('formabout', id=result['id'])  }} method="POST" class="m-0 p-0 "  enctype="multipart/form-data">
+                        <input type="text"  class="row col-12 p-1" name="titulo" value="{% if result.titulo %}{{ result.titulo }} {% endif %}" >
+                        <input name="texto"  class="row  col-12 p-1"  value=" {{ result.texto}}">                     
+                        <div class="row">
+                            <div class="col-2"><button type="submit" class="btn btn-success btn-sm"  name="accion" value="edit" >Actualiser</button></div>
+                            <div class="col-2"><button type="submit" class="btn btn-danger btn-sm"  name="accion" value="del" >efacer</button></div>
+                            <div class="col-2"><button type="submit" class="btn btn-warning btn-sm"  name="accion" value="add" >Additioner</button></div>
+                            <div class="col-6"></div>
+                        </div>
+                    </form>
+                    {% endfor %}
+                </div>
+              </div>
+            {% endif %}
         </div>
+
+
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7447.388150694184!2d5.642250735766238!3d45.37828931638968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478ae4a117081993%3A0x7db477d06f16e68e!2sRestaurant%20L'auberge%20refleurie!5e0!3m2!1sfr!2sar!4v1657912962476!5m2!1sfr!2sar" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
         </iframe>
+        
+        
         <div class="row  text-white bg-dark bg-opacity-75">
+            {% for result in results if result.seccion == 2 %}           
+            {% if result.titulo %}<h3>{{ result.titulo }}</h3>{% endif %}                      
             <div class="col-2"></div>
-            <div class="col-8 ">Horaires d'ouvertures</div>
+            <div class="col-8 "> {{ result.texto}}</div>
             <div class="col-2"></div>
+           {% endfor %}
+            {% if current_user.is_authenticated %}
+            <div class="col-4"><a class="btn btn-primary" data-toggle="collapse" href="#collapsebajopagina" role="button" aria-expanded="false" aria-controls="collapseExample"> Editer cette section? </a></div>
+            <div class="col-6 "> </div>
             <div class="col-2"></div>
-            <div class="col-8 ">Lundi fermé</div>
-            <div class="col-2"></div>
-            <div class="col-2"></div>
-            <div class="col-8 ">Mardi á Samedi 12h–14h et 19h–22h</div>
-            <div class="col-2"></div>
-            <div class="col-2"></div>
-            <div class="col-8 ">Dimanche  12h–14h Spécial "Cuisses de grenouilles"</div>
-            <div class="col-2"></div>
-          </div>            
+            
+              
+            <div class="collapse" id="collapsebajopagina">
+                <div class="card card-body bg-dark bg-opacity-75 ">
+                    {% for result in results if result.seccion ==2 %}
+                    <form action={{ url_for('formabout', id=result['id'])  }} method="POST" class="m-0 p-0"  enctype="multipart/form-data">
+                        <input type="text"  name="titulo" value="{% if result.titulo %}{{ result.titulo }} {% endif %}" >
+                        <br>
+                        <textarea name="texto"  style="min-width: 90%" >{{ result.texto}}</textarea>
+                        <br>
+                        <div class="row">
+                            <div class="col-4"><button type="submit" class="btn btn-success btn-sm"  name="accion" value="edit" >Edit</button></div>
+                            <div class="col-4"><button type="submit" class="btn btn-danger btn-sm"  name="accion" value="del" >Del</button></div>
+                            <div class="col-4"><button type="submit" class="btn btn-warning btn-sm"  name="accion" value="add" >Add</button></div>
+                        </div>
+                    </form>
+                    {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+        
+        
+        
+        </div>            
     </div>
 </section>
 {% endblock%}

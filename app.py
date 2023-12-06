@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, send_from_directory, flash
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory, flash, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, current_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -8,6 +8,8 @@ import os
 import inspect
 import logging
 import datetime as dt
+import boto3
+import s3upload as s3
 
 __author__ = "ThierryM23"
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -170,11 +172,32 @@ class Menudia(db.Model):
         if not self.id:
             db.session.add(self)
         db.session.commit()
+
+class TextoXpagina(db.Model):
+    __tablename__ = "textoxpagina" 
+    id                  = db.Column(db.Integer, primary_key=True)
+    pagina              = db.Column(db.String, nullable=False)
+    seccion             = db.Column(db.Integer, nullable=False)
+    orden               = db.Column(db.Integer, nullable=False)
+    titulo              = db.Column(db.String)
+    texto               = db.Column(db.String)
+    fecha_created       = db.Column(db.String(80))
+    image               = db.Column(db.String)
+   
+    def __init__(self, pagina, seccion, orden, fecha_created=dt.datetime.today() ):
+        self.pagina = pagina
+        self.seccion = seccion      
+        self.orden = orden
+        self.fecha_created = fecha_created
+        
+    def save(self):
+        if not self.id:
+            db.session.add(self)
+        db.session.commit()
         
     @staticmethod
-    def entrefecha(fecha):
-        
-        return Product.query.get(id)
+    def get_orden(page, seccion):
+        return TextoXpagina.query.filter_by(pagina=page, seccion=seccion).order_by(TextoXpagina.orden.desc()).first()
 
 #busca en la tabla menu del dia los platos entre fecha_presentacion y fecha_fin
 def listamenudia():
@@ -186,6 +209,12 @@ def listamenudia():
     #for resultado in resultados:
     #    app.logger.info(f"ID: {resultado.id},Titre: {resultado.titre}, Descrip: {resultado.description}, Fecha Presentación: {resultado.fecha_presentacion}, Fecha Fin: {resultado.fecha_fin}")
         #flash(f"ID: {resultado.id},Titre: {resultado.titre}, Descrip: {resultado.description}, Fecha Presentación: {resultado.fecha_presentacion}, Fecha Fin: {resultado.fecha_fin}", "alert-success")
+    return resultados
+
+def textoxpage(page):
+    app.logger.info(page)
+    resultados = TextoXpagina.query.filter(TextoXpagina.pagina == page).order_by(TextoXpagina.orden).all()
+    app.logger.info(len(resultados))
     return resultados
 
 with app.app_context():
@@ -243,14 +272,85 @@ def home():
 def about():
     nombre_funcion = inspect.currentframe().f_code.co_name
     app.logger.info(nombre_funcion)
-    titulo: str = "About Page"
-    return render_template('about.html', titulo="Le mot du chef", bg_image="modif-2.jpeg")
+    results = textoxpage('about')
+    if len(results) == 0:
+        app.logger.info("NO encontro texto por esta pagina")
+        result = TextoXpagina('about',1,1, "Le mot du chef","""Le chef Bruno Narici et son équipe vous accueillent dans son établissement, du mardi au dimanche midi, afin de vous faire découvrir sa cuisine traditionnelle de terroir composée principalement de produits frais de la région.
+        La carte change au fil des saisons. Le chef vous propose également tous les dimanches midi, cuisses de grenouilles et gratin dauphinois, pensez à réserver. Nous vous souhaitons un agréable moment à l'Auberge Refleurie.""")
+        results.append(result)
+        titulo: str = "Le mot du chef"
+    else:
+        app.logger.info(results)       
+        app.logger.info(results[0].titulo)
+        app.logger.info(results[0].texto)
+        titulo: str = results[0].titulo
+        bg_image = results[0].image
+    
+    return render_template('about.html', titulo=titulo, bg_image=bg_image, results=results)
 
-@app.route('/location')
-def locate():
+@app.route('/about/<string:id>', methods=['POST'])
+def formabout(id):
     nombre_funcion = inspect.currentframe().f_code.co_name
     app.logger.info(nombre_funcion)
-    return render_template("location.html", titulo="Bienvenue", bg_image="stEtienne1.jpg")
+    app.logger.info(id)    
+    data = request.form.to_dict()
+    app.logger.info(data)
+    app.logger.info("******** inicio de la funcion formabout <string:id> " + id + " accion:  *************")
+    if 'accion' not in data:
+        flash('Essayez de nouveau','alert-danger')
+    else:
+        if data['accion'] == 'add':
+            app.logger.info("Accion = add " + str(id) )
+            texto = TextoXpagina.query.get(id)
+            num=TextoXpagina.get_orden(texto.pagina, texto.seccion)
+            numero = num.orden + 1
+            app.logger.info(numero)
+            textonew = TextoXpagina(texto.pagina, texto.seccion, orden = numero)
+            TextoXpagina.save(textonew)
+            app.logger.info(textonew.pagina + str(textonew.id))
+            app.logger.info("Accion = add FIN ")
+            flash('add' + texto.pagina + str(texto.seccion) + str(numero),'alert-danger')
+        elif data['accion'] == 'del':
+            texto = TextoXpagina.query.get(id)
+            db.session.delete(texto)
+            db.session.commit()
+            flash('Del','alert-danger')
+        elif data['accion'] == 'edit':
+            texto = TextoXpagina.query.get(id)
+            app.logger.info(texto)
+            texto.titulo = data['titulo']
+            texto.texto = data['texto']
+            TextoXpagina.save(texto)            
+            flash('edit','alert-danger')
+        else:
+            flash('else','alert-danger')
+        return redirect(url_for(texto.pagina))
+    return redirect(url_for(texto.pagina))    
+
+
+@app.route('/location')
+def location():
+    nombre_funcion = inspect.currentframe().f_code.co_name
+    app.logger.info(nombre_funcion)
+    results = textoxpage('location')
+    if len(results) == 0:
+        app.logger.info("NO encontro texto por esta pagina")
+        result = TextoXpagina('location',1,1) 
+        result.id = 1
+        result.titulo = "Suivez le guide pour nous rejoindre!!"
+        result.texto = "+33 6 15 08 90 39 à Saint etienne de Crossey"
+        result.image="stEtienne1.jpg"
+        bg_image="stEtienne1.jpg"
+        results.append(result)
+        titulo: str = "Suivez le guide pour nous rejoindre!!"
+        
+    else:
+        app.logger.info(results)       
+        app.logger.info(results[0].titulo)
+        app.logger.info(results[0].texto)
+        titulo: str = results[0].titulo
+        bg_image = results[0].image 
+    return render_template("location.html", titulo="Bienvenue", bg_image=bg_image, results=results)
 
 @app.route('/upload/<filename>')
 def send_image(filename):
@@ -290,20 +390,21 @@ def upload():
             app.logger.info("Accept incoming file:", filename)
             app.logger.info("Save it to:", destination)
             upload.save(destination)
+            
         else:
             app.logger.info("Files uploaded are not supported...")
 
     # return send_from_directory("images", filename, as_attachment=True)
-    return render_template("gallery.html", func='upload', image_name=filename)
+    return render_template("galeria1.html", func='upload', image_name=filename)
 
 @app.route('/gallery')
 def get_gallery():
     # Directorio de imágenes
     image_directory = os.path.join(app.root_path, 'static/images/gallery')
     # Obtener la lista de archivos en el directorio
-    images = [os.path.join('/static/images/gallery', file) for file in os.listdir(image_directory) if file.endswith(('.jpg', '.png', '.jpeg'))]
-
-    return render_template('galeria1.html', titulo="Gallery Page", func='gallery', images=images)
+    #images = [os.path.join('/static/images/gallery', file) for file in os.listdir(image_directory) if file.endswith(('.jpg', '.png', '.jpeg'))]
+    images = s3.listar('myappauberge','gallery')
+    return render_template('galeria1.html', titulo="Gallery Page", func='gallery', images=images, bg_image="Auberge-devant.jpg")
 
 @app.route('/galerie')
 def galerie():
@@ -314,8 +415,9 @@ def galerie():
     print(os.path)
     print(os.listdir(APP_ROOT + '/static/images/gallery'))
 
-    image_names = os.listdir(APP_ROOT + '/static/images/gallery')
-    return render_template('gallery.html', titulo="Gallery Page", func='gallery', image_names=image_names)
+    #image_names = os.listdir(APP_ROOT + '/static/images/gallery')
+    image_names = s3.listar('myappauberge','gallery')
+    return render_template('galeria1.html', titulo="Gallery Page", func='gallery', image_names=image_names)
 
 @app.route('/add_gallery', methods=['POST'])
 def add_gallery():
@@ -330,17 +432,42 @@ def add_gallery():
         if action == 'cancel':
             destination = 'static/images/gallery/' + data["filename"]
             app.logger.info(destination)
-            os.remove(destination)
-            print('borrar el archivo')
-            #cargar las imagene 
-            image_names = os.listdir(APP_ROOT + '/static/images/gallery')
+            try:
+                os.remove(destination)
+                print('borrar el archivo')
+                flash("Image non sauvegardé ", "alert-warning")
+            except:
+                app.logger.info("error a borrar archivo (no existe por exemple)")            
+            #cargar las imagenes 
+            image_directory = os.path.join(app.root_path, 'static/images/gallery')
+            #images = [os.path.join('/static/images/gallery', file) for file in os.listdir(image_directory) if file.endswith(('.jpg', '.png', '.jpeg'))]
+            images = s3.listar('myappauberge','gallery')
         else:
             app.logger.info("funccion add_gallery boton ok")
             app.logger.info("Guardar el archivo")
             image_directory = os.path.join(app.root_path, 'static/images/gallery')
+            destination = 'static/images/gallery/' + data["filename"]
+            s3.upload_file(file_name=destination, bucket='myappauberge', object_name='gallery/'+ data["filename"])
+            flash("Image sauvegardé ", "alert-success")
             # Obtener la lista de archivos en el directorio
-            images = [os.path.join('/static/images/gallery', file) for file in os.listdir(image_directory) if file.endswith(('.jpg', '.png', '.jpeg'))]
+            #images = [os.path.join('/static/images/gallery', file) for file in os.listdir(image_directory) if file.endswith(('.jpg', '.png', '.jpeg'))]
+            images = s3.listar('myappauberge','gallery')
     return render_template('galeria1.html', titulo="Gallery Page", func='gallery', images=images)
+
+@app.route('/borrar_gallery/<id>', methods=['POST'])
+def borrar_gallery(id):
+    nombre_funcion = inspect.currentframe().f_code.co_name
+    app.logger.info(nombre_funcion)
+    app.logger.info(id)
+    image_names = s3.listar('myappauberge','gallery')
+    idreal = int(id) -1
+    app.logger.info(image_names[int(idreal)])   
+    file = image_names[int(idreal)].split("amazonaws.com/")
+    app.logger.info(file[0])
+    app.logger.info(file[1])
+    s3.del_image('myappauberge',file[1])
+    return redirect(url_for('get_gallery')) 
+
 
 @app.route('/menuqr', methods=['GET', 'POST'])
 def menuqr():
@@ -413,6 +540,8 @@ def carta_up(id):
                 # Genera un nuevo nombre de archivo para evitar conflictos
                 fichier.save(os.path.join(app.config['UPLOAD_FOLDER'], fichier.filename))
                 sql = "UPDATE product SET image = '" + fichier.filename + "' WHERE product.id=" + id   
+                nombre_destino = 'photos/' + fichier.filename
+                nombre_origen = 'static/images/photos/' + fichier.filename
                 app.logger.info(fichier.filename) 
                 app.logger.info(sql) 
                 producto_up = Product.get_by_id(id)
@@ -420,6 +549,8 @@ def carta_up(id):
                 app.logger.info(producto_up) 
                 db.session.add(producto_up) # Agregar objeto a la solicitud
                 db.session.commit() # Hacer commit a la solicitud
+                
+                s3.upload_file(nombre_origen,'myappauberge',nombre_destino)
                 app.logger.info("actualizado el campo de image en la base por el product " + id) 
                 flash('Image ajoutée !','alert-success')
             else:
@@ -463,9 +594,11 @@ def carta_up(id):
         elif data['accion']=='Delete':
             app.logger.info("******** carta_up <string:id>  POST  Accion = Delete   *************")       
             producto = Product.query.get(id) 
+            nom_origen = producto.image
             app.logger.info(producto)
             db.session.delete(producto)
             db.session.commit()
+            s3.del_image('myappauberge', 'photos/' + nom_origen )
             app.logger.info(" se borro el registro numero " + id)
             app.logger.info("******** carta_up <string:id>  POST  Accion = delete  fin  *************")
             return redirect(url_for('carta'))  
@@ -473,11 +606,14 @@ def carta_up(id):
         elif data['accion']=='eliminer':
             app.logger.info("******** carta_up <string:id>  POST  Accion = eliminer   *************")       
             producto = Product.query.get(id) 
+            nom_origen = producto.image 
             producto.image = 'fondo.png'
             app.logger.info(producto)
             db.session.add(producto)
             db.session.commit()
             app.logger.info(" se borro la image del plato numero " + id)
+            #eliminamos del bucket de AWS el archivo
+            s3.del_image('myappauberge', 'photos/' + nom_origen )
             app.logger.info("******** carta_up <string:id>  POST  Accion = eliminer  fin  *************")
             return redirect(url_for('carta'))  
         else:
