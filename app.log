@@ -8,3 +8,54 @@
 2023-12-06 10:04:04,591 - app - INFO - le mot du chef
 2023-12-06 10:04:04,591 - app - INFO - Le chef Bruno Narici et son équipe vous accueillent dans son établissement, du mardi au dimanche midi, afin de vous faire découvrir sa cuisine traditionnelle de terroir composée principalement de produits frais de la région.
 2023-12-06 10:04:06,206 - app - INFO - menuqr
+2023-12-06 17:34:51,082 - app - INFO - home
+2023-12-06 17:34:51,091 - app - INFO - 2023-12-06 17:34:51.091646
+2023-12-06 17:34:51,103 - app - INFO - 0
+2023-12-06 17:36:04,211 - app - INFO - home
+2023-12-06 17:36:04,219 - app - INFO - 2023-12-06 17:36:04.219134
+2023-12-06 17:36:04,233 - app - INFO - 0
+2023-12-06 17:40:16,043 - app - INFO - home
+2023-12-06 17:40:16,043 - app - INFO - 2023-12-06 17:40:16.043229
+2023-12-06 17:40:16,053 - app - INFO - 0
+2023-12-06 17:40:16,053 - app - INFO - home
+2023-12-06 17:40:16,056 - app - INFO - 3
+2023-12-06 17:40:16,056 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-06 17:40:16,056 - app - INFO - None
+2023-12-06 17:40:16,057 - app - INFO - Notre carte! Une cuisine traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-06 17:40:30,416 - app - INFO - about
+2023-12-06 17:40:30,416 - app - INFO - about
+2023-12-06 17:40:30,421 - app - INFO - 3
+2023-12-06 17:40:30,421 - app - INFO - [<TextoXpagina 1>, <TextoXpagina 2>, <TextoXpagina 3>]
+2023-12-06 17:40:30,421 - app - INFO - le mot du chef
+2023-12-06 17:40:30,421 - app - INFO - Le chef Bruno Narici et son équipe vous accueillent dans son établissement, du mardi au dimanche midi, afin de vous faire découvrir sa cuisine traditionnelle de terroir composée principalement de produits frais de la région.
+2023-12-06 17:40:33,705 - app - INFO - menuqr
+2023-12-06 17:40:42,267 - app - INFO - location
+2023-12-06 17:40:42,268 - app - INFO - location
+2023-12-06 17:40:42,270 - app - INFO - 6
+2023-12-06 17:40:42,271 - app - INFO - [<TextoXpagina 4>, <TextoXpagina 5>, <TextoXpagina 8>, <TextoXpagina 9>, <TextoXpagina 10>, <TextoXpagina 11>]
+2023-12-06 17:40:42,272 - app - INFO - Suivez le guide pour nous rejoindre!!        
+2023-12-06 17:40:42,272 - app - INFO - +33 6 15 08 90 39 à Saint etienne de Crossey
+2023-12-06 17:40:56,961 - app - INFO - menuqr
+2023-12-06 17:40:59,226 - app - INFO - about
+2023-12-06 17:40:59,226 - app - INFO - about
+2023-12-06 17:40:59,228 - app - INFO - 3
+2023-12-06 17:40:59,228 - app - INFO - [<TextoXpagina 1>, <TextoXpagina 2>, <TextoXpagina 3>]
+2023-12-06 17:40:59,229 - app - INFO - le mot du chef
+2023-12-06 17:40:59,229 - app - INFO - Le chef Bruno Narici et son équipe vous accueillent dans son établissement, du mardi au dimanche midi, afin de vous faire découvrir sa cuisine traditionnelle de terroir composée principalement de produits frais de la région.
+2023-12-06 17:41:00,697 - app - INFO - menuqr
+2023-12-06 17:41:02,127 - app - INFO - location
+2023-12-06 17:41:02,127 - app - INFO - location
+2023-12-06 17:41:02,129 - app - INFO - 6
+2023-12-06 17:41:02,130 - app - INFO - [<TextoXpagina 4>, <TextoXpagina 5>, <TextoXpagina 8>, <TextoXpagina 9>, <TextoXpagina 10>, <TextoXpagina 11>]
+2023-12-06 17:41:02,130 - app - INFO - Suivez le guide pour nous rejoindre!!        
+2023-12-06 17:41:02,131 - app - INFO - +33 6 15 08 90 39 à Saint etienne de Crossey
+2023-12-06 17:41:42,899 - app - INFO - <Cliente: 'Thierry' 'thierry@gmail.com'>
+2023-12-06 17:41:42,900 - app - INFO - login Success
+2023-12-06 17:41:42,907 - app - INFO - home
+2023-12-06 17:41:42,909 - app - INFO - 2023-12-06 17:41:42.909068
+2023-12-06 17:41:42,911 - app - INFO - 0
+2023-12-06 17:41:42,911 - app - INFO - home
+2023-12-06 17:41:42,912 - app - INFO - 3
+2023-12-06 17:41:42,914 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-06 17:41:42,914 - app - INFO - None
+2023-12-06 17:41:42,914 - app - INFO - Notre carte! Une cuisine traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
