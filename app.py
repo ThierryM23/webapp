@@ -265,8 +265,27 @@ def home():
     if len(registros) == 0:
         registro = Menudia("Menu du jour á ", 16, "Consultez nos serveuses, elles se feront un plaisir de vous renseigner")
         registros.append(registro)
-    #return "Bienvenue"
-    return render_template("home.html", titulo="Bienvenue", registros=registros)
+    
+    results = textoxpage('home')
+    if len(results) == 0: # no deberia entrar aca nunca ###################################
+        app.logger.info("NO encontro texto por esta pagina")
+        result = TextoXpagina('home',1,1) 
+        result.id = 1
+        result.titulo = "Suivez le guide pour nous rejoindre!!"
+        result.texto = "+33 6 15 08 90 39 à Saint etienne de Crossey"
+        result.image="stEtienne1.jpg"
+        bg_image="stEtienne1.jpg"
+        results.append(result)
+        titulo: str = "Suivez le guide pour nous rejoindre!!"
+        
+    else:
+        app.logger.info(results)       
+        app.logger.info(results[0].titulo)
+        app.logger.info(results[0].texto)
+        titulo: str = results[0].titulo
+        bg_image = results[0].image 
+    
+    return render_template("home.html", titulo="Bienvenue", registros=registros, results=results, bg_image=bg_image)
 
 @app.route('/about')
 def about():

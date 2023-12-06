@@ -8,3 +8,182 @@
 2023-12-06 10:04:04,591 - app - INFO - le mot du chef
 2023-12-06 10:04:04,591 - app - INFO - Le chef Bruno Narici et son équipe vous accueillent dans son établissement, du mardi au dimanche midi, afin de vous faire découvrir sa cuisine traditionnelle de terroir composée principalement de produits frais de la région.
 2023-12-06 10:04:06,206 - app - INFO - menuqr
+2023-12-06 11:24:24,719 - app - INFO - home
+2023-12-06 11:24:24,720 - app - INFO - 2023-12-06 11:24:24.720692
+2023-12-06 11:24:24,744 - app - INFO - 0
+2023-12-06 11:28:33,488 - app - INFO - about
+2023-12-06 11:28:33,488 - app - INFO - about
+2023-12-06 11:28:33,488 - app - INFO - 3
+2023-12-06 11:28:33,488 - app - INFO - [<TextoXpagina 1>, <TextoXpagina 2>, <TextoXpagina 3>]
+2023-12-06 11:28:33,488 - app - INFO - le mot du chef
+2023-12-06 11:28:33,488 - app - INFO - Le chef Bruno Narici et son équipe vous accueillent dans son établissement, du mardi au dimanche midi, afin de vous faire découvrir sa cuisine traditionnelle de terroir composée principalement de produits frais de la région.
+2023-12-06 11:28:35,437 - app - INFO - home
+2023-12-06 11:28:35,438 - app - INFO - 2023-12-06 11:28:35.438059
+2023-12-06 11:28:35,441 - app - INFO - 0
+2023-12-06 11:35:42,143 - app - INFO - home
+2023-12-06 11:35:42,144 - app - INFO - 2023-12-06 11:35:42.143161
+2023-12-06 11:35:42,146 - app - INFO - 0
+2023-12-06 11:37:56,318 - app - INFO - home
+2023-12-06 11:37:56,318 - app - INFO - 2023-12-06 11:37:56.318902
+2023-12-06 11:37:56,320 - app - INFO - 0
+2023-12-06 11:38:03,153 - app - INFO - home
+2023-12-06 11:38:03,154 - app - INFO - 2023-12-06 11:38:03.154586
+2023-12-06 11:38:03,157 - app - INFO - 0
+2023-12-06 11:38:05,495 - app - INFO - home
+2023-12-06 11:38:05,496 - app - INFO - 2023-12-06 11:38:05.496395
+2023-12-06 11:38:05,500 - app - INFO - 0
+2023-12-06 11:38:19,657 - app - INFO - home
+2023-12-06 11:38:19,658 - app - INFO - 2023-12-06 11:38:19.658463
+2023-12-06 11:38:19,660 - app - INFO - 0
+2023-12-06 11:38:31,286 - app - INFO - home
+2023-12-06 11:38:31,286 - app - INFO - 2023-12-06 11:38:31.286272
+2023-12-06 11:38:31,289 - app - INFO - 0
+2023-12-06 11:38:37,160 - app - INFO - home
+2023-12-06 11:38:37,160 - app - INFO - 2023-12-06 11:38:37.160732
+2023-12-06 11:38:37,164 - app - INFO - 0
+2023-12-06 11:44:38,312 - app - INFO - home
+2023-12-06 11:44:38,312 - app - INFO - 2023-12-06 11:44:38.312044
+2023-12-06 11:44:38,314 - app - INFO - 0
+2023-12-06 11:44:48,082 - app - INFO - home
+2023-12-06 11:44:48,083 - app - INFO - 2023-12-06 11:44:48.083699
+2023-12-06 11:44:48,085 - app - INFO - 0
+2023-12-06 11:44:52,162 - app - INFO - home
+2023-12-06 11:44:52,162 - app - INFO - 2023-12-06 11:44:52.162068
+2023-12-06 11:44:52,164 - app - INFO - 0
+2023-12-06 11:45:04,120 - app - INFO - home
+2023-12-06 11:45:04,120 - app - INFO - 2023-12-06 11:45:04.120521
+2023-12-06 11:45:04,122 - app - INFO - 0
+2023-12-06 11:45:09,174 - app - INFO - home
+2023-12-06 11:45:09,175 - app - INFO - 2023-12-06 11:45:09.175398
+2023-12-06 11:45:09,176 - app - INFO - 0
+2023-12-06 11:46:56,625 - app - INFO - logout
+2023-12-06 11:46:56,633 - app - INFO - home
+2023-12-06 11:46:56,633 - app - INFO - 2023-12-06 11:46:56.633893
+2023-12-06 11:46:56,639 - app - INFO - 0
+2023-12-06 11:47:16,196 - app - INFO - <Cliente: 'Thierry' 'thierry@gmail.com'>
+2023-12-06 11:47:16,197 - app - INFO - login Success
+2023-12-06 11:47:16,206 - app - INFO - home
+2023-12-06 11:47:16,207 - app - INFO - 2023-12-06 11:47:16.207327
+2023-12-06 11:47:16,208 - app - INFO - 0
+2023-12-06 11:50:43,932 - app - INFO - home
+2023-12-06 11:50:43,932 - app - INFO - 2023-12-06 11:50:43.932440
+2023-12-06 11:50:43,935 - app - INFO - 0
+2023-12-06 11:51:52,214 - app - INFO - home
+2023-12-06 11:51:52,215 - app - INFO - 2023-12-06 11:51:52.215987
+2023-12-06 11:51:52,219 - app - INFO - 0
+2023-12-06 11:56:17,116 - app - INFO - home
+2023-12-06 11:56:17,118 - app - INFO - 2023-12-06 11:56:17.117774
+2023-12-06 11:56:17,120 - app - INFO - 0
+2023-12-06 12:00:22,468 - app - INFO - home
+2023-12-06 12:00:22,468 - app - INFO - 2023-12-06 12:00:22.468238
+2023-12-06 12:00:22,471 - app - INFO - 0
+2023-12-06 12:04:03,360 - app - INFO - location
+2023-12-06 12:04:03,361 - app - INFO - location
+2023-12-06 12:04:03,364 - app - INFO - 6
+2023-12-06 12:04:03,365 - app - INFO - [<TextoXpagina 4>, <TextoXpagina 5>, <TextoXpagina 8>, <TextoXpagina 9>, <TextoXpagina 10>, <TextoXpagina 11>]
+2023-12-06 12:04:03,366 - app - INFO - Suivez le guide pour nous rejoindre!!        
+2023-12-06 12:04:03,366 - app - INFO - +33 6 15 08 90 39 à Saint etienne de Crossey
+2023-12-06 12:07:54,339 - app - INFO - home
+2023-12-06 12:07:54,340 - app - INFO - 2023-12-06 12:07:54.340452
+2023-12-06 12:07:54,343 - app - INFO - 0
+2023-12-06 12:10:43,879 - app - INFO - home
+2023-12-06 12:10:43,883 - app - INFO - 2023-12-06 12:10:43.883466
+2023-12-06 12:10:43,887 - app - INFO - 0
+2023-12-06 12:23:15,594 - app - INFO - home
+2023-12-06 12:23:15,594 - app - INFO - 2023-12-06 12:23:15.594138
+2023-12-06 12:23:15,604 - app - INFO - 0
+2023-12-06 12:23:15,605 - app - INFO - home
+2023-12-06 12:23:15,607 - app - INFO - 3
+2023-12-06 12:23:15,607 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-06 12:23:15,608 - app - INFO - None
+2023-12-06 12:23:15,608 - app - INFO - Notre carte! Une cuisine traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-06 12:31:59,348 - app - INFO - home
+2023-12-06 12:31:59,349 - app - INFO - 2023-12-06 12:31:59.349370
+2023-12-06 12:31:59,352 - app - INFO - 0
+2023-12-06 12:31:59,352 - app - INFO - home
+2023-12-06 12:31:59,354 - app - INFO - 3
+2023-12-06 12:31:59,354 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-06 12:31:59,354 - app - INFO - None
+2023-12-06 12:31:59,355 - app - INFO - Notre carte! Une cuisine traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-06 12:32:49,500 - app - INFO - formabout
+2023-12-06 12:32:49,501 - app - INFO - 14
+2023-12-06 12:32:49,503 - app - INFO - {'titulo': '', 'texto': 'Notre restaurant merveilleux  vous offre un service complet, et vous pouvez aprecier la vue de notre salon ou de la térrasse..', 'accion': 'edit'}
+2023-12-06 12:32:49,504 - app - INFO - ******** inicio de la funcion formabout <string:id> 14 accion:  *************
+2023-12-06 12:32:49,509 - app - INFO - <TextoXpagina 14>
+2023-12-06 12:32:49,533 - app - INFO - home
+2023-12-06 12:32:49,534 - app - INFO - 2023-12-06 12:32:49.534735
+2023-12-06 12:32:49,536 - app - INFO - 0
+2023-12-06 12:32:49,537 - app - INFO - home
+2023-12-06 12:32:49,538 - app - INFO - 3
+2023-12-06 12:32:49,538 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-06 12:32:49,539 - app - INFO - None
+2023-12-06 12:32:49,539 - app - INFO - Notre carte! Une cuisine traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-06 12:34:15,582 - app - INFO - home
+2023-12-06 12:34:15,583 - app - INFO - 2023-12-06 12:34:15.583875
+2023-12-06 12:34:15,585 - app - INFO - 0
+2023-12-06 12:34:15,585 - app - INFO - home
+2023-12-06 12:34:15,586 - app - INFO - 3
+2023-12-06 12:34:15,587 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-06 12:34:15,587 - app - INFO - None
+2023-12-06 12:34:15,587 - app - INFO - Notre carte! Une cuisine traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-06 12:35:04,574 - app - INFO - formabout
+2023-12-06 12:35:04,574 - app - INFO - 14
+2023-12-06 12:35:04,576 - app - INFO - {'titulo': '', 'texto': 'Notre restaurant vous offre un service complet, et vous pouvez aprecier la vue de notre salon ou de la térrasse..', 'accion': 'edit'}
+2023-12-06 12:35:04,576 - app - INFO - ******** inicio de la funcion formabout <string:id> 14 accion:  *************
+2023-12-06 12:35:04,577 - app - INFO - <TextoXpagina 14>
+2023-12-06 12:35:04,597 - app - INFO - home
+2023-12-06 12:35:04,597 - app - INFO - 2023-12-06 12:35:04.597528
+2023-12-06 12:35:04,599 - app - INFO - 0
+2023-12-06 12:35:04,600 - app - INFO - home
+2023-12-06 12:35:04,602 - app - INFO - 3
+2023-12-06 12:35:04,603 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-06 12:35:04,603 - app - INFO - None
+2023-12-06 12:35:04,603 - app - INFO - Notre carte! Une cuisine traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-06 12:35:36,457 - app - INFO - location
+2023-12-06 12:35:36,458 - app - INFO - location
+2023-12-06 12:35:36,461 - app - INFO - 6
+2023-12-06 12:35:36,461 - app - INFO - [<TextoXpagina 4>, <TextoXpagina 5>, <TextoXpagina 8>, <TextoXpagina 9>, <TextoXpagina 10>, <TextoXpagina 11>]
+2023-12-06 12:35:36,461 - app - INFO - Suivez le guide pour nous rejoindre!!        
+2023-12-06 12:35:36,462 - app - INFO - +33 6 15 08 90 39 à Saint etienne de Crossey
+2023-12-06 12:58:29,436 - app - INFO - home
+2023-12-06 12:58:29,437 - app - INFO - 2023-12-06 12:58:29.437601
+2023-12-06 12:58:29,440 - app - INFO - 0
+2023-12-06 12:58:29,441 - app - INFO - home
+2023-12-06 12:58:29,444 - app - INFO - 3
+2023-12-06 12:58:29,445 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-06 12:58:29,445 - app - INFO - None
+2023-12-06 12:58:29,445 - app - INFO - Notre carte! Une cuisine traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-06 13:13:16,530 - app - INFO - home
+2023-12-06 13:13:16,532 - app - INFO - 2023-12-06 13:13:16.532864
+2023-12-06 13:13:16,534 - app - INFO - 0
+2023-12-06 13:13:16,535 - app - INFO - home
+2023-12-06 13:13:16,535 - app - INFO - 4
+2023-12-06 13:13:16,536 - app - INFO - [<TextoXpagina 15>, <TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-06 13:13:16,536 - app - INFO - None
+2023-12-06 13:13:16,537 - app - INFO - None
+2023-12-06 13:17:04,901 - app - INFO - home
+2023-12-06 13:17:04,902 - app - INFO - 2023-12-06 13:17:04.902109
+2023-12-06 13:17:04,905 - app - INFO - 0
+2023-12-06 13:17:04,905 - app - INFO - home
+2023-12-06 13:17:04,906 - app - INFO - 4
+2023-12-06 13:17:04,907 - app - INFO - [<TextoXpagina 15>, <TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-06 13:17:04,907 - app - INFO - None
+2023-12-06 13:17:04,907 - app - INFO - None
+2023-12-06 13:19:51,526 - app - INFO - about
+2023-12-06 13:19:51,527 - app - INFO - about
+2023-12-06 13:19:51,530 - app - INFO - 3
+2023-12-06 13:19:51,530 - app - INFO - [<TextoXpagina 1>, <TextoXpagina 2>, <TextoXpagina 3>]
+2023-12-06 13:19:51,531 - app - INFO - le mot du chef
+2023-12-06 13:19:51,531 - app - INFO - Le chef Bruno Narici et son équipe vous accueillent dans son établissement, du mardi au dimanche midi, afin de vous faire découvrir sa cuisine traditionnelle de terroir composée principalement de produits frais de la région.
+2023-12-06 13:20:01,551 - app - INFO - menuqr
+2023-12-06 13:20:05,769 - app - INFO - menuqr
+2023-12-06 13:20:35,001 - app - INFO - location
+2023-12-06 13:20:35,002 - app - INFO - location
+2023-12-06 13:20:35,006 - app - INFO - 6
+2023-12-06 13:20:35,006 - app - INFO - [<TextoXpagina 4>, <TextoXpagina 5>, <TextoXpagina 8>, <TextoXpagina 9>, <TextoXpagina 10>, <TextoXpagina 11>]
+2023-12-06 13:20:35,006 - app - INFO - Suivez le guide pour nous rejoindre!!        
+2023-12-06 13:20:35,006 - app - INFO - +33 6 15 08 90 39 à Saint etienne de Crossey
+2023-12-06 13:20:39,620 - app - INFO - menu
+2023-12-06 13:20:39,620 - app - INFO - 2023-12-06
+2023-12-06 13:21:21,564 - app - INFO - carta
+2023-12-06 13:21:21,567 - app - INFO - <class 'list'>

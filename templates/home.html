@@ -104,22 +104,22 @@
             display: flex;
         }
         
-        .card1{
+        .card4{
             background-image: url("{{ url_for('static', filename='images/new1.jpeg') }}" );
             background-size: cover;
         }
         
-        .card2{
+        .card3{
             background-image: url("{{ url_for('static', filename='images/photos/cocktails-louna.png') }}" );
             background-size: cover;
         }
         
-        .card3{
+        .card1{
             background-image: url("{{ url_for('static', filename='images/photos/Steak7.jpg') }}" );
             background-size: cover;
         }
         
-        .card4{
+        .card2{
             background-image: url("{{ url_for('static', filename='images/photos/tableaunoir.jpg') }}" );
             background-size: cover;   
             color: #fff;
@@ -147,10 +147,10 @@
       {% include 'partials/_message.html' %}
     </div>
 </div>
-<div class="wrap ">
+<div class="container wrap ">
     <div class="tarjeta-wrap ">
         <div class="tarjeta ">
-            <div class="card-body adelante card4 menu">
+            <div class="card-body adelante card2 menu">
              {% for registro in registros %}
              <div class="">
                     <h5 class="card-title">{{ registro.titre }} &nbsp; <small>€&nbsp;{{ registro["prix"]|float|round(2) }}</small></h5>
@@ -162,38 +162,114 @@
                 {% endfor %}
             </div>
             <div class="atras">
-                <p><h3>Notre carte! <br>sa cuisine traditionnelle de terroir composée principalement de produits frais de la région.<br>
-                    Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois</h3></p>
+                <p>
+                    {% for result in results if result.seccion == 2 %}            
+                    {% if result.titulo %}<h3>{{ result.titulo }}</h3>{% endif %}       
+                    <h3> {{ result.texto}}</h3>
+                    {% endfor %}
+                    
+                    {% if current_user.is_authenticated %}
+                    <a data-toggle="collapse" href="#collapseparte1" role="button" aria-expanded="false" aria-controls="collapseExample"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                    </svg></a>
+                    
+                
+                {% endif %}</p>
+                   
             </div>
-        </div>
-    </div>
+        </div><!--  tarjeta -->
+        <div class="collapse" id="collapseparte1">
+            <div class="card card-body bg-dark bg-opacity-75 ">
+                {% for result in results if result.seccion == 2 %}
+                <form action={{ url_for('formabout', id=result['id'])  }} method="POST" class="m-0 p-0"  enctype="multipart/form-data">
+                    <input type="text"  name="titulo" value="{% if result.titulo %}{{ result.titulo }} {% endif %}" >
+                    <br>
+                    <textarea name="texto"  style="min-width: 90%" >{{ result.texto}}</textarea>
+                    <br>
+                    <div class="row">
+                        <div class="col-4"><button type="submit" class="btn btn-success btn-sm"  name="accion" value="edit" >Edit</button></div>
+                        <div class="col-4"><button type="submit" class="btn btn-danger btn-sm"  name="accion" value="del" >Del</button></div>
+                        <div class="col-4"><button type="submit" class="btn btn-warning btn-sm"  name="accion" value="add" >Add</button></div>
+                    </div>
+                </form>
+                {% endfor %}
+            </div>
+          </div>
+    </div> <!--  tarjeta Wrap-->
     <div class="tarjeta-wrap">
         <div class="tarjeta">
-            <div class="adelante card2"><h1>COCKTAILS</h1></div>
+            <div class="adelante card3"><h1>COCKTAILS</h1></div>
             <div class="atras">
-                <p><h3>Rencontrez notre barmaid talentueuse, Louna, qui vous concoctera des cocktails délicieux à chaque visite 🍹🍸🌺</h3></p>
-            </div>
-        </div>
-    </div>
-    <div class="tarjeta-wrap">
-        <div class="tarjeta">
-            <div class="adelante card1"></div>
-            <div class="atras">
-                <p><h3>Notre restaurant vous offre un service complet, et vous pouvez aprecier la vue de notre salon ou de la térrasse..</h3></p>
-            </div>
-        </div>
-    </div>
+                <p> 
+                    {% for result in results if result.seccion == 3 %}            
+                    {% if result.titulo %}<h3>{{ result.titulo }}</h3>{% endif %}       
+                    <h3> {{ result.texto}}</h3>
+                    {% endfor %}
 
-    <!--<div class="tarjeta-wrap">
-        <div class="tarjeta">
-            <div class="adelante card3"></div>
-            <div class="atras">
-                <p><h3>Notre carte! <br>sa cuisine traditionnelle de terroir composée principalement de produits frais de la région.<br>
-                    Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois</h3></p>
+                {% if current_user.is_authenticated %}
+                    <a data-toggle="collapse" href="#collapseparte2" role="button" aria-expanded="false" aria-controls="collapseExample"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                  </svg></a>
+                  
+                
+                {% endif %}
+                </p>
+            </div>
+        </div> <!-- tarjeta-->
+        <div class="collapse" id="collapseparte2">
+            <div class="card card-body bg-dark bg-opacity-75 ">
+                {% for result in results if result.seccion == 3 %}
+                <form action={{ url_for('formabout', id=result['id'])  }} method="POST" class="m-0 p-0"  enctype="multipart/form-data">
+                    <input type="text"  name="titulo" value="{% if result.titulo %}{{ result.titulo }} {% endif %}" >
+                    <br>
+                    <textarea name="texto"  style="min-width: 90%" >{{ result.texto}}</textarea>
+                    <br>
+                    <div class="row">
+                        <div class="col-4"><button type="submit" class="btn btn-success btn-sm"  name="accion" value="edit" >Edit</button></div>
+                        <div class="col-4"><button type="submit" class="btn btn-danger btn-sm"  name="accion" value="del" >Del</button></div>
+                        <div class="col-4"><button type="submit" class="btn btn-warning btn-sm"  name="accion" value="add" >Add</button></div>
+                    </div>
+                </form>
+                {% endfor %}
             </div>
         </div>
-    </div>-->
+    </div> <!-- tarjeta-wrap -->
+    <div class="tarjeta-wrap">
+        <div class="tarjeta">
+            <div class="adelante card4"></div>
+            <div class="atras">
+                <p>
+                    {% for result in results if result.seccion == 4 %}            
+                    {% if result.titulo %}<h3>{{ result.titulo }}</h3>{% endif %}       
+                    <h3> {{ result.texto}}</h3>
+                    {% endfor %}
+
+                    {% if current_user.is_authenticated %}
+                    <a data-toggle="collapse" href="#collapseparte3" role="button" aria-expanded="false" aria-controls="collapseExample"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                  </svg></a></p>              
+                {% endif %}
+            </div>
+        </div> <!-- tarjeta-->
+        <div class="collapse" id="collapseparte3">
+            <div class="card card-body bg-dark bg-opacity-75 ">
+                {% for result in results if result.seccion == 4 %}
+                <form action={{ url_for('formabout', id=result['id'])  }} method="POST" class="m-0 p-0"  enctype="multipart/form-data">
+                    <input type="text"  name="titulo" value="{% if result.titulo %}{{ result.titulo }} {% endif %}" >
+                    <br>
+                    <textarea name="texto"  style="min-width: 90%" >{{ result.texto}}</textarea>
+                    <br>
+                    <div class="row">
+                        <div class="col-4"><button type="submit" class="btn btn-success btn-sm"  name="accion" value="edit" >Edit</button></div>
+                        <div class="col-4"><button type="submit" class="btn btn-danger btn-sm"  name="accion" value="del" >Del</button></div>
+                        <div class="col-4"><button type="submit" class="btn btn-warning btn-sm"  name="accion" value="add" >Add</button></div>
+                    </div>
+                </form>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div> <!-- tarjeta-wrap -->
 </div>
-
 
 {% endblock %}
