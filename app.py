@@ -24,6 +24,7 @@ app.config["CLIENT_CSV"] = APP_ROOT + "/static/csv"
 app.config["CLIENT_PDF"] = APP_ROOT + "/static/pdf"
 # the absolute path para las fotos de los platos
 app.config['UPLOAD_FOLDER'] = APP_ROOT + "/static/images/photos"
+app.config['GENERAL_FOLDER'] = APP_ROOT + "/static/images"
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'app.sqlite')
@@ -341,6 +342,33 @@ def formabout(id):
             texto.texto = data['texto']
             TextoXpagina.save(texto)            
             flash('edit','alert-danger')
+        elif data['accion'] == 'upload':
+            fichier = request.files['archivo']
+            app.logger.info("******** POST  def FormAbout Accion = Upload   *******")
+            app.logger.info(fichier.filename)
+            if fichier.filename == '':
+                flash('Nom de l image vide !','alert-danger')
+                return redirect(request.url)
+
+            if fichier and allowed_file_images(fichier.filename):
+                # Genera un nuevo nombre de archivo para evitar conflictos
+                fichier.save(os.path.join(app.config['GENERAL_FOLDER'], fichier.filename))
+                sql = "UPDATE product SET image = '" + fichier.filename + "' WHERE product.id=" + id   
+                nombre_destino = 'general/' + fichier.filename
+                nombre_origen = 'static/images/' + fichier.filename
+                app.logger.info(fichier.filename) 
+                app.logger.info(sql) 
+                texto = TextoXpagina.query.get(id)                
+                texto.image = fichier.filename # Modificar objeto
+                app.logger.info(texto)
+                db.session.add(texto) # Agregar objeto a la solicitud
+                db.session.commit() # Hacer commit a la solicitud                
+                s3.upload_file(nombre_origen,'myappauberge',nombre_destino)
+                app.logger.info("actualizado el campo de image en la base por el product " + id) 
+                flash('Image ajoutée !','alert-success')
+            else:
+                app.logger.info("Image refoule pour format incorrect ! ")
+                flash('Image refoule pour format incorrect !','alert-danger')
         else:
             flash('else','alert-danger')
         return redirect(url_for(texto.pagina))
