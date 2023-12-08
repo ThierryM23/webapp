@@ -90,13 +90,6 @@ class User(db.Model, UserMixin):
             db.session.add(self)
         db.session.commit()
     
-    @staticmethod
-    def set_password(self, password):
-        self.password = generate_password_hash(password)
-        
-    @staticmethod
-    def check_password(self, password):
-        return check_password_hash(self.password, password)
 
 # Definición de la tabla Product
 # Definir la clase "Product" que representa la tabla de productos
@@ -246,14 +239,15 @@ def register():
         data = request.form.to_dict()
         app.logger.info(data)
         username = request.form['username']
-        passwordhash = request.form['password']
-        newuser= User( request.form['username'], request.form['email'],  request.form['password'])
+        password = request.form['password']
+        passwordhash = generate_password_hash( password, method='pbkdf2:sha256')
+        newuser= User( request.form['username'], request.form['email'],  passwordhash)
         newuser.telefono = request.form['telefono']
         newuser.instagram = request.form['instagram']
         newuser.facebook = request.form['facebook']
-        newuser.password = generate_password_hash( passwordhash, method='pbkdf2:sha256')
+        newuser.password = password
         newuser.tipo = 2
-        vrai = check_password_hash(newuser.password, passwordhash)
+        vrai = check_password_hash(passwordhash, password)
         print ("el valor de la variable vrai = " + str(vrai))
         app.logger.info("el valor de la variable vrai = " + str(vrai))
         if "admin" in data: 
@@ -283,7 +277,7 @@ def signup():
         user = User.query.filter_by(username=username).first()
         app.logger.info(user)        
         #if user and user.check_password(password):
-        if user and check_password_hash(user.password, data['password']):
+        if user and check_password_hash(user.password_hash , password):
         #if user and user.password_hash == data['password'] :
             if user.tipo == 1 :
                 login_user(user)
