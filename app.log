@@ -1,61 +1,122 @@
-2023-12-06 10:03:49,976 - app - INFO - home
-2023-12-06 10:03:49,977 - app - INFO - 2023-12-06 10:03:49.977193
-2023-12-06 10:03:49,989 - app - INFO - 0
-2023-12-06 10:04:04,583 - app - INFO - about
-2023-12-06 10:04:04,584 - app - INFO - about
-2023-12-06 10:04:04,590 - app - INFO - 3
-2023-12-06 10:04:04,590 - app - INFO - [<TextoXpagina 1>, <TextoXpagina 2>, <TextoXpagina 3>]
-2023-12-06 10:04:04,591 - app - INFO - le mot du chef
-2023-12-06 10:04:04,591 - app - INFO - Le chef Bruno Narici et son équipe vous accueillent dans son établissement, du mardi au dimanche midi, afin de vous faire découvrir sa cuisine traditionnelle de terroir composée principalement de produits frais de la région.
-2023-12-06 10:04:06,206 - app - INFO - menuqr
-2023-12-06 17:34:51,082 - app - INFO - home
-2023-12-06 17:34:51,091 - app - INFO - 2023-12-06 17:34:51.091646
-2023-12-06 17:34:51,103 - app - INFO - 0
-2023-12-06 17:36:04,211 - app - INFO - home
-2023-12-06 17:36:04,219 - app - INFO - 2023-12-06 17:36:04.219134
-2023-12-06 17:36:04,233 - app - INFO - 0
-2023-12-06 17:40:16,043 - app - INFO - home
-2023-12-06 17:40:16,043 - app - INFO - 2023-12-06 17:40:16.043229
-2023-12-06 17:40:16,053 - app - INFO - 0
-2023-12-06 17:40:16,053 - app - INFO - home
-2023-12-06 17:40:16,056 - app - INFO - 3
-2023-12-06 17:40:16,056 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
-2023-12-06 17:40:16,056 - app - INFO - None
-2023-12-06 17:40:16,057 - app - INFO - Notre carte! Une cuisine traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
-2023-12-06 17:40:30,416 - app - INFO - about
-2023-12-06 17:40:30,416 - app - INFO - about
-2023-12-06 17:40:30,421 - app - INFO - 3
-2023-12-06 17:40:30,421 - app - INFO - [<TextoXpagina 1>, <TextoXpagina 2>, <TextoXpagina 3>]
-2023-12-06 17:40:30,421 - app - INFO - le mot du chef
-2023-12-06 17:40:30,421 - app - INFO - Le chef Bruno Narici et son équipe vous accueillent dans son établissement, du mardi au dimanche midi, afin de vous faire découvrir sa cuisine traditionnelle de terroir composée principalement de produits frais de la région.
-2023-12-06 17:40:33,705 - app - INFO - menuqr
-2023-12-06 17:40:42,267 - app - INFO - location
-2023-12-06 17:40:42,268 - app - INFO - location
-2023-12-06 17:40:42,270 - app - INFO - 6
-2023-12-06 17:40:42,271 - app - INFO - [<TextoXpagina 4>, <TextoXpagina 5>, <TextoXpagina 8>, <TextoXpagina 9>, <TextoXpagina 10>, <TextoXpagina 11>]
-2023-12-06 17:40:42,272 - app - INFO - Suivez le guide pour nous rejoindre!!        
-2023-12-06 17:40:42,272 - app - INFO - +33 6 15 08 90 39 à Saint etienne de Crossey
-2023-12-06 17:40:56,961 - app - INFO - menuqr
-2023-12-06 17:40:59,226 - app - INFO - about
-2023-12-06 17:40:59,226 - app - INFO - about
-2023-12-06 17:40:59,228 - app - INFO - 3
-2023-12-06 17:40:59,228 - app - INFO - [<TextoXpagina 1>, <TextoXpagina 2>, <TextoXpagina 3>]
-2023-12-06 17:40:59,229 - app - INFO - le mot du chef
-2023-12-06 17:40:59,229 - app - INFO - Le chef Bruno Narici et son équipe vous accueillent dans son établissement, du mardi au dimanche midi, afin de vous faire découvrir sa cuisine traditionnelle de terroir composée principalement de produits frais de la région.
-2023-12-06 17:41:00,697 - app - INFO - menuqr
-2023-12-06 17:41:02,127 - app - INFO - location
-2023-12-06 17:41:02,127 - app - INFO - location
-2023-12-06 17:41:02,129 - app - INFO - 6
-2023-12-06 17:41:02,130 - app - INFO - [<TextoXpagina 4>, <TextoXpagina 5>, <TextoXpagina 8>, <TextoXpagina 9>, <TextoXpagina 10>, <TextoXpagina 11>]
-2023-12-06 17:41:02,130 - app - INFO - Suivez le guide pour nous rejoindre!!        
-2023-12-06 17:41:02,131 - app - INFO - +33 6 15 08 90 39 à Saint etienne de Crossey
-2023-12-06 17:41:42,899 - app - INFO - <Cliente: 'Thierry' 'thierry@gmail.com'>
-2023-12-06 17:41:42,900 - app - INFO - login Success
-2023-12-06 17:41:42,907 - app - INFO - home
-2023-12-06 17:41:42,909 - app - INFO - 2023-12-06 17:41:42.909068
-2023-12-06 17:41:42,911 - app - INFO - 0
-2023-12-06 17:41:42,911 - app - INFO - home
-2023-12-06 17:41:42,912 - app - INFO - 3
-2023-12-06 17:41:42,914 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
-2023-12-06 17:41:42,914 - app - INFO - None
-2023-12-06 17:41:42,914 - app - INFO - Notre carte! Une cuisine traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+
+
+2023-12-08 09:51:31,384 - app - INFO - home
+2023-12-08 09:51:31,385 - app - INFO - 2023-12-08 09:51:31.385036
+2023-12-08 09:51:31,395 - app - INFO - 1
+2023-12-08 09:51:31,396 - app - INFO - home
+2023-12-08 09:51:31,398 - app - INFO - 3
+2023-12-08 09:51:31,399 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-08 09:51:31,399 - app - INFO - 
+2023-12-08 09:51:31,399 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-08 09:51:34,383 - app - INFO - carta
+2023-12-08 09:51:34,388 - app - INFO - <class 'list'>
+2023-12-08 09:51:42,579 - app - INFO - newplat
+2023-12-08 09:51:42,594 - app - INFO - {'categorie': 'Entrées', 'idcat': '10', 'titre': '132321', 'descripcion': '', 'prix': ''}
+2023-12-08 09:52:45,475 - app - INFO - carta
+2023-12-08 09:52:45,479 - app - INFO - <class 'list'>
+2023-12-08 09:52:58,590 - app - INFO - newplat
+2023-12-08 09:52:58,590 - app - INFO - {'categorie': 'Entrées', 'idcat': '10', 'titre': 'dsgfsd fsd fsd ', 'descripcion': '', 'prix': '1.2'}
+2023-12-08 09:52:58,591 - app - INFO - <Product (transient 2692555550800)>
+2023-12-08 09:52:58,596 - app - INFO - <Product 43>
+2023-12-08 09:52:58,611 - app - INFO - carta
+2023-12-08 09:52:58,613 - app - INFO - <class 'list'>
+2023-12-08 09:53:25,443 - app - INFO - carta_up
+2023-12-08 09:53:25,444 - app - INFO - 43
+2023-12-08 09:53:25,446 - app - INFO - {'categorie': 'Entrées', 'idcat': '10', 'titre': 'dsgfsd fsd fsd ', 'descripcion': '', 'nombre_archivo': 'fondo.png', 'prix': '1.2', 'accion': 'Delete'}
+2023-12-08 09:53:25,446 - app - INFO - ******** inicio de la funcion carta_up <string:id> 43 accion:  *************
+2023-12-08 09:53:25,447 - app - INFO - ******** carta_up <string:id>  POST  Accion = Delete   *************
+2023-12-08 09:53:25,449 - app - INFO - <Product 43>
+2023-12-08 09:53:27,185 - app - INFO -  se borro el registro numero 43
+2023-12-08 09:53:27,185 - app - INFO - ******** carta_up <string:id>  POST  Accion = delete  fin  *************
+2023-12-08 09:53:27,204 - app - INFO - carta
+2023-12-08 09:53:27,212 - app - INFO - <class 'list'>
+2023-12-08 09:53:41,558 - app - INFO - newplat
+2023-12-08 09:53:41,558 - app - INFO - {'categorie': 'Entrées', 'idcat': '10', 'titre': 'fsfsasfd', 'descripcion': '', 'prix': '1'}
+2023-12-08 09:53:41,559 - app - INFO - <Product (transient 2692555444304)>
+2023-12-08 09:53:41,567 - app - INFO - <Product 44>
+2023-12-08 09:53:41,578 - app - INFO - carta
+2023-12-08 09:53:41,580 - app - INFO - <class 'list'>
+2023-12-08 09:55:11,461 - app - INFO - newplat
+2023-12-08 09:55:11,462 - app - INFO - {'categorie': 'Entrées', 'idcat': '10', 'titre': 'safdsafd', 'descripcion': '', 'prix': '1'}
+2023-12-08 09:55:11,467 - app - INFO - <Product (transient 2163566599504)>
+2023-12-08 09:55:11,481 - app - INFO - <Product 45>
+2023-12-08 09:55:11,501 - app - INFO - carta
+2023-12-08 09:55:11,507 - app - INFO - <class 'list'>
+2023-12-08 09:59:00,229 - app - INFO - carta
+2023-12-08 09:59:00,232 - app - INFO - <class 'list'>
+2023-12-08 09:59:16,779 - app - INFO - carta_up
+2023-12-08 09:59:16,779 - app - INFO - 1
+2023-12-08 09:59:16,779 - app - INFO - {'categorie': 'Entrées', 'idcat': '1', 'titre': 'Tartare de thon et avocat', 'descripcion': 'accompagné de roquette', 'nombre_archivo': 'fondo.png', 'accion': 'upload', 'prix': '15.0'}
+2023-12-08 09:59:16,779 - app - INFO - ******** inicio de la funcion carta_up <string:id> 1 accion:  *************
+2023-12-08 09:59:16,779 - app - INFO - ******** POST  Accion = Upload   *************
+2023-12-08 09:59:16,779 - app - INFO - 4ceca163fa0fecde361a508fdec2cc15.jpg
+2023-12-08 09:59:16,785 - app - INFO - 4ceca163fa0fecde361a508fdec2cc15.jpg
+2023-12-08 09:59:16,792 - app - INFO - <Product 1>
+2023-12-08 09:59:18,869 - app - INFO - actualizado el campo de image en la base por el product 1
+2023-12-08 09:59:18,869 - app - INFO - carta
+2023-12-08 09:59:18,881 - app - INFO - <class 'list'>
+2023-12-08 10:00:03,666 - app - INFO - carta_up
+2023-12-08 10:00:03,666 - app - INFO - 1
+2023-12-08 10:00:03,671 - app - INFO - {'categorie': 'Entrées', 'idcat': '1', 'titre': 'Tartare de thon et avocat', 'descripcion': 'accompagné de roquette', 'accion': 'eliminer', 'nombre_archivo': '4ceca163fa0fecde361a508fdec2cc15.jpg', 'prix': '15.0'}
+2023-12-08 10:00:03,671 - app - INFO - ******** inicio de la funcion carta_up <string:id> 1 accion:  *************
+2023-12-08 10:00:03,672 - app - INFO - ******** carta_up <string:id>  POST  Accion = eliminer   *************
+2023-12-08 10:00:03,673 - app - INFO - <Product 1>
+2023-12-08 10:00:03,683 - app - INFO -  se borro la image del plato numero 1
+2023-12-08 10:00:04,887 - app - INFO - ******** carta_up <string:id>  POST  Accion = eliminer  fin  *************
+2023-12-08 10:00:04,887 - app - INFO - carta
+2023-12-08 10:00:04,904 - app - INFO - <class 'list'>
+2023-12-08 10:00:29,235 - app - INFO - carta_up
+2023-12-08 10:00:29,236 - app - INFO - 45
+2023-12-08 10:00:29,238 - app - INFO - {'categorie': 'Entrées', 'idcat': '10', 'titre': 'safdsafd', 'descripcion': '', 'nombre_archivo': 'fondo.png', 'prix': '1.0', 'accion': 'Delete'}
+2023-12-08 10:00:29,239 - app - INFO - ******** inicio de la funcion carta_up <string:id> 45 accion:  *************
+2023-12-08 10:00:29,239 - app - INFO - ******** carta_up <string:id>  POST  Accion = Delete   *************
+2023-12-08 10:00:29,241 - app - INFO - <Product 45>
+2023-12-08 10:00:30,454 - app - INFO -  se borro el registro numero 45
+2023-12-08 10:00:30,454 - app - INFO - ******** carta_up <string:id>  POST  Accion = delete  fin  *************
+2023-12-08 10:00:30,473 - app - INFO - carta
+2023-12-08 10:00:30,475 - app - INFO - <class 'list'>
+2023-12-08 10:00:43,037 - app - INFO - carta_up
+2023-12-08 10:00:43,037 - app - INFO - 44
+2023-12-08 10:00:43,052 - app - INFO - {'categorie': 'Entrées', 'idcat': '10', 'titre': 'fsfsasfd', 'descripcion': '', 'nombre_archivo': 'fondo.png', 'prix': '1.0', 'accion': 'Delete'}
+2023-12-08 10:00:43,053 - app - INFO - ******** inicio de la funcion carta_up <string:id> 44 accion:  *************
+2023-12-08 10:00:43,053 - app - INFO - ******** carta_up <string:id>  POST  Accion = Delete   *************
+2023-12-08 10:00:43,054 - app - INFO - <Product 44>
+2023-12-08 10:00:44,247 - app - INFO -  se borro el registro numero 44
+2023-12-08 10:00:44,248 - app - INFO - ******** carta_up <string:id>  POST  Accion = delete  fin  *************
+2023-12-08 10:00:44,257 - app - INFO - carta
+2023-12-08 10:00:44,259 - app - INFO - <class 'list'>
+2023-12-08 10:01:57,640 - app - INFO - userlist
+2023-12-08 10:01:57,643 - app - INFO - [<Cliente: 'Thierry' 'thierry.meunier23@gmail.com'>, <Cliente: 'Auberge' 'thierry.meunier@zentricx.com'>, <Cliente: 'ThierryM' 'thierry.meunier@zentricx.com'>]
+2023-12-08 10:02:10,115 - app - INFO - logout
+2023-12-08 10:02:10,117 - app - INFO - logout
+2023-12-08 10:02:10,123 - app - INFO - home
+2023-12-08 10:02:10,124 - app - INFO - 2023-12-08 10:02:10.124890
+2023-12-08 10:02:10,129 - app - INFO - 1
+2023-12-08 10:02:10,130 - app - INFO - home
+2023-12-08 10:02:10,133 - app - INFO - 3
+2023-12-08 10:02:10,134 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-08 10:02:10,134 - app - INFO - 
+2023-12-08 10:02:10,134 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-08 10:02:18,156 - app - INFO - signup
+2023-12-08 10:02:18,172 - app - INFO - <Cliente: 'Auberge' 'thierry.meunier@zentricx.com'>
+2023-12-08 10:02:18,685 - app - INFO - login Success
+2023-12-08 10:02:18,693 - app - INFO - home
+2023-12-08 10:02:18,693 - app - INFO - 2023-12-08 10:02:18.693735
+2023-12-08 10:02:18,696 - app - INFO - 1
+2023-12-08 10:02:18,696 - app - INFO - home
+2023-12-08 10:02:18,697 - app - INFO - 3
+2023-12-08 10:02:18,697 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-08 10:02:18,697 - app - INFO - 
+2023-12-08 10:02:18,699 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-08 10:02:45,323 - app - INFO - location
+2023-12-08 10:02:45,323 - app - INFO - location
+2023-12-08 10:02:45,326 - app - INFO - 6
+2023-12-08 10:02:45,326 - app - INFO - [<TextoXpagina 4>, <TextoXpagina 5>, <TextoXpagina 8>, <TextoXpagina 9>, <TextoXpagina 10>, <TextoXpagina 11>]
+2023-12-08 10:02:45,327 - app - INFO - Suivez le guide pour nous rejoindre!!          
+2023-12-08 10:02:45,327 - app - INFO -   +33 6 15 08 90 39 à Saint etienne de Crossey 
+2023-12-08 10:02:57,182 - app - INFO - menuqr
+2023-12-08 10:05:56,941 - app - INFO - menuqr
+2023-12-08 10:06:42,196 - app - INFO - menuqr
+2023-12-08 10:13:33,435 - app - INFO - menuqr
+2023-12-08 10:14:02,750 - app - INFO - menuqr
+2023-12-08 10:14:35,076 - app - INFO - menuqr

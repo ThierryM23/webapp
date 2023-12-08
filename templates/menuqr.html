@@ -24,7 +24,7 @@
         {% set count = namespace(value=1) %} {% set vars = {'categorie': 'Entrées'} %}
     <div class="row align-items-center rounded-3 bg-danger m-2">
         <div class="col-12 col-sm-3">
-            <img  src="static/images/gallery/chicken-caesar-salad-6sq.jpg" width="90" />
+            <img  src="static/images/gallery/chicken-caesar-salad-6sq.jpg" height="65" />
         </div>
         <div class="col-auto text-light col-sm-9"  style="min-width: 14rem">
             <h1>{{ vars['categorie'] }}</h1>
@@ -66,7 +66,7 @@
         <!--</div>-->
     <div class="row align-items-center rounded-3 bg-danger m-2">
         <div class="col-12 col-sm-3">
-        <img src="static/images/photos/{{ row['categorie'] }}.jpg" width="90" />
+        <img src="static/images/photos/{{ row['categorie'] }}.jpg" height="65" />
         </div>
         <div class="col-auto text-light col-sm-9"> <h1>{{ row['categorie'] }}</h1> <p class=""></p>
         </div>

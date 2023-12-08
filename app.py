@@ -70,18 +70,33 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120))
     password_hash = db.Column(db.String(120), nullable=False)
-    tipo = db.Column(db.Integer)
-
+    tipo = db.Column(db.Integer)  # 1 para admin y 2 para cliente
+    telefono = db.Column(db.String(120))
+    instagram = db.Column(db.String(120))
+    facebook = db.Column(db.String(120))
+    password = db.Column(db.String(120))
+    
+    def __init__(self, username, email, password_hash):
+        self.username = username
+        self.email = email
+        self.password_hash = password_hash   
+    
     def __repr__(self):
         return '<Cliente: %r %r>' % (self.username, self.email)
     
+    def save(self):
+        app.logger.info(self.id)
+        if not self.id:
+            db.session.add(self)
+        db.session.commit()
+    
     @staticmethod
     def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
+        self.password = generate_password_hash(password)
         
     @staticmethod
     def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
+        return check_password_hash(self.password, password)
 
 # Definición de la tabla Product
 # Definir la clase "Product" que representa la tabla de productos
@@ -131,13 +146,11 @@ class Product(db.Model):
 
     @classmethod
     def read(cls, product_id):
-        return cls.query.get(product_id)
-    
+        return cls.query.get(product_id)   
     # Función para leer todos los productos de la base de datos
     @classmethod
     def read_all(cls):
-        return cls.query.all()
-        
+        return cls.query.all()        
     @staticmethod
     def get_by_id(id):
         return Product.query.get(id)
@@ -225,8 +238,44 @@ with app.app_context():
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    nombre_funcion = inspect.currentframe().f_code.co_name
+    app.logger.info(nombre_funcion)
+    if request.method == 'POST':
+        data = request.form.to_dict()
+        app.logger.info(data)
+        username = request.form['username']
+        passwordhash = request.form['password']
+        newuser= User( request.form['username'], request.form['email'],  request.form['password'])
+        newuser.telefono = request.form['telefono']
+        newuser.instagram = request.form['instagram']
+        newuser.facebook = request.form['facebook']
+        newuser.password = generate_password_hash( passwordhash, method='pbkdf2:sha256')
+        newuser.tipo = 2
+        vrai = check_password_hash(newuser.password, passwordhash)
+        print ("el valor de la variable vrai = " + str(vrai))
+        app.logger.info("el valor de la variable vrai = " + str(vrai))
+        if "admin" in data: 
+            if request.form['admin'] == "1":
+                newuser.tipo = 1
+        #user = User.query.filter_by(username=username).first()
+        app.logger.info(newuser)   
+        try:
+            User.save(newuser)
+            app.logger.info(newuser) 
+            flash("Vous etes enregistrer", "alert-success")
+        except Exception as err:
+            app.logger.info(f"Unexpected {err=}, {type(err)=}")
+            flash(f"Unexpected {err=}, {type(err)=}","alert-warning")
+             
+        
+    return redirect(url_for('home'))      
+
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    nombre_funcion = inspect.currentframe().f_code.co_name
+    app.logger.info(nombre_funcion)
     if request.method == 'POST':
         data = request.form.to_dict()
         username = request.form['username']
@@ -234,12 +283,17 @@ def signup():
         user = User.query.filter_by(username=username).first()
         app.logger.info(user)        
         #if user and user.check_password(password):
-        if user and user.password_hash == data['password']:
-            login_user(user)
-            app.logger.info("login Success")
-            flash('Vous êtes connecté!','alert-success')
-            return redirect(url_for('home'))
-        flash('vous n''êtes pas autorisé!','alert-success')
+        if user and check_password_hash(user.password, data['password']):
+        #if user and user.password_hash == data['password'] :
+            if user.tipo == 1 :
+                login_user(user)
+                app.logger.info("login Success")
+                flash('Vous êtes connecté comme administrateur!','alert-success')
+                return redirect(url_for('home'))
+            else:
+                flash('Vous êtes enregistré!','alert-success')
+                return redirect(url_for('home'))
+        flash('vous n''êtes pas autorisé!','alert-warning')
         app.logger.info("login failed")
         return redirect(url_for('home'))
     return redirect(url_for('home'))        
@@ -247,13 +301,27 @@ def signup():
 @app.route('/logout')
 @login_required
 def logout():
+    nombre_funcion = inspect.currentframe().f_code.co_name
+    app.logger.info(nombre_funcion)
     logout_user()
     app.logger.info("logout")
     return redirect(url_for('home')) #render_template("home.html", titulo="Bienvenue")
 
+@app.route('/userlist')
+@login_required
+def userlist():
+    nombre_funcion = inspect.currentframe().f_code.co_name
+    app.logger.info(nombre_funcion)
+    users = User.query.all()
+    app.logger.info(users)
+    return render_template('userlist.html', users=users)
+
+
 @app.route('/products')
 @login_required
 def products():
+    nombre_funcion = inspect.currentframe().f_code.co_name
+    app.logger.info(nombre_funcion)
     user_id = current_user.id
     user_products = Product.query.filter_by(user_id=user_id).all()
     return render_template('products.html', products=user_products)
@@ -276,14 +344,11 @@ def home():
         result.texto = "+33 6 15 08 90 39 à Saint etienne de Crossey"
         result.image="stEtienne1.jpg"
         bg_image="stEtienne1.jpg"
-        results.append(result)
-        titulo: str = "Suivez le guide pour nous rejoindre!!"
-        
+        results.append(result)       
     else:
         app.logger.info(results)       
         app.logger.info(results[0].titulo)
         app.logger.info(results[0].texto)
-        titulo: str = results[0].titulo
         bg_image = results[0].image 
     
     return render_template("home.html", titulo="Bienvenue", registros=registros, results=results, bg_image=bg_image)
@@ -352,12 +417,10 @@ def formabout(id):
 
             if fichier and allowed_file_images(fichier.filename):
                 # Genera un nuevo nombre de archivo para evitar conflictos
-                fichier.save(os.path.join(app.config['GENERAL_FOLDER'], fichier.filename))
-                sql = "UPDATE product SET image = '" + fichier.filename + "' WHERE product.id=" + id   
+                fichier.save(os.path.join(app.config['GENERAL_FOLDER'], fichier.filename))  
                 nombre_destino = 'general/' + fichier.filename
                 nombre_origen = 'static/images/' + fichier.filename
                 app.logger.info(fichier.filename) 
-                app.logger.info(sql) 
                 texto = TextoXpagina.query.get(id)                
                 texto.image = fichier.filename # Modificar objeto
                 app.logger.info(texto)
@@ -405,9 +468,6 @@ def send_image(filename):
     app.logger.info(nombre_funcion)
     app.logger.info("funccion send_image")
     app.logger.info(filename)
-    #filename = filename.replace(" ","_")
-    #filename = filename.replace("'","_")
-    #app.logger.info(filename)
     try:
         return send_from_directory(app.config["CLIENT_IMAGES"], filename)
     except FileNotFoundError:
@@ -551,15 +611,15 @@ def newplat():
         if data['categorie'] == "Plats": order = 2 
         if data['categorie'] == "Fromages & Planches": order = 3 
         if data['categorie'] == "Desserts": order = 4 
-        if data['categorie'] == "Coupes de glaces": order = 5 
-        
-        nomplat = data["titre"].replace("'","''")
-        descrip = data['descripcion'].replace("'","''")
+        if data['categorie'] == "Coupes de glaces": order = 5  
+        nomplat = data["titre"]
+        descrip = data['descripcion']
         product_new = Product(int(data['idcat']), nomplat, float(data['prix']),descrip, 'fondo.png', data['categorie'], int(order))
         app.logger.info(product_new)
         db.session.add(product_new) # Agregar objeto a la solicitud
         db.session.commit() 
         app.logger.info(product_new)
+        flash("Plat ajouté á la carte","alert-success")
         return redirect(url_for('carta'))
     return redirect(url_for('carta'))
 
@@ -580,17 +640,15 @@ def carta_up(id):
             app.logger.info("******** POST  Accion = Upload   *************")
             app.logger.info(fichier.filename)
             if fichier.filename == '':
-                flash('Nom de l image vide !','alert-danger')
+                flash("Nom de l'image vide !",'alert-danger')
                 return redirect(request.url)
 
             if fichier and allowed_file_images(fichier.filename):
                 # Genera un nuevo nombre de archivo para evitar conflictos
-                fichier.save(os.path.join(app.config['UPLOAD_FOLDER'], fichier.filename))
-                sql = "UPDATE product SET image = '" + fichier.filename + "' WHERE product.id=" + id   
+                fichier.save(os.path.join(app.config['UPLOAD_FOLDER'], fichier.filename))  
                 nombre_destino = 'photos/' + fichier.filename
                 nombre_origen = 'static/images/photos/' + fichier.filename
                 app.logger.info(fichier.filename) 
-                app.logger.info(sql) 
                 producto_up = Product.get_by_id(id)
                 producto_up.image = fichier.filename # Modificar objeto
                 app.logger.info(producto_up) 
@@ -599,7 +657,7 @@ def carta_up(id):
                 
                 s3.upload_file(nombre_origen,'myappauberge',nombre_destino)
                 app.logger.info("actualizado el campo de image en la base por el product " + id) 
-                flash('Image ajoutée !','alert-success')
+                flash('Photo ajoutée !','alert-success')
             else:
                 app.logger.info("Image refoule pour format incorrect ! ")
                 flash('Image refoule pour format incorrect !','alert-danger')
@@ -616,8 +674,8 @@ def carta_up(id):
             if data['categorie'] == "Desserts": order = 4 
             if data['categorie'] == "Coupes de glaces": order = 5   
             
-            nomplat = data["titre"].replace("'"," ")
-            descrip = data['descripcion'].replace("'"," ")   
+            nomplat = data["titre"]
+            descrip = data['descripcion']  
             app.logger.info(nomplat)  
             app.logger.info(descrip)
             producto_up = Product.get_by_id(id)
@@ -633,8 +691,7 @@ def carta_up(id):
             app.logger.info(producto_up)
             db.session.add(producto_up) # Agregar objeto a la solicitud
             db.session.commit() # Hacer commit a la solicitud
-            # db.session.add(product_up) # Agregar objeto a la solicitud
-            # db.session.commit()
+            flash("Plat modifié et ajouté á la carte","alert-success")
             app.logger.info("******** carta_up <string:id>  POST  Accion = save  FIN *************")
             return redirect(url_for('carta'))
             
@@ -646,6 +703,7 @@ def carta_up(id):
             db.session.delete(producto)
             db.session.commit()
             s3.del_image('myappauberge', 'photos/' + nom_origen )
+            flash("Plat éliminé de la carte","alert-success")
             app.logger.info(" se borro el registro numero " + id)
             app.logger.info("******** carta_up <string:id>  POST  Accion = delete  fin  *************")
             return redirect(url_for('carta'))  
@@ -658,6 +716,7 @@ def carta_up(id):
             app.logger.info(producto)
             db.session.add(producto)
             db.session.commit()
+            flash("Photo éliminé ","alert-success")
             app.logger.info(" se borro la image del plato numero " + id)
             #eliminamos del bucket de AWS el archivo
             s3.del_image('myappauberge', 'photos/' + nom_origen )
