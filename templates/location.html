@@ -24,7 +24,7 @@
             {% if current_user.is_authenticated %}
             <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"> Editer cette section? </a>
               
-            <div class="collapse" id="collapseExample">
+            <div class="container collapse" id="collapseExample">
                 <div class="bg-dark bg-opacity-75 ">
                     {% for result in results if result.seccion == 1 %}
                     <form action={{ url_for('formabout', id=result['id'])  }} method="POST" class="m-0 p-0 "  enctype="multipart/form-data">
