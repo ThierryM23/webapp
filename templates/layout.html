@@ -15,22 +15,19 @@
     {% endblock %}   
     <style>
         body {
-            min-height: 100vh;
+
             {% if bg_image %}            
             background-image: url('https://myappauberge.s3.us-east-2.amazonaws.com/general/{{bg_image}}' );
+            {% else %}                       
+            background-image: url('https://myappauberge.s3.us-east-2.amazonaws.com/general/Entree_principL.jpeg');  
+            {% endif %} 
+
             background-repeat: no-repeat;
             background-attachment: fixed;
             color: #000000       ;       
             background-size: cover;
-            min-height: 100vh;
-            {% else %}                       
-            background-image: url('https://myappauberge.s3.us-east-2.amazonaws.com/general/Entree_principL.jpeg');   
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: #000000;          
-            background-size: cover;
-            min-height: 100vh;
-            {% endif %}
+            min-height: 100vh;    
+               
         }
 
         .wrapper {
