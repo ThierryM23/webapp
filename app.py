@@ -45,7 +45,7 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-
+#Logging
 # Configurar el nivel de registro y el archivo de registro
 log_level = logging.INFO  # Puedes ajustar el nivel según tus necesidades
 log_file = 'app.log'  # Nombre del archivo de registro

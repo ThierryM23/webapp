@@ -6,8 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"  rel="stylesheet">
-   
-    
+     
 {% endblock %}
 <!--bg-light p-5 text-dark bg-opacity-25 -->
 {% block content %}
@@ -18,26 +17,24 @@
     </div>
 </div>
 <div class="container">
-    <div class="row row-cols-6 bg-opacity-50">   
+    <div class="row row-cols-7 bg-opacity-50">   
         <div class="col text-white bg-black border-white bg-opacity-75 border-right">username</div>
         <div class="col-3  text-white bg-black bg-opacity-75 border-right">email</div>
         <div class="col  text-white bg-black bg-opacity-75 border-right">type 1=Admin</div>
-        <div class="col  text-white bg-black bg-opacity-75  border-right">telephone</div>
+        <div class="col-2  text-white bg-black bg-opacity-75  border-right">telephone</div>
         <div class="col  text-white bg-black bg-opacity-75 border-right  ">instagram</div>
         <div class="col  text-white bg-black bg-opacity-75  border-right">facebook</div>
     </div>
     {% for user in users %}
-<div class="row row-cols-6">   
+<div class="row row-cols-7">   
     <div class="col bg-white bg-opacity-75 border-right">{{user.username}}</div>
     <div class="col-3 bg-white bg-opacity-75 border-right">{{user.email}}</div>
-    <div class="col-1 bg-white bg-opacity-75 border-right">{{user.tipo}}</div>
-    <div class="col-1 bg-white bg-opacity-75 border-right">{{user.telefono}}</div>
+    <div class="col bg-white bg-opacity-75 border-right">{{user.tipo}}</div>
+    <div class="col-2 bg-white bg-opacity-75 border-right">{{user.telefono}}</div>
     <div class="col bg-white bg-opacity-75 border-right">{{user.instagram}}</div>
     <div class="col bg-white bg-opacity-75 border-right">{{user.facebook}}</div>
   </div>
-
-
-{% endfor %}
+    {% endfor %}
 
 
 {% endblock %}

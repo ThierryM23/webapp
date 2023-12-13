@@ -1,8 +1,7 @@
-
-import logging
+import os
 import boto3
 from botocore.exceptions import ClientError
-import os
+
 
 
 def upload_file(file_name, bucket, object_name=None):
@@ -26,7 +25,7 @@ def upload_file(file_name, bucket, object_name=None):
         return False
     return True
 
-def listar(bucket, directorio=None):
+def listar(bucket: str, directorio: str |None) -> list:
     """
     Args:
         bucket (_type_): bucket to List
@@ -49,7 +48,7 @@ def listar(bucket, directorio=None):
     return imagenes
 
 
-def del_image(bucket, file_key):
+def del_image(bucket: str, file_key: str) -> bool:
     """_summary_
 
     Args:
@@ -76,8 +75,8 @@ if __name__ == '__main__':
     filename = 'fondo.png'
     archivo_local = 'static/images/photos' + filename
     nombre_en_s3 = 'photos/'  + filename
-    directorio = None
-    directorio = 'photos'
+    directory = None
+    directory = 'photos'
     imagenes = []
 
     # Nombre del bucket de S3
@@ -86,9 +85,8 @@ if __name__ == '__main__':
     #response = upload_file(archivo_local, nombre_bucket, nombre_en_s3)
     #print(response)
 
-    
     # Imprimir la lista de archivos 
-    response = listar(nombre_bucket,directorio)
+    response = listar(nombre_bucket,directory)
     print(response)
 
 
