@@ -85,45 +85,43 @@ button:hover {
     </div>
 </div>
 <div class="container text-center bg-light w-100 text-dark border rounded-3 p-2"  style="--bs-bg-opacity: .55;">
-        <div class="row">
-            <div class="col">
-                <h1>Menu du jour</h1>
-                <form  action={{ url_for('menu')  }} method="POST" class=""  enctype="multipart/form-data" >
-                    <select name="categorie" class="form-control rounded-2 bg-dark border-0 text-white" required >
-                        <option value="Entrées" >Entrées</option>
-                        <option value="Plats" >Plats</option>
-                        <option value="Fromages & Planches" >Fromages & Planches</option>
-                        <option value="Desserts" >Desserts</option>
-                        <option value="Coupes de glaces"  >Coupes de glaces</option>
-                    </select>
-                <div class="form-group">
-                    <label for="titre">Titre:</label>
-                    <input type="text" id="titre" name="titre" required>
-                </div>
-                <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea type="text" id="description" name="description" required>
-                    </textarea>
-                <div class="form-group"><label for="prix">Prix:</label>
-                    <input  type="number" name="prix" min ="1.00" step ="0.10"
-                    value ="10" class="" placeholder="12.50" required /></div>
-                <div class="form-group">
-                    <label for="fecha_presentacion">jour:</label>
-                    <input type="date" id="fecha_presentacion" name="fecha_presentacion" value="{{hoy}}" required></input>
-                </div>
-                <div class="form-group">
-                    <label for="fecha_fin">jusqu'au:</label>
-                    <input type="date" id="fecha_fin" name="fecha_fin" value="{{hoy}}" required></input>
-                </div>
-                <button type="submit">Envoyer</button>
-                </form>
-                </div> 
+    <div class="row">
+        <div class="col">
+            <h1>Menu du jour</h1>
+            <form  action={{ url_for('menu')  }} method="POST" class=""  enctype="multipart/form-data" >
+                <select name="categorie" class="form-control rounded-2 bg-dark border-0 text-white" required >
+                    <option value="Entrées" >Entrées</option>
+                    <option value="Plats" >Plats</option>
+                    <option value="Fromages & Planches" >Fromages & Planches</option>
+                    <option value="Desserts" >Desserts</option>
+                    <option value="Coupes de glaces"  >Coupes de glaces</option>
+                </select>
+            <div class="form-group">
+                <label for="titre">Titre:</label>
+                <input type="text" id="titre" name="titre" required>
             </div>
-            <div class="row">
-                <a class="btn btn-primary" data-toggle="collapse" href="#collapseborrar" role="button" aria-expanded="false"  aria-controls="collapseExample">
-    Voir la liste de menus actifs
-                </a>            
-            </div>  <!-- fin row  -->
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea type="text" id="description" name="description" required>
+                </textarea>
+            <div class="form-group"><label for="prix">Prix:</label>
+                <input  type="number" name="prix" min ="1.00" step ="0.10"
+                value ="10" class="" placeholder="12.50" required /></div>
+            <div class="form-group">
+                <label for="fecha_presentacion">jour:</label>
+                <input type="date" id="fecha_presentacion" name="fecha_presentacion" value="{{hoy}}" required></input>
+            </div>
+            <div class="form-group">
+                <label for="fecha_fin">jusqu'au:</label>
+                <input type="date" id="fecha_fin" name="fecha_fin" value="{{hoy}}" required></input>
+            </div>
+            <button type="submit">Envoyer</button>
+            </form>
+        </div> <!-- fin col -->
+    </div>  <!-- fin row -->
+    <div class="row">
+        <a class="btn btn-primary btn-sm" data-toggle="collapse" href="#collapseborrar" role="button" aria-expanded="false"  aria-controls="collapseExample"> Voir la liste de menus actifs</a>            
+    </div>  <!-- fin row  -->
 </div>  <!-- container  -->
 
 
@@ -154,20 +152,6 @@ button:hover {
     </div>
   </div>
 
-
-
-
-
-<!--
-            <div class="col-5">
-                
-            </div> <!-- fin col-5 --><!--
-            <div class="col-7">           
-                 
-                   
-                </div>
-            </div> <!-- fin col-7  -->
--->
 {% endblock %}
 
 
