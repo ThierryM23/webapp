@@ -1,0 +1,310 @@
+2023-12-13 17:11:35,638 - app - INFO - home
+2023-12-13 17:11:35,639 - app - INFO - 2023-12-13 17:11:35.639267
+2023-12-13 17:11:35,654 - app - INFO - 0
+2023-12-13 17:11:35,654 - app - INFO - home
+2023-12-13 17:11:35,658 - app - INFO - 3
+2023-12-13 17:11:35,659 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-13 17:11:35,659 - app - INFO - 
+2023-12-13 17:11:35,659 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-13 17:12:13,761 - app - INFO - register
+2023-12-13 17:12:13,772 - app - INFO - {'username': 'Thierry', 'password': 'nono', 'email': 'thierry.meunier@zentricx.com', 'telefono': '', 'instagram': '', 'facebook': ''}
+2023-12-13 17:12:14,836 - app - INFO - el valor de la variable vrai = True
+2023-12-13 17:12:14,837 - app - INFO - <Cliente: 'Thierry' 'thierry.meunier@zentricx.com'>
+2023-12-13 17:12:14,837 - app - INFO - None
+2023-12-13 17:12:14,841 - app - INFO - Unexpected err=IntegrityError('(sqlite3.IntegrityError) UNIQUE constraint failed: user.username'), type(err)=<class 'sqlalchemy.exc.IntegrityError'>
+2023-12-13 17:12:14,849 - app - INFO - home
+2023-12-13 17:12:14,849 - app - INFO - 2023-12-13 17:12:14.849185
+2023-12-13 17:12:14,851 - app - INFO - 0
+2023-12-13 17:12:14,851 - app - INFO - home
+2023-12-13 17:12:14,853 - app - INFO - 3
+2023-12-13 17:12:14,854 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-13 17:12:14,854 - app - INFO - 
+2023-12-13 17:12:14,854 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-13 17:12:36,830 - app - INFO - signup
+2023-12-13 17:12:36,836 - app - INFO - <Cliente: 'Thierry' 'thierry.meunier23@gmail.com'>
+2023-12-13 17:12:37,366 - app - INFO - login Success
+2023-12-13 17:12:37,374 - app - INFO - home
+2023-12-13 17:12:37,374 - app - INFO - 2023-12-13 17:12:37.374580
+2023-12-13 17:12:37,377 - app - INFO - 0
+2023-12-13 17:12:37,377 - app - INFO - home
+2023-12-13 17:12:37,379 - app - INFO - 3
+2023-12-13 17:12:37,380 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-13 17:12:37,380 - app - INFO - 
+2023-12-13 17:12:37,381 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-13 17:12:41,504 - app - INFO - userlist
+2023-12-13 17:12:41,506 - app - INFO - [<Cliente: 'Thierry' 'thierry.meunier23@gmail.com'>]
+2023-12-13 17:13:20,928 - app - INFO - logout
+2023-12-13 17:13:20,928 - app - INFO - logout
+2023-12-13 17:13:20,938 - app - INFO - home
+2023-12-13 17:13:20,938 - app - INFO - 2023-12-13 17:13:20.938703
+2023-12-13 17:13:20,940 - app - INFO - 0
+2023-12-13 17:13:20,941 - app - INFO - home
+2023-12-13 17:13:20,942 - app - INFO - 3
+2023-12-13 17:13:20,942 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-13 17:13:20,942 - app - INFO - 
+2023-12-13 17:13:20,943 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-14 09:07:00,145 - app - INFO - home
+2023-12-14 09:07:00,145 - app - INFO - 2023-12-14 09:07:00.145676
+2023-12-14 09:07:00,159 - app - INFO - 0
+2023-12-14 09:07:00,160 - app - INFO - home
+2023-12-14 09:07:00,163 - app - INFO - 3
+2023-12-14 09:07:00,163 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-14 09:07:00,164 - app - INFO - 
+2023-12-14 09:07:00,164 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-14 09:09:42,357 - app - INFO - home
+2023-12-14 09:09:42,358 - app - INFO - 2023-12-14 09:09:42.358915
+2023-12-14 09:09:42,360 - app - INFO - 0
+2023-12-14 09:09:42,360 - app - INFO - home
+2023-12-14 09:09:42,362 - app - INFO - 3
+2023-12-14 09:09:42,363 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-14 09:09:42,363 - app - INFO - 
+2023-12-14 09:09:42,364 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-14 09:13:07,443 - app - INFO - home
+2023-12-14 09:13:07,443 - app - INFO - 2023-12-14 09:13:07.443195
+2023-12-14 09:13:07,445 - app - INFO - 0
+2023-12-14 09:13:07,445 - app - INFO - home
+2023-12-14 09:13:07,447 - app - INFO - 3
+2023-12-14 09:13:07,448 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-14 09:13:07,448 - app - INFO - 
+2023-12-14 09:13:07,448 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-14 09:13:21,430 - app - INFO - menu
+2023-12-14 09:13:21,431 - app - INFO - 2023-12-14
+2023-12-14 09:13:21,431 - app - INFO - 2023-12-14 09:13:21.431744
+2023-12-14 09:13:21,433 - app - INFO - 0
+2023-12-14 09:15:35,907 - app - INFO - menu
+2023-12-14 09:15:35,908 - app - INFO - 2023-12-14
+2023-12-14 09:15:35,908 - app - INFO - 2023-12-14 09:15:35.908669
+2023-12-14 09:15:35,911 - app - INFO - 0
+2023-12-14 09:15:38,371 - app - INFO - menu
+2023-12-14 09:15:38,372 - app - INFO - 2023-12-14
+2023-12-14 09:15:38,372 - app - INFO - 2023-12-14 09:15:38.372999
+2023-12-14 09:15:38,373 - app - INFO - 0
+2023-12-14 09:18:42,014 - app - INFO - menu
+2023-12-14 09:18:42,015 - app - INFO - 2023-12-14
+2023-12-14 09:18:42,017 - app - INFO - 2023-12-14 09:18:42.017073
+2023-12-14 09:18:42,018 - app - INFO - 0
+2023-12-14 09:18:45,411 - app - INFO - menu
+2023-12-14 09:18:45,412 - app - INFO - 2023-12-14
+2023-12-14 09:18:45,412 - app - INFO - 2023-12-14 09:18:45.412564
+2023-12-14 09:18:45,413 - app - INFO - 0
+2023-12-14 09:18:47,513 - app - INFO - menu
+2023-12-14 09:18:47,513 - app - INFO - 2023-12-14
+2023-12-14 09:18:47,514 - app - INFO - 2023-12-14 09:18:47.514919
+2023-12-14 09:18:47,517 - app - INFO - 0
+2023-12-14 09:18:50,895 - app - INFO - menu
+2023-12-14 09:18:50,896 - app - INFO - 2023-12-14
+2023-12-14 09:18:50,896 - app - INFO - 2023-12-14 09:18:50.896151
+2023-12-14 09:18:50,897 - app - INFO - 0
+2023-12-14 09:19:17,158 - app - INFO - menu
+2023-12-14 09:19:17,158 - app - INFO - 2023-12-14
+2023-12-14 09:19:17,159 - app - INFO - 2023-12-14 09:19:17.159770
+2023-12-14 09:19:17,160 - app - INFO - 0
+2023-12-14 09:19:19,872 - app - INFO - location
+2023-12-14 09:19:19,873 - app - INFO - location
+2023-12-14 09:19:19,875 - app - INFO - 6
+2023-12-14 09:19:19,876 - app - INFO - [<TextoXpagina 4>, <TextoXpagina 5>, <TextoXpagina 8>, <TextoXpagina 9>, <TextoXpagina 10>, <TextoXpagina 11>]
+2023-12-14 09:19:19,876 - app - INFO - Suivez le guide pour nous rejoindre!!          
+2023-12-14 09:19:19,877 - app - INFO -   +33 6 15 08 90 39 à Saint etienne de Crossey 
+2023-12-14 09:19:21,795 - app - INFO - menu
+2023-12-14 09:19:21,796 - app - INFO - 2023-12-14
+2023-12-14 09:19:21,797 - app - INFO - 2023-12-14 09:19:21.797177
+2023-12-14 09:19:21,799 - app - INFO - 0
+2023-12-14 09:19:31,822 - app - INFO - menu
+2023-12-14 09:19:31,823 - app - INFO - 2023-12-14
+2023-12-14 09:19:31,826 - app - INFO - <Menudia (transient 1424516435088)>
+2023-12-14 09:19:31,835 - app - INFO - 2023-12-14 09:19:31.835325
+2023-12-14 09:19:31,838 - app - INFO - 1
+2023-12-14 09:20:57,301 - app - INFO - menu
+2023-12-14 09:20:57,301 - app - INFO - 2023-12-14
+2023-12-14 09:20:57,302 - app - INFO - 2023-12-14 09:20:57.302373
+2023-12-14 09:20:57,303 - app - INFO - 1
+2023-12-14 09:20:59,421 - app - INFO - menu
+2023-12-14 09:20:59,422 - app - INFO - 2023-12-14
+2023-12-14 09:20:59,423 - app - INFO - 2023-12-14 09:20:59.423409
+2023-12-14 09:20:59,425 - app - INFO - 1
+2023-12-14 09:21:00,340 - app - INFO - menu
+2023-12-14 09:21:00,340 - app - INFO - 2023-12-14
+2023-12-14 09:21:00,340 - app - INFO - 2023-12-14 09:21:00.340311
+2023-12-14 09:21:00,340 - app - INFO - 1
+2023-12-14 09:22:10,039 - app - INFO - menu
+2023-12-14 09:22:10,041 - app - INFO - 2023-12-14
+2023-12-14 09:22:10,042 - app - INFO - 2023-12-14 09:22:10.042083
+2023-12-14 09:22:10,043 - app - INFO - 1
+2023-12-14 09:22:27,606 - app - INFO - menu
+2023-12-14 09:22:27,607 - app - INFO - 2023-12-14
+2023-12-14 09:22:27,607 - app - INFO - 2023-12-14 09:22:27.607099
+2023-12-14 09:22:27,610 - app - INFO - 1
+2023-12-14 09:22:28,719 - app - INFO - menu
+2023-12-14 09:22:28,719 - app - INFO - 2023-12-14
+2023-12-14 09:22:28,719 - app - INFO - 2023-12-14 09:22:28.719518
+2023-12-14 09:22:28,721 - app - INFO - 1
+2023-12-14 09:22:29,065 - app - INFO - menu
+2023-12-14 09:22:29,065 - app - INFO - 2023-12-14
+2023-12-14 09:22:29,065 - app - INFO - 2023-12-14 09:22:29.065865
+2023-12-14 09:22:29,065 - app - INFO - 1
+2023-12-14 09:22:29,338 - app - INFO - menu
+2023-12-14 09:22:29,338 - app - INFO - 2023-12-14
+2023-12-14 09:22:29,339 - app - INFO - 2023-12-14 09:22:29.339131
+2023-12-14 09:22:29,340 - app - INFO - 1
+2023-12-14 09:22:29,752 - app - INFO - menu
+2023-12-14 09:22:29,753 - app - INFO - 2023-12-14
+2023-12-14 09:22:29,754 - app - INFO - 2023-12-14 09:22:29.754318
+2023-12-14 09:22:29,755 - app - INFO - 1
+2023-12-14 09:23:39,630 - app - INFO - menu
+2023-12-14 09:23:39,631 - app - INFO - 2023-12-14
+2023-12-14 09:23:39,631 - app - INFO - 2023-12-14 09:23:39.631561
+2023-12-14 09:23:39,644 - app - INFO - 1
+2023-12-14 09:23:39,645 - app - INFO - 1
+2023-12-14 09:23:39,645 - app - INFO - 1
+2023-12-14 09:25:28,443 - app - INFO - menu
+2023-12-14 09:25:28,444 - app - INFO - 2023-12-14
+2023-12-14 09:25:28,445 - app - INFO - 2023-12-14 09:25:28.444974
+2023-12-14 09:25:28,447 - app - INFO - 1
+2023-12-14 09:25:28,448 - app - INFO - 1
+2023-12-14 09:25:28,448 - app - INFO - 1
+2023-12-14 09:26:45,737 - app - INFO - menu
+2023-12-14 09:26:45,739 - app - INFO - 2023-12-14
+2023-12-14 09:26:45,739 - app - INFO - 2023-12-14 09:26:45.739288
+2023-12-14 09:26:45,741 - app - INFO - 1
+2023-12-14 09:26:45,741 - app - INFO - 1
+2023-12-14 09:26:45,742 - app - INFO - 1
+2023-12-14 09:28:14,160 - app - INFO - home
+2023-12-14 09:28:14,161 - app - INFO - 2023-12-14 09:28:14.161351
+2023-12-14 09:28:14,172 - app - INFO - 1
+2023-12-14 09:28:14,172 - app - INFO - home
+2023-12-14 09:28:14,175 - app - INFO - 3
+2023-12-14 09:28:14,175 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-14 09:28:14,176 - app - INFO - 
+2023-12-14 09:28:14,176 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-14 09:28:19,946 - app - INFO - home
+2023-12-14 09:28:19,947 - app - INFO - 2023-12-14 09:28:19.947685
+2023-12-14 09:28:19,949 - app - INFO - 1
+2023-12-14 09:28:19,949 - app - INFO - home
+2023-12-14 09:28:19,951 - app - INFO - 3
+2023-12-14 09:28:19,951 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-14 09:28:19,951 - app - INFO - 
+2023-12-14 09:28:19,953 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-14 09:28:21,770 - app - INFO - home
+2023-12-14 09:28:21,770 - app - INFO - 2023-12-14 09:28:21.770999
+2023-12-14 09:28:21,772 - app - INFO - 1
+2023-12-14 09:28:21,773 - app - INFO - home
+2023-12-14 09:28:21,774 - app - INFO - 3
+2023-12-14 09:28:21,774 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-14 09:28:21,774 - app - INFO - 
+2023-12-14 09:28:21,776 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-14 09:28:35,429 - app - INFO - menu
+2023-12-14 09:28:35,430 - app - INFO - 2023-12-14
+2023-12-14 09:28:35,430 - app - INFO - 2023-12-14 09:28:35.430196
+2023-12-14 09:28:35,432 - app - INFO - 1
+2023-12-14 09:28:35,433 - app - INFO - 1
+2023-12-14 09:28:35,433 - app - INFO - 1
+2023-12-14 09:29:03,681 - app - INFO - menu
+2023-12-14 09:29:03,682 - app - INFO - 2023-12-14
+2023-12-14 09:29:03,682 - app - INFO - 2023-12-14 09:29:03.682476
+2023-12-14 09:29:03,683 - app - INFO - 1
+2023-12-14 09:29:03,684 - app - INFO - 1
+2023-12-14 09:29:03,684 - app - INFO - 1
+2023-12-14 09:31:43,919 - app - INFO - menu
+2023-12-14 09:31:43,920 - app - INFO - 2023-12-14
+2023-12-14 09:31:43,920 - app - INFO - 2023-12-14 09:31:43.920327
+2023-12-14 09:31:43,922 - app - INFO - 1
+2023-12-14 09:31:43,922 - app - INFO - 1
+2023-12-14 09:31:43,923 - app - INFO - 1
+2023-12-14 09:41:39,162 - app - INFO - menu
+2023-12-14 09:41:39,164 - app - INFO - 2023-12-14
+2023-12-14 09:41:39,164 - app - INFO - 2023-12-14 09:41:39.164129
+2023-12-14 09:41:39,166 - app - INFO - 1
+2023-12-14 09:41:39,167 - app - INFO - 1
+2023-12-14 09:41:39,167 - app - INFO - 1
+2023-12-14 09:43:48,074 - app - INFO - menu
+2023-12-14 09:43:48,074 - app - INFO - 2023-12-14
+2023-12-14 09:43:48,075 - app - INFO - 2023-12-14 09:43:48.075450
+2023-12-14 09:43:48,077 - app - INFO - 1
+2023-12-14 09:43:48,077 - app - INFO - 1
+2023-12-14 09:43:48,078 - app - INFO - 1
+2023-12-14 09:45:40,725 - app - INFO - menu
+2023-12-14 09:45:40,726 - app - INFO - 2023-12-14
+2023-12-14 09:45:40,726 - app - INFO - 2023-12-14 09:45:40.726441
+2023-12-14 09:45:40,728 - app - INFO - 1
+2023-12-14 09:45:40,729 - app - INFO - 1
+2023-12-14 09:45:40,729 - app - INFO - 1
+2023-12-14 09:47:10,079 - app - INFO - menu
+2023-12-14 09:47:10,080 - app - INFO - 2023-12-14
+2023-12-14 09:47:10,081 - app - INFO - 2023-12-14 09:47:10.081604
+2023-12-14 09:47:10,083 - app - INFO - 1
+2023-12-14 09:47:10,083 - app - INFO - 1
+2023-12-14 09:47:10,084 - app - INFO - 1
+2023-12-14 09:51:14,019 - app - INFO - menu
+2023-12-14 09:51:14,020 - app - INFO - 2023-12-14
+2023-12-14 09:51:14,020 - app - INFO - 2023-12-14 09:51:14.020555
+2023-12-14 09:51:14,022 - app - INFO - 1
+2023-12-14 09:51:14,023 - app - INFO - 1
+2023-12-14 09:51:14,024 - app - INFO - 1
+2023-12-14 10:18:45,139 - app - INFO - menu
+2023-12-14 10:18:45,140 - app - INFO - 2023-12-14
+2023-12-14 10:18:45,140 - app - INFO - 2023-12-14 10:18:45.140377
+2023-12-14 10:18:45,144 - app - INFO - 1
+2023-12-14 10:18:45,145 - app - INFO - 1
+2023-12-14 10:18:45,145 - app - INFO - 1
+2023-12-14 10:21:16,888 - app - INFO - menu
+2023-12-14 10:21:16,889 - app - INFO - 2023-12-14
+2023-12-14 10:21:16,890 - app - INFO - 2023-12-14 10:21:16.890094
+2023-12-14 10:21:16,891 - app - INFO - 1
+2023-12-14 10:21:16,893 - app - INFO - 1
+2023-12-14 10:21:16,893 - app - INFO - 1
+2023-12-14 10:24:25,659 - app - INFO - menu
+2023-12-14 10:24:25,659 - app - INFO - 2023-12-14
+2023-12-14 10:24:25,661 - app - INFO - 2023-12-14 10:24:25.661145
+2023-12-14 10:24:25,662 - app - INFO - 1
+2023-12-14 10:24:25,663 - app - INFO - 1
+2023-12-14 10:24:25,663 - app - INFO - 1
+2023-12-14 10:25:20,335 - app - INFO - menu
+2023-12-14 10:25:20,335 - app - INFO - 2023-12-14
+2023-12-14 10:25:20,335 - app - INFO - 2023-12-14 10:25:20.335104
+2023-12-14 10:25:20,338 - app - INFO - 1
+2023-12-14 10:25:20,338 - app - INFO - 1
+2023-12-14 10:25:20,338 - app - INFO - 1
+2023-12-14 10:26:35,855 - app - INFO - menu
+2023-12-14 10:26:35,862 - app - INFO - 2023-12-14
+2023-12-14 10:26:35,863 - app - INFO - 2023-12-14 10:26:35.863463
+2023-12-14 10:26:35,865 - app - INFO - 1
+2023-12-14 10:26:35,865 - app - INFO - 1
+2023-12-14 10:26:35,865 - app - INFO - 1
+2023-12-14 10:29:09,767 - app - INFO - menu
+2023-12-14 10:29:09,767 - app - INFO - 2023-12-14
+2023-12-14 10:29:09,768 - app - INFO - 2023-12-14 10:29:09.768250
+2023-12-14 10:29:09,775 - app - INFO - 1
+2023-12-14 10:29:09,775 - app - INFO - 1
+2023-12-14 10:29:09,777 - app - INFO - 1
+2023-12-14 10:33:42,650 - app - INFO - menu
+2023-12-14 10:33:42,652 - app - INFO - 2023-12-14
+2023-12-14 10:33:42,653 - app - INFO - 2023-12-14 10:33:42.653414
+2023-12-14 10:33:42,656 - app - INFO - 1
+2023-12-14 10:33:42,656 - app - INFO - 1
+2023-12-14 10:33:42,656 - app - INFO - 1
+2023-12-14 10:35:57,886 - app - INFO - menu
+2023-12-14 10:35:57,887 - app - INFO - 2023-12-14
+2023-12-14 10:35:57,888 - app - INFO - 2023-12-14 10:35:57.888341
+2023-12-14 10:35:57,889 - app - INFO - 1
+2023-12-14 10:35:57,889 - app - INFO - 1
+2023-12-14 10:35:57,889 - app - INFO - 1
+2023-12-14 10:38:31,506 - app - INFO - menu
+2023-12-14 10:38:31,506 - app - INFO - 2023-12-14
+2023-12-14 10:38:31,506 - app - INFO - 2023-12-14 10:38:31.506180
+2023-12-14 10:38:31,506 - app - INFO - 1
+2023-12-14 10:38:31,506 - app - INFO - 1
+2023-12-14 10:38:31,512 - app - INFO - 1
+2023-12-14 10:40:31,455 - app - INFO - menu
+2023-12-14 10:40:31,455 - app - INFO - 2023-12-14
+2023-12-14 10:40:31,457 - app - INFO - 2023-12-14 10:40:31.457970
+2023-12-14 10:40:31,459 - app - INFO - 1
+2023-12-14 10:40:31,461 - app - INFO - 1
+2023-12-14 10:40:31,461 - app - INFO - 1
+2023-12-14 10:41:13,696 - app - INFO - menu
+2023-12-14 10:41:13,696 - app - INFO - 2023-12-14
+2023-12-14 10:41:13,698 - app - INFO - 2023-12-14 10:41:13.698655
+2023-12-14 10:41:13,698 - app - INFO - 1
+2023-12-14 10:41:13,698 - app - INFO - 1
+2023-12-14 10:41:13,698 - app - INFO - 1
+2023-12-14 11:04:13,637 - app - INFO - menu
+2023-12-14 11:04:13,638 - app - INFO - 2023-12-14

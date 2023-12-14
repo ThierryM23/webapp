@@ -84,82 +84,91 @@ button:hover {
       {% include 'partials/_message.html' %}
     </div>
 </div>
-<div class="bg-light w-100 text-dark border rounded-3 p-2"  style="--bs-bg-opacity: .55;">
-    <h1>Menu du jour</h1>
-    <form  action={{ url_for('menu')  }} method="POST" class=""  enctype="multipart/form-data" >
-        <select name="categorie" class="form-control rounded-2 bg-dark border-0 text-white" required >
-            <option value="Entrées" >Entrées</option>
-            <option value="Plats" >Plats</option>
-            <option value="Fromages & Planches" >Fromages & Planches</option>
-            <option value="Desserts" >Desserts</option>
-            <option value="Coupes de glaces"  >Coupes de glaces</option>
-          </select>
-        <div class="form-group">
-            <label for="titre">Titre:</label>
-            <input type="text" id="titre" name="titre" required>
+<div class="container text-center bg-light w-100 text-dark border rounded-3 p-2"  style="--bs-bg-opacity: .55;">
+        <div class="row">
+            <div class="col-7">
+                <h1>Menu du jour</h1>
+                <form  action={{ url_for('menu')  }} method="POST" class=""  enctype="multipart/form-data" >
+                
+                <div class="form-group">
+                    <label for="titre">Titre:</label>
+                    <input type="text" id="titre" name="titre" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea type="text" id="description" name="description" required>
+                    </textarea>
+                <div class="form-group"><label for="prix">Prix:</label>
+                    <input  type="number" name="prix" min ="1.00" step ="0.10"
+                    value ="10" class="" placeholder="12.50" required /></div>
+                <div class="form-group">
+                    <label for="fecha_presentacion">jour:</label>
+                    <input type="date" id="fecha_presentacion" name="fecha_presentacion" value="{{hoy}}" required></input>
+                </div>
+                <div class="form-group">
+                    <label for="fecha_fin">jusqu'au:</label>
+                    <input type="date" id="fecha_fin" name="fecha_fin" value="{{hoy}}" required></input>
+                </div>
+                <button type="submit">Envoyer</button>
+                </form>
+              </div>
+              <div class="col">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Voir la liste de menus actives
+                </button>
+              </div>
+        </div>  <!-- fin row  -->
+</div>  <!-- container  -->
+
+
+<!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="form-group">
-            <label for="description">Description:</label>
-            <textarea type="text" id="description" name="description" required>
-            </textarea>
-        <div class="form-group"><label for="prix">Prix:</label>
-            <input  type="number" name="prix" min ="1.00" step ="0.10"
-            value ="10" class="" placeholder="12.50" required /></div>
-        <div class="form-group">
-            <label for="fecha_presentacion">jour:</label>
-            <input type="date" id="fecha_presentacion" name="fecha_presentacion" value="{{hoy}}" required></input>
+        <div class="modal-body">
+            <div class="row row-cols-4"> 
+            {% for registro  in registros %}
+            <div class="col-1 bg-white bg-opacity-75 border-right"><a href=""  data-toggle="modal" data-target="#modalConfirma{{ loop.index }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/></a>
+                </svg>
+            </div>
+            <div class="col-4 bg-white bg-opacity-75 border-right">{{registro.titre}}</div>
+            <div class="col-6 bg-white bg-opacity-75 border-right">{{registro.description}}</div>
+            <div class="col-1 bg-white bg-opacity-75 border-right">{{registro.prix|float|round(2)}}</div>
+            {% endfor %}
         </div>
-        <div class="form-group">
-            <label for="fecha_fin">jusqu'au:</label>
-            <input type="date" id="fecha_fin" name="fecha_fin" value="{{hoy}}" required></input>
         </div>
-        <button type="submit">Enviar</button>
-    </form>
-</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 
 
 <!--
-
-    id          = db.Column(db.Integer, primary_key=True)
-    titre       = db.Column(db.String(124), nullable=False)
-    description = db.Column(db.String(256))
-    prix        = db.Column(db.Numeric, nullable=False)
-    image       = db.Column(db.String(128))
-    categorie   = db.Column(db.String(128))
-    ordercat    = db.Column(db.Integer)
-    fecha_created       = db.Column(db.Datetime)
-    fecha_presentacion  = db.Column(db.Datetime)
-    fecha_fin           = db.Column(db.Datetime)
-
-
-
-    <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Formulario Elegante</title>
-</head>
-<body>
-    <h1>Formulario Elegante</h1>
-    <form>
-        <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="mensaje">Mensaje:</label>
-            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
-        </div>
-        <button type="submit">Enviar</button>
-    </form>
-</body>
-</html>
+            <div class="col-5">
+                
+            </div> <!-- fin col-5 --><!--
+            <div class="col-7">           
+                 
+                   
+                </div>
+            </div> <!-- fin col-7  -->
 -->
 {% endblock %}
 

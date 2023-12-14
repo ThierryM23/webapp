@@ -754,11 +754,14 @@ def menu():
         app.logger.info(menu_hoy)
         menu_hoy.save()
         flash("Menu du jour sauvegarder ", "alert-success")
-    #results = []
-    #registros =Product.read_all()
-    #registros = Product.query.order_by(Product.ordercat.asc()).all()
-    #app.logger.info(registros)
-    return render_template('menu.html',hoy=hoy.strftime('%Y-%m-%d'))
+        
+    registros = listamenudia()
+    app.logger.info(len(registros))
+    if len(registros) == 0:
+        registro = Menudia("Menu du jour á ", 16, "Consultez nos serveuses, elles se feront un plaisir de vous renseigner")
+        registros.append(registro)
+    app.logger.info(len(registros))
+    return render_template('menu.html',hoy=hoy.strftime('%Y-%m-%d'), registros=registros)
     
 if __name__ == '__main__':
     with app.app_context():

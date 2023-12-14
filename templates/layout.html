@@ -122,7 +122,7 @@
                         <a class="nav-link" href="{{ url_for('get_gallery') }} ">Gallerie de photos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('location') }} ">Location</a>
+                        <a class="nav-link" href="{{ url_for('location') }} ">Localisation</a>
                     </li>                                                           
             
                 {% if current_user.is_authenticated %}
@@ -136,7 +136,7 @@
                     <a class="nav-link text-primary" data-dismiss="modal"  href="#" data-toggle="modal" data-target="#SubModal">Utilisateurs</a>
                 </span>
                 <span class="nav-item">
-                    <a class="nav-link text-primary"  href="{{ url_for('logout') }}">Logout</a>
+                    <a class="nav-link text-primary"  href="{{ url_for('logout') }}">Sortir</a>
                 </span>
                 {% else %}
                 <span class="nav-item">
