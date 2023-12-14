@@ -6,6 +6,4 @@ venv/**
 config.py
 entorno.sh
 app.log
-
 upfile.py
-app.sqlite
