@@ -1,0 +1,46 @@
+2023-12-14 18:03:39,200 - app - INFO - home
+2023-12-14 18:03:39,201 - app - INFO - 2023-12-14 18:03:39.201881
+2023-12-14 18:03:39,212 - app - INFO - 0
+2023-12-14 18:03:39,213 - app - INFO - home
+2023-12-14 18:03:39,216 - app - INFO - 3
+2023-12-14 18:03:39,216 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-14 18:03:39,218 - app - INFO - 
+2023-12-14 18:03:39,218 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-14 18:03:45,034 - app - INFO - home
+2023-12-14 18:03:45,034 - app - INFO - 2023-12-14 18:03:45.034545
+2023-12-14 18:03:45,034 - app - INFO - 0
+2023-12-14 18:03:45,034 - app - INFO - home
+2023-12-14 18:03:45,034 - app - INFO - 3
+2023-12-14 18:03:45,034 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-14 18:03:45,034 - app - INFO - 
+2023-12-14 18:03:45,034 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-14 18:03:51,269 - app - INFO - userlist
+2023-12-14 18:03:51,271 - app - INFO - [<Cliente: 'Thierry' 'thierry.meunier23@gmail.com'>]
+2023-12-14 18:04:25,499 - app - INFO - register
+2023-12-14 18:04:25,515 - app - INFO - {'username': 'Astrid', 'password': 'nono', 'email': 'laubergerefleurie@gmailcom', 'telefono': '', 'instagram': '', 'facebook': ''}
+2023-12-14 18:04:28,331 - app - INFO - el valor de la variable vrai = True
+2023-12-14 18:04:28,331 - app - INFO - <Cliente: 'Astrid' 'laubergerefleurie@gmailcom'>
+2023-12-14 18:04:28,331 - app - INFO - None
+2023-12-14 18:04:28,348 - app - INFO - <Cliente: 'Astrid' 'laubergerefleurie@gmailcom'>
+2023-12-14 18:04:28,364 - app - INFO - home
+2023-12-14 18:04:28,364 - app - INFO - 2023-12-14 18:04:28.364619
+2023-12-14 18:04:28,364 - app - INFO - 0
+2023-12-14 18:04:28,364 - app - INFO - home
+2023-12-14 18:04:28,369 - app - INFO - 3
+2023-12-14 18:04:28,369 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-14 18:04:28,372 - app - INFO - 
+2023-12-14 18:04:28,372 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-14 18:04:32,732 - app - INFO - menu
+2023-12-14 18:04:32,732 - app - INFO - 2023-12-14
+2023-12-14 18:04:32,732 - app - INFO - 2023-12-14 18:04:32.732605
+2023-12-14 18:04:32,740 - app - INFO - 0
+2023-12-14 18:04:32,740 - app - INFO - 0
+2023-12-14 18:04:32,740 - app - INFO - 1
+2023-12-14 18:05:04,354 - app - INFO - carta
+2023-12-14 18:05:04,356 - app - INFO - <class 'list'>
+2023-12-14 18:05:07,683 - app - INFO - menu
+2023-12-14 18:05:07,683 - app - INFO - 2023-12-14
+2023-12-14 18:05:07,683 - app - INFO - 2023-12-14 18:05:07.683616
+2023-12-14 18:05:07,683 - app - INFO - 0
+2023-12-14 18:05:07,683 - app - INFO - 0
+2023-12-14 18:05:07,683 - app - INFO - 1
