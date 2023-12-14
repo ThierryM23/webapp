@@ -207,15 +207,16 @@ class TextoXpagina(db.Model):
         return TextoXpagina.query.filter_by(pagina=page, seccion=seccion).order_by(TextoXpagina.orden.desc()).first()
 
 #busca en la tabla menu del dia los platos entre fecha_presentacion y fecha_fin
-def listamenudia():
+def listamenudia(tipo: int = 0):
     fecha_actual = dt.datetime.today()
     app.logger.info(fecha_actual)
-    resultados = Menudia.query.filter(db.and_(Menudia.fecha_presentacion <= fecha_actual, Menudia.fecha_fin >= fecha_actual)).all()
-    app.logger.info(len(resultados))
-    # Imprimir los resultados
-    #for resultado in resultados:
-    #    app.logger.info(f"ID: {resultado.id},Titre: {resultado.titre}, Descrip: {resultado.description}, Fecha Presentación: {resultado.fecha_presentacion}, Fecha Fin: {resultado.fecha_fin}")
-        #flash(f"ID: {resultado.id},Titre: {resultado.titre}, Descrip: {resultado.description}, Fecha Presentación: {resultado.fecha_presentacion}, Fecha Fin: {resultado.fecha_fin}", "alert-success")
+    if tipo == 1:
+        resultados = Menudia.query.filter(Menudia.fecha_fin >= fecha_actual).all()
+        app.logger.info(len(resultados))
+    else:
+        resultados = Menudia.query.filter(db.and_(Menudia.fecha_presentacion <= fecha_actual, Menudia.fecha_fin >= fecha_actual)).all()
+        app.logger.info(len(resultados))
+        
     return resultados
 
 def textoxpage(page):
@@ -741,6 +742,19 @@ def subir_foto(id):
         archivo.save(os.path.join(app.config['UPLOAD_FOLDER'], nuevo_nombre))
         return 'Archivo subido exitosamente como {}'.format(nuevo_nombre)
 
+@app.route('/borrarmenu/<int:id>', methods=['GET', 'POST'])
+def borrarmenu(id):
+    nombre_funcion = inspect.currentframe().f_code.co_name
+    app.logger.info(nombre_funcion)
+    app.logger.info(int(id))
+    if int(id)>0:
+        menu = Menudia.query.get(id)
+        app.logger.info(menu)
+        db.session.delete(menu)
+        db.session.commit()
+    return redirect(url_for('menu'))  
+
+
 @app.route('/menu', methods=['GET', 'POST'])
 def menu():
     nombre_funcion = inspect.currentframe().f_code.co_name
@@ -755,10 +769,11 @@ def menu():
         menu_hoy.save()
         flash("Menu du jour sauvegarder ", "alert-success")
         
-    registros = listamenudia()
+    registros = listamenudia(1)
     app.logger.info(len(registros))
     if len(registros) == 0:
         registro = Menudia("Menu du jour á ", 16, "Consultez nos serveuses, elles se feront un plaisir de vous renseigner")
+        registro.id=0
         registros.append(registro)
     app.logger.info(len(registros))
     return render_template('menu.html',hoy=hoy.strftime('%Y-%m-%d'), registros=registros)

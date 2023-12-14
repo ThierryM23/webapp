@@ -8,3 +8,4 @@ entorno.sh
 app.log
 
 upfile.py
+app.sqlite
