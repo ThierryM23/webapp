@@ -54,7 +54,7 @@
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item text-end">
                                     <span class="badge fs-5 bg-secondary"
-                                        >{{ row['prix']|float|round(2) }}€</span
+                                        >{{ "€ {:,.2f}".format(row['prix']) }}</span
                                     >
                                     </li>
                                 </ul>
@@ -89,7 +89,7 @@
                             <ul class="list-group list-group-flush">
                             <li class="list-group-item text-end">
                                 <span class="badge fs-5 bg-secondary"
-                                >{{ row['prix']|float|round(2) }}€</span
+                                >{{ "€ {:,.2f}".format(row['prix']) }}</span
                                 >
                             </li>
                             </ul>

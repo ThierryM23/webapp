@@ -172,3 +172,61 @@
 2023-12-14 18:20:57,925 - app - INFO - 0
 2023-12-14 18:20:57,925 - app - INFO - 0
 2023-12-14 18:20:57,925 - app - INFO - 1
+2023-12-18 11:15:13,219 - app - INFO - home
+2023-12-18 11:15:13,221 - app - INFO - 2023-12-18 11:15:13.221213
+2023-12-18 11:15:13,227 - app - INFO - 0
+2023-12-18 11:15:13,234 - app - INFO - home
+2023-12-18 11:15:13,239 - app - INFO - 3
+2023-12-18 11:15:13,240 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-18 11:15:13,240 - app - INFO - 
+2023-12-18 11:15:13,240 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-18 11:15:15,980 - app - INFO - menuqr
+2023-12-18 11:15:30,826 - app - INFO - menuqr
+2023-12-18 11:16:05,255 - app - INFO - menuqr
+2023-12-18 11:16:14,420 - app - INFO - home
+2023-12-18 11:16:14,420 - app - INFO - 2023-12-18 11:16:14.420574
+2023-12-18 11:16:14,423 - app - INFO - 0
+2023-12-18 11:16:14,423 - app - INFO - home
+2023-12-18 11:16:14,424 - app - INFO - 3
+2023-12-18 11:16:14,424 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-18 11:16:14,425 - app - INFO - 
+2023-12-18 11:16:14,425 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-18 11:16:56,740 - app - INFO - home
+2023-12-18 11:16:56,741 - app - INFO - 2023-12-18 11:16:56.740631
+2023-12-18 11:16:56,744 - app - INFO - 0
+2023-12-18 11:16:56,745 - app - INFO - home
+2023-12-18 11:16:56,746 - app - INFO - 3
+2023-12-18 11:16:56,747 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-18 11:16:56,747 - app - INFO - 
+2023-12-18 11:16:56,747 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-18 11:17:06,479 - app - INFO - home
+2023-12-18 11:17:06,480 - app - INFO - 2023-12-18 11:17:06.480308
+2023-12-18 11:17:06,483 - app - INFO - 0
+2023-12-18 11:17:06,484 - app - INFO - home
+2023-12-18 11:17:06,485 - app - INFO - 3
+2023-12-18 11:17:06,485 - app - INFO - [<TextoXpagina 12>, <TextoXpagina 13>, <TextoXpagina 14>]
+2023-12-18 11:17:06,486 - app - INFO - 
+2023-12-18 11:17:06,486 - app - INFO - Notre carte! Une cuisine  traditionnelle de terroir composée principalement de produits frais de la région. Tous les dimanches midi, cuisses de grenouilles et gratin dauphinois.
+2023-12-18 11:18:54,675 - app - INFO - menuqr
+2023-12-18 11:19:02,179 - app - INFO - menu
+2023-12-18 11:19:02,180 - app - INFO - 2023-12-18
+2023-12-18 11:19:02,180 - app - INFO - 2023-12-18 11:19:02.180848
+2023-12-18 11:19:02,186 - app - INFO - 0
+2023-12-18 11:19:02,187 - app - INFO - 0
+2023-12-18 11:19:02,187 - app - INFO - 1
+2023-12-18 11:19:26,558 - app - INFO - carta
+2023-12-18 11:19:26,562 - app - INFO - <class 'list'>
+2023-12-18 11:22:57,441 - app - INFO - carta
+2023-12-18 11:22:57,442 - app - INFO - <class 'list'>
+2023-12-18 11:28:13,826 - app - INFO - menu
+2023-12-18 11:28:13,827 - app - INFO - 2023-12-18
+2023-12-18 11:28:13,827 - app - INFO - 2023-12-18 11:28:13.827684
+2023-12-18 11:28:13,831 - app - INFO - 0
+2023-12-18 11:28:13,831 - app - INFO - 0
+2023-12-18 11:28:13,831 - app - INFO - 1
+2023-12-18 11:30:45,590 - app - INFO - menu
+2023-12-18 11:30:45,591 - app - INFO - 2023-12-18
+2023-12-18 11:30:45,591 - app - INFO - 2023-12-18 11:30:45.591793
+2023-12-18 11:30:45,606 - app - INFO - 0
+2023-12-18 11:30:45,606 - app - INFO - 0
+2023-12-18 11:30:45,608 - app - INFO - 1

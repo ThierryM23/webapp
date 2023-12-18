@@ -112,7 +112,7 @@ class Product(db.Model):
     idcat       = db.Column(db.Integer, nullable=False)
     titre       = db.Column(db.String(124), nullable=False)
     description = db.Column(db.String(256))
-    prix        = db.Column(db.Numeric, nullable=False)
+    prix        = db.Column(db.Numeric(precision=10, scale=2), nullable=False)
     image       = db.Column(db.String(128))
     categorie   = db.Column(db.String(128))
     ordercat    = db.Column(db.Integer)
@@ -120,7 +120,7 @@ class Product(db.Model):
     def __init__(self, idcat, titre, prix, description=None, image='fondo.png', categorie=None, ordercat=None ):
         self.idcat = idcat
         self.titre = titre
-        self.prix = prix      
+        self.prix = prix    
         self.description = description
         self.image = image
         self.categorie = categorie
@@ -774,6 +774,8 @@ def menu():
     if len(registros) == 0:
         registro = Menudia("Menu du jour á ", 16, "Consultez nos serveuses, elles se feront un plaisir de vous renseigner")
         registro.id=0
+        registro.fecha_presentacion = "par default"
+        registro.fecha_fin = "Toujours"
         registros.append(registro)
     app.logger.info(len(registros))
     return render_template('menu.html',hoy=hoy.strftime('%Y-%m-%d'), registros=registros)
@@ -781,7 +783,7 @@ def menu():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-        user1 = User("Thierry","nono")
+        user1 = User("Thierry","1234")
         db.session.add(user1)
         db.session.commit()
     app.run()

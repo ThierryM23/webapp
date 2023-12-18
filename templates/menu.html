@@ -144,7 +144,7 @@ button:hover {
                 </div>
                 <div class="col">{{registro.titre}}</div>
                 <div class="col ">{{registro.description}}</div>
-                <div class="col-1 ">{{registro.prix|float|round(2)}}</div>
+                <div class="col-1 ">{{ "€ {:,.2f}".format(registro['prix']) }}</div>
                 <div class="col-4 t">de {{registro.fecha_presentacion}} <br>a {{registro.fecha_fin}}</div>
                 </form>
             
