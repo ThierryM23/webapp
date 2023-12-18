@@ -783,7 +783,7 @@ def menu():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-        user1 = User("Thierry","1234")
+        user1 = User("Albert","1234")
         db.session.add(user1)
         db.session.commit()
     app.run()
