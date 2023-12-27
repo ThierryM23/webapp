@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, send_from_
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, current_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.exceptions import HTTPException
 from enum import Enum
 
 import os
@@ -33,14 +34,13 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
-ALLOWED_EXTENSIONS_IMAGES = {'png', 'jpg', 'jpeg', 'gif'}
 
+ALLOWED_EXTENSIONS_IMAGES = {'png', 'jpg', 'jpeg', 'gif'}
 def allowed_file_images(filename):
-    # Define una función para verificar la extensión del archivo si es necesario
-    
+    # Define una función para verificar la extensión del archivo si es necesarioa
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS_IMAGES
 
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -259,7 +259,7 @@ def register():
         try:
             User.save(newuser)
             app.logger.info(newuser) 
-            flash("Vous etes enregistrer", "alert-success")
+            flash("Vous etes enregistrer {0}".format(newuser.username), "alert-success")
         except Exception as err:
             app.logger.info(f"Unexpected {err=}, {type(err)=}")
             flash(f"Unexpected {err=}, {type(err)=}","alert-warning")
@@ -484,13 +484,13 @@ def upload():
         print("{} is the file name".format(upload.filename))
         filename = upload.filename
         # This is to verify files are supported
-        ext = os.path.splitext(filename)[1]
-        if (ext == ".jpg") or (ext == ".png") or (ext == ".jpeg"):
+        #ext = os.path.splitext(filename)[1]
+        if allowed_file_images(filename):
+        #if (ext == ".jpg") or (ext == ".png") or (ext == ".jpeg"):
             app.logger.info("File supported moving on...")
-           
             destination = "/".join([target, filename])            
-            app.logger.info("Accept incoming file:", filename)
-            app.logger.info("Save it to:", destination)
+            app.logger.info("Accept incoming file: %s ", filename)
+            app.logger.info("Save it to: %s ", destination)
             upload.save(destination)
             
         else:
@@ -779,7 +779,24 @@ def menu():
         registros.append(registro)
     app.logger.info(len(registros))
     return render_template('menu.html',hoy=hoy.strftime('%Y-%m-%d'), registros=registros)
+
+
+@app.errorhandler(HTTPException)
+def handle_exception(e):
+    response = "Erreur {0}: {1} : {2}".format(e.code, e.name, e.description)
+    print(response)
+    app.logger.info(response)
+    flash(response, "alert-danger")
+    #return response
+    return redirect(url_for('home'))
     
+
+
+
+
+
+
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
