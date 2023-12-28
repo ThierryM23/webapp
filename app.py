@@ -708,13 +708,17 @@ def carta_up(id):
             producto = Product.query.get(id) 
             nom_origen = producto.image 
             producto.image = 'fondo.png'
-            app.logger.info(producto)
-            db.session.add(producto)
-            db.session.commit()
-            flash("Photo éliminé ","alert-success")
-            app.logger.info(" se borro la image del plato numero " + id)
-            #eliminamos del bucket de AWS el archivo
-            s3.del_image('myappauberge', 'photos/' + nom_origen )
+            if nom_origen != producto.image:
+                app.logger.info(producto)
+                db.session.add(producto)
+                db.session.commit()
+                flash("Photo éliminé ","alert-success")
+                app.logger.info(" se borro la image del plato numero %s" , id)
+                #eliminamos del bucket de AWS el archivo
+                s3.del_image('myappauberge', 'photos/' + nom_origen )
+            else:
+                flash("Cette photo ne peut etre eliminé ","alert-success")
+                app.logger.info(" no se puede borrar Fondo.png")
             app.logger.info("******** carta_up <string:id>  POST  Accion = eliminer  fin  *************")
             return redirect(url_for('carta'))  
         else:
@@ -783,7 +787,14 @@ def menu():
 
 @app.errorhandler(HTTPException)
 def handle_exception(e):
-    response = "Erreur {0}: {1} : {2}".format(e.code, e.name, e.description)
+    if e.code == 404:
+        response= "Erreur 404 : Not Found : L'URL demandée n'a pas été trouvée sur le serveur. Si vous avez saisi l'URL manuellement, veuillez vérifier votre orthographe et réessayer."
+    elif e.code ==405:
+        response = "Erreur 405 : Méthode non autorisée : La méthode n'est pas autorisée pour l'URL demandée."
+    elif e.code== 500:
+        response = "Erreur 500 - Erreur interne du serveur"
+    else:
+        response = "Erreur {0}: {1} : {2}".format(e.code, e.name, e.description)
     print(response)
     app.logger.info(response)
     flash(response, "alert-danger")

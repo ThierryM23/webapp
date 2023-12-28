@@ -87,10 +87,10 @@
             var y = 0;
             var currentY = window.pageYOffset;
             if (y < currentY) {
-                document.querySelector('#customNavbar').classList.remove('navbar-dark', 'bg-dark',  'fixed-theme');
+                document.querySelector('#customNavbar').classList.remove('navbar-dark', 'bg-dark',  'fixed-theme', 'bg-opacity-50');
                 document.querySelector('#customNavbar').classList.add('navbar-dark', 'bg-dark', 'fixed-theme');
             } else if (y == currentY) {
-                document.querySelector('#customNavbar').classList.remove('navbar-dark', 'bg-dark', 'fixed-theme');
+                document.querySelector('#customNavbar').classList.remove('navbar-dark', 'bg-dark', 'fixed-theme', 'bg-opacity-50');
                 document.querySelector('#customNavbar').classList.add('navbar-dark', 'bg-dark',  'fixed-theme');
             }
         }
@@ -103,7 +103,7 @@
     
 <div class="header">
     <!-- navbar navbar-expand-md navbar-light bg-opacity-50 fixed-top -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="customNavbar">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top  bg-dark bg-opacity-50" id="customNavbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"><img src="https://myappauberge.s3.us-east-2.amazonaws.com/general/logoauberge.jpeg"  width="120px" alt="Website Python"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
