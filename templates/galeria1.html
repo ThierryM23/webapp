@@ -109,12 +109,22 @@
             <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
                 <input class="btn btn-primary" id="file-picker" type="file" name="file" accept="image/*" multiple>
                 <div class="text-light" id="msg"></div>
-                <input class="btn btn-primary" type="submit" value="Upload!" id="upload-button">
+                <button type="submit" class="btn btn-primary" type="submit" value="upload" id="upload-button">Ajouter photos á la Gallerie</button>
             </form>
-
         </div>
+        {% for result in results if result.seccion == 1 %} 
+        <div class="row">
+            <p class="text-light">
+            <form id="upload-form" action="{{ url_for('formabout', id=result['id'])  }}" method="POST" enctype="multipart/form-data">
+                <label for="archivo" class="btn btn-warning" >Photo de fond d''ecran</label>
+                <input class="btn btn-warning" id="file-picker" type="file"  name="archivo" id="fileInput{{ result['id']}}" accept="image/*" multiple>
+                <div class="text-light" id="msg"></div>
+                <button type="submit" class="btn btn-warning btn-sm"  name="accion" value="upload" >Envoyer photo pour le fond d ecran</button>
+            </form>       
+        </div>
+        {% endfor %}
     {% endif %}
-{% endif%}
+{% endif %}
 {% endblock %}
 
 {% block script %}  

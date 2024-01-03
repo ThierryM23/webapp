@@ -501,12 +501,25 @@ def upload():
 
 @app.route('/gallery')
 def get_gallery():
-    # Directorio de imágenes
-    image_directory = os.path.join(app.root_path, 'static/images/gallery')
-    # Obtener la lista de archivos en el directorio
-    #images = [os.path.join('/static/images/gallery', file) for file in os.listdir(image_directory) if file.endswith(('.jpg', '.png', '.jpeg'))]
+    results = textoxpage('get_gallery')
+    if len(results) == 0:
+        app.logger.info("NO encontro texto por esta pagina")
+        result = TextoXpagina('get_gallery',1,1)         
+        result.titulo = "titulo no usado"
+        result.texto = "texto no usado"
+        result.image="Auberge-devant.jpg"
+        bg_image="Auberge-devant.jpg"
+        TextoXpagina.save(result)
+        results = textoxpage('get_gallery')
+        results.append(result)        
+    else:
+        app.logger.info(results)       
+        app.logger.info(results[0].titulo)
+        app.logger.info(results[0].texto)
+        titulo: str = results[0].titulo
+        bg_image = results[0].image 
     images = s3.listar('myappauberge','gallery')
-    return render_template('galeria1.html', titulo="Gallery Page", func='gallery', images=images, bg_image="Auberge-devant.jpg")
+    return render_template('galeria1.html', titulo="Gallery Page", func='gallery', images=images, bg_image=bg_image, results=results)
 
 @app.route('/galerie')
 def galerie():
@@ -548,13 +561,14 @@ def add_gallery():
             app.logger.info("funccion add_gallery boton ok")
             app.logger.info("Guardar el archivo")
             image_directory = os.path.join(app.root_path, 'static/images/gallery')
-            destination = 'static/images/gallery/' + data["filename"]
+            #destination = 'static/images/gallery/' + data["filename"]
+            destination = os.path.join(app.config['CLIENT_IMAGES'], data["filename"])
             s3.upload_file(file_name=destination, bucket='myappauberge', object_name='gallery/'+ data["filename"])
             flash("Image sauvegardé ", "alert-success")
             # Obtener la lista de archivos en el directorio
             #images = [os.path.join('/static/images/gallery', file) for file in os.listdir(image_directory) if file.endswith(('.jpg', '.png', '.jpeg'))]
             images = s3.listar('myappauberge','gallery')
-    return render_template('galeria1.html', titulo="Gallery Page", func='gallery', images=images)
+    return redirect(url_for('get_gallery'))  # render_template('galeria1.html', titulo="Gallery Page", func='gallery', images=images)
 
 @app.route('/borrar_gallery/<id>', methods=['POST'])
 def borrar_gallery(id):
@@ -563,12 +577,12 @@ def borrar_gallery(id):
     app.logger.info(id)
     image_names = s3.listar('myappauberge','gallery')
     idreal = int(id) -1
-    app.logger.info(image_names[int(idreal)])   
+    app.logger.info(image_names[int(idreal)])
     file = image_names[int(idreal)].split("amazonaws.com/")
     app.logger.info(file[0])
     app.logger.info(file[1])
     s3.del_image('myappauberge',file[1])
-    return redirect(url_for('get_gallery')) 
+    return redirect(url_for('get_gallery'))
 
 
 @app.route('/menuqr', methods=['GET', 'POST'])
