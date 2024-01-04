@@ -1,7 +1,14 @@
-import os
+
+import logging
 import boto3
 from botocore.exceptions import ClientError
+import os
+from dotenv import load_dotenv
 
+
+load_dotenv()
+consumer_key = os.getenv('AWS_ACCESS_KEY_ID')
+consumer_secret = os.getenv('AWS_SECRET_ACCESS_KEY')
 
 
 def upload_file(file_name, bucket, object_name=None):
@@ -16,23 +23,27 @@ def upload_file(file_name, bucket, object_name=None):
     if object_name is None:
         object_name = os.path.basename(file_name)
 
-    # Upload the file
-    s3_client = boto3.client('s3')
+    # Upload the file   \app\static\images\photos\fondo.png
+    s3_client = boto3.client('s3',aws_access_key_id=consumer_key,
+                  aws_secret_access_key=consumer_secret)
     try:
         s3_client.upload_file(file_name, bucket, object_name, ExtraArgs={'ACL': 'public-read'})       
     except ClientError as e:
         print(e)
         return False
+    except FileNotFoundError as f:
+        print(f)
     return True
 
-def listar(bucket: str, directorio: str |None) -> list:
+def listar(bucket, directorio=None):
     """
     Args:
         bucket (_type_): bucket to List
         directorio (_type_, optional): directory under the bucket. Defaults to None.
     """
     # Crear una instancia de cliente S3
-    s3 = boto3.client('s3')
+    s3 = boto3.client('s3',aws_access_key_id=consumer_key,
+                  aws_secret_access_key=consumer_secret)
     imagenes = []
     # Nombre del bucket S3 y directorio si hay
     if directorio  is None:
@@ -48,7 +59,7 @@ def listar(bucket: str, directorio: str |None) -> list:
     return imagenes
 
 
-def del_image(bucket: str, file_key: str) -> bool:
+def del_image(bucket, file_key):
     """_summary_
 
     Args:
@@ -59,7 +70,8 @@ def del_image(bucket: str, file_key: str) -> bool:
         Boolean: True if delete the file False if not
     """
     # Borrar el archivo
-    s3 = boto3.client('s3')   
+    s3 = boto3.client('s3',aws_access_key_id=consumer_key,
+                  aws_secret_access_key=consumer_secret)   
     try:
         s3.delete_object(Bucket=bucket, Key=file_key)       
     except ClientError as e:
@@ -73,35 +85,22 @@ def del_image(bucket: str, file_key: str) -> bool:
 if __name__ == '__main__':
     # Nombre del archivo local y el nombre que tendría en S3
     filename = 'fondo.png'
-    archivo_local = 'static/images/photos' + filename
+    archivo_local = "static/images/photos/{}".format(filename)
     nombre_en_s3 = 'photos/'  + filename
-    directory = None
-    directory = 'photos'
+    directorio = None
+    directorio = 'photos'
     imagenes = []
 
     # Nombre del bucket de S3
     nombre_bucket = 'myappauberge'
         
-    #response = upload_file(archivo_local, nombre_bucket, nombre_en_s3)
-    #print(response)
-
-    # Imprimir la lista de archivos 
-    response = listar(nombre_bucket,directory)
+    response = upload_file(archivo_local, nombre_bucket, nombre_en_s3)
     print(response)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    # Imprimir la lista de archivos 
+    response = listar(nombre_bucket,directorio)
+    print(response)
 
 
 
