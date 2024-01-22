@@ -11,6 +11,14 @@ import logging
 import datetime as dt
 import boto3
 import s3upload as s3
+import psycopg2
+from dotenv import load_dotenv
+
+load_dotenv()
+db_user = os.getenv('DB_USER')
+db_clave = os.getenv('DB_CLAVE')
+db_base = os.getenv('DB_BASE')
+
 
 __author__ = "ThierryM23"
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -28,8 +36,10 @@ app.config['UPLOAD_FOLDER'] = APP_ROOT + "/static/images/photos"
 app.config['GENERAL_FOLDER'] = APP_ROOT + "/static/images"
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'app.sqlite')
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'app.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
+#= os.getenv('DB_BASE')
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -65,16 +75,16 @@ app.logger.setLevel(log_level)
 
 # Definición de la tabla User
 class User(db.Model, UserMixin):
-    __tablename__ = 'user'
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(120))
-    password_hash = db.Column(db.String(120), nullable=False)
-    tipo = db.Column(db.Integer)  # 1 para admin y 2 para cliente
-    telefono = db.Column(db.String(120))
-    instagram = db.Column(db.String(120))
-    facebook = db.Column(db.String(120))
-    password = db.Column(db.String(120))
+    __tablename__   = 'users'
+    id              = db.Column(db.Integer, primary_key=True)
+    username        = db.Column(db.String(80), unique=True, nullable=False)
+    email           = db.Column(db.String(120))
+    password_hash   = db.Column(db.String(256), nullable=False)
+    tipo            = db.Column(db.Integer)  # 1 para admin y 2 para cliente
+    telefono        = db.Column(db.String(120))
+    instagram       = db.Column(db.String(120))
+    facebook        = db.Column(db.String(120))
+    password        = db.Column(db.String(120))
     
     def __init__(self, username, email, password_hash):
         self.username = username
@@ -88,8 +98,13 @@ class User(db.Model, UserMixin):
         app.logger.info(self.id)
         if not self.id:
             db.session.add(self)
-        db.session.commit()
-    
+        try:
+            db.session.commit()
+            app.logger.info("Commit User perfecto {0}".format(self))
+            #flash("Commit TextoxPagina perfecto {0}".format(self), "alert-success")
+        except Exception as err:
+            app.logger.info(f"User Unexpected {err=}, {type(err)=}")
+            flash(f"User Unexpected {err=}, {type(err)=}", "alert-success")
 
 # Definición de la tabla Product
 # Definir la clase "Product" que representa la tabla de productos
@@ -131,7 +146,13 @@ class Product(db.Model):
         app.logger.info(self.id)
         if not self.id:
             db.session.add(self)
-        db.session.commit()
+        try:
+            db.session.commit()
+            app.logger.info("Commit Product perfecto {0}".format(self))
+            #flash("Commit TextoxPagina perfecto {0}".format(self), "alert-success")
+        except Exception as err:
+            app.logger.info(f"Product Unexpected {err=}, {type(err)=}")
+            flash(f"Product Unexpected {err=}, {type(err)=}", "alert-success")
 
     def delete(self):
         db.session.delete(self)
@@ -152,7 +173,7 @@ class Product(db.Model):
         return Product.query.filter_by(categorie=categorie).all()
 
 class Menudia(db.Model):
-    __tablename__ = "menu_dia" 
+    __tablename__       = "menu_dia" 
     id                  = db.Column(db.Integer, primary_key=True)
     titre               = db.Column(db.String(124), nullable=False)
     description         = db.Column(db.String(256))
@@ -178,10 +199,16 @@ class Menudia(db.Model):
     def save(self):
         if not self.id:
             db.session.add(self)
-        db.session.commit()
+        try:
+            db.session.commit()
+            app.logger.info("Commit MenuDia perfecto {0}".format(self))
+            #flash("Commit TextoxPagina perfecto {0}".format(self), "alert-success")
+        except Exception as err:
+            app.logger.info(f"Menudia Unexpected {err=}, {type(err)=}")
+            flash(f"Unexpected {err=}, {type(err)=}", "alert-success")
 
 class TextoXpagina(db.Model):
-    __tablename__ = "textoxpagina" 
+    __tablename__       = "textoxpagina" 
     id                  = db.Column(db.Integer, primary_key=True)
     pagina              = db.Column(db.String, nullable=False)
     seccion             = db.Column(db.Integer, nullable=False)
@@ -200,7 +227,13 @@ class TextoXpagina(db.Model):
     def save(self):
         if not self.id:
             db.session.add(self)
-        db.session.commit()
+        try:
+            db.session.commit()
+            app.logger.info("Commit TextoxPagina perfecto {0}".format(self))
+            #flash("Commit TextoxPagina perfecto {0}".format(self), "alert-success")
+        except Exception as err:
+            app.logger.info(f"textoxpagina Unexpected {err=}, {type(err)=}")
+            flash(f"Unexpected {err=}, {type(err)=}", "alert-success")
         
     @staticmethod
     def get_orden(page, seccion):
@@ -209,12 +242,14 @@ class TextoXpagina(db.Model):
 #busca en la tabla menu del dia los platos entre fecha_presentacion y fecha_fin
 def listamenudia(tipo: int = 0):
     fecha_actual = dt.datetime.today()
+    str_fecha_hora = fecha_actual.strftime("%Y-%m-%d %H:%M:%S")
+    str_fecha = fecha_actual.strftime("%Y-%m-%d")
     app.logger.info(fecha_actual)
     if tipo == 1:
-        resultados = Menudia.query.filter(Menudia.fecha_fin >= fecha_actual).all()
+        resultados = Menudia.query.filter(Menudia.fecha_fin >= str_fecha).all()
         app.logger.info(len(resultados))
     else:
-        resultados = Menudia.query.filter(db.and_(Menudia.fecha_presentacion <= fecha_actual, Menudia.fecha_fin >= fecha_actual)).all()
+        resultados = Menudia.query.filter(db.and_(Menudia.fecha_presentacion <= str_fecha_hora, Menudia.fecha_fin >= str_fecha_hora)).all()
         app.logger.info(len(resultados))
         
     return resultados
@@ -225,8 +260,18 @@ def textoxpage(page):
     app.logger.info(len(resultados))
     return resultados
 
+
+
 with app.app_context():
     db.create_all()
+
+
+"""
+*************************************************************
+Routes
+*************************************************************
+
+"""
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -610,7 +655,7 @@ def carta():
     return render_template("carta.html", titulo="Bienvenue", results=registros_dict)
 
 @app.route('/newplat', methods=['POST'])
-def newplat():    
+def newplat():
     if request.method == "POST": 
         nombre_funcion = inspect.currentframe().f_code.co_name
         app.logger.info(nombre_funcion)
@@ -623,10 +668,11 @@ def newplat():
         if data['categorie'] == "Coupes de glaces": order = 5  
         nomplat = data["titre"]
         descrip = data['descripcion']
-        product_new = Product(int(data['idcat']), nomplat, float(data['prix']),descrip, 'fondo.png', data['categorie'], int(order))
+        product_new = Product(idcat=int(data['idcat']), titre=str(nomplat), prix=float(data['prix']),description=str(descrip), image='fondo.png', categorie=str(data['categorie']), ordercat=int(order))
         app.logger.info(product_new)
-        db.session.add(product_new) # Agregar objeto a la solicitud
-        db.session.commit() 
+        Product.save(product_new)
+        #db.session.add(product_new) # Agregar objeto a la solicitud
+        #db.session.commit() 
         app.logger.info(product_new)
         flash("Plat ajouté á la carte","alert-success")
         return redirect(url_for('carta'))
@@ -711,7 +757,8 @@ def carta_up(id):
             app.logger.info(producto)
             db.session.delete(producto)
             db.session.commit()
-            s3.del_image('myappauberge', 'photos/' + nom_origen )
+            if nom_origen != "fondo.png":
+                s3.del_image('myappauberge', 'photos/' + nom_origen )
             flash("Plat éliminé de la carte","alert-success")
             app.logger.info(" se borro el registro numero " + id)
             app.logger.info("******** carta_up <string:id>  POST  Accion = delete  fin  *************")
@@ -819,14 +866,11 @@ def handle_exception(e):
 
 
 
-
-
-
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-        user1 = User("Albert","1234")
-        db.session.add(user1)
-        db.session.commit()
+    
+    #pgloader sqlite://app2.sqlite2 postgresql://thierry:123456@localhost/auberge
+    #with app.app_context():
+    #    db.create_all()
     app.run()
+    
     

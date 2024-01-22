@@ -3,12 +3,16 @@ import logging
 import boto3
 from botocore.exceptions import ClientError
 import os
+import stat
 from dotenv import load_dotenv
 
 
 load_dotenv()
 consumer_key = os.getenv('AWS_ACCESS_KEY_ID')
 consumer_secret = os.getenv('AWS_SECRET_ACCESS_KEY')
+consumer_region = os.getenv('AWS_REGION')
+consumer_db = os.getenv('AWS_S3_BUCKET_DB')
+nombre_bucket = os.getenv('S3_BUCKET')
 
 
 def upload_file(file_name, bucket, object_name=None):
@@ -80,6 +84,52 @@ def del_image(bucket, file_key):
     return True
 
 
+def bajarbase():
+    file_name = "app.sqlite"
+    bucket = nombre_bucket 
+    object_name = "database/app.sqlite"
+    
+    s3 = boto3.client('s3',aws_access_key_id=consumer_key,
+                  aws_secret_access_key=consumer_secret)
+   #S3.Client.download_file(Bucket, Key, Filename
+    
+    try:
+        s3.download_file(bucket, object_name, file_name)
+        perm = os.stat(file_name)
+        print(perm.st_mode)
+        os.chmod(file_name, stat.S_IREAD | stat.S_IWRITE | stat.S_IEXEC | stat.S_IRUSR)
+        perm = os.stat(file_name)
+        print(perm.st_mode)         
+    except ClientError as e:
+        if e.response['Error']['Code'] == 'PermissionError':
+            print("Error de permisos: Asegúrate de que el archivo no esté siendo utilizado por otro proceso.")
+        else:
+            print(f"Error inesperado: {e}")
+        return False
+    return True
+
+
+def subirbase():    
+    file_name = "app.sqlite"
+    bucket = nombre_bucket 
+    object_name = "database/app.sqlite"
+    s3 = boto3.client('s3',aws_access_key_id=consumer_key,
+                  aws_secret_access_key=consumer_secret)
+   #S3.Client.upload_file(Filename, Bucket, Key
+    try:
+        s3.upload_file(file_name, bucket, object_name)    
+        perm = os.stat(file_name)
+        print(perm.st_mode)
+        os.chmod(file_name, stat.S_IREAD | stat.S_IWRITE | stat.S_IEXEC | stat.S_IRUSR)
+        perm = os.stat(file_name)
+        print(perm.st_mode)   
+    except ClientError as e:
+        print(e)
+        return False
+    except FileNotFoundError as f:
+        print(f)
+    return True
+
 
 
 if __name__ == '__main__':
@@ -90,10 +140,18 @@ if __name__ == '__main__':
     directorio = None
     directorio = 'photos'
     imagenes = []
-
     # Nombre del bucket de S3
-    nombre_bucket = 'myappauberge'
-        
+    file_name = "app.sqlite"
+    response = bajarbase()
+    print(response)
+    perm = os.stat(file_name)
+    print(perm.st_mode)
+    os.chmod(file_name, stat.S_IREAD | stat.S_IWRITE | stat.S_IEXEC | stat.S_IRUSR)
+    perm = os.stat(file_name)
+    print(perm.st_mode)
+    
+    
+    """
     response = upload_file(archivo_local, nombre_bucket, nombre_en_s3)
     print(response)
 
@@ -102,9 +160,7 @@ if __name__ == '__main__':
     response = listar(nombre_bucket,directorio)
     print(response)
 
-
-
-
+"""
 #print(archivo_local)
 #print(nombre_en_s3)
 

@@ -8,3 +8,6 @@ entorno.sh
 app.log
 upfile.py
 .env
+app.sqlite
+app2.sqlite2
+backupBasePost.sql
