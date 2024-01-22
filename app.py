@@ -256,7 +256,7 @@ def listamenudia(tipo: int = 0):
 
 def textoxpage(page):
     app.logger.info(page)
-    resultados = TextoXpagina.query.filter(TextoXpagina.pagina == page).order_by(TextoXpagina.orden).all()
+    resultados = TextoXpagina.query.filter(TextoXpagina.pagina == page).order_by(TextoXpagina.seccion).all()
     app.logger.info(len(resultados))
     return resultados
 
