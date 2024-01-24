@@ -164,7 +164,7 @@ class Product(db.Model):
     # Función para leer todos los productos de la base de datos
     @classmethod
     def read_all(cls):
-        return cls.query.all()        
+        return cls.query.order_by(cls.ordercat, cls.idcat).all()        #el order
     @staticmethod
     def get_by_id(id):
         return Product.query.get(id)
@@ -345,7 +345,7 @@ def logout():
     app.logger.info(nombre_funcion)
     logout_user()
     app.logger.info("logout")
-    return redirect(url_for('home')) #render_template("home.html", titulo="Bienvenue")
+    return redirect(url_for('home'))
 
 @app.route('/userlist')
 @login_required
@@ -366,16 +366,25 @@ def products():
     user_products = Product.query.filter_by(user_id=user_id).all()
     return render_template('products.html', products=user_products)
 
+"""@app.route('/favicon.ico')
+def favicon():
+    nombre_funcion = inspect.currentframe().f_code.co_name
+    app.logger.info(nombre_funcion)
+    pass
+"""
+
 @app.route('/')
 def home():
     nombre_funcion = inspect.currentframe().f_code.co_name
     app.logger.info(nombre_funcion)
     registros = listamenudia()
+    app.logger.info(registros)
     if len(registros) == 0:
         registro = Menudia("Menu du jour á ", 16, "Consultez nos serveuses, elles se feront un plaisir de vous renseigner")
         registros.append(registro)
     
     results = textoxpage('home')
+    app.logger.info(results)
     if len(results) == 0: # no deberia entrar aca nunca ###################################
         app.logger.info("NO encontro texto por esta pagina")
         result = TextoXpagina('home',1,1) 
@@ -389,8 +398,10 @@ def home():
         app.logger.info(results)       
         app.logger.info(results[0].titulo)
         app.logger.info(results[0].texto)
-        bg_image = results[0].image 
+        bg_image = results[0].image
     
+    app.logger.info(bg_image)
+    app.logger.info("fin home")
     return render_template("home.html", titulo="Bienvenue", registros=registros, results=results, bg_image=bg_image)
 
 @app.route('/about')
@@ -410,7 +421,8 @@ def about():
         app.logger.info(results[0].texto)
         titulo: str = results[0].titulo
         bg_image = results[0].image
-    
+    app.logger.info(results[0].titulo)
+    app.logger.info("fin About")
     return render_template('about.html', titulo=titulo, bg_image=bg_image, results=results)
 
 @app.route('/about/<string:id>', methods=['POST'])
@@ -636,7 +648,8 @@ def menuqr():
     app.logger.info(nombre_funcion)
     #results = []
     #registros =Product.read_all()
-    registros = Product.query.order_by(Product.ordercat.asc()).all()
+    registros = Product.query.order_by(Product.ordercat.asc(), Product.idcat.asc()).all()
+    #ordercat,idcat
     #app.logger.info(registros)
     return render_template('menuqr.html', resultados=registros)
     
@@ -848,6 +861,8 @@ def menu():
 
 @app.errorhandler(HTTPException)
 def handle_exception(e):
+    client_ip = request.remote_addr
+    print(client_ip)
     if e.code == 404:
         response= "Erreur 404 : Not Found : L'URL demandée n'a pas été trouvée sur le serveur. Si vous avez saisi l'URL manuellement, veuillez vérifier votre orthographe et réessayer."
     elif e.code ==405:
@@ -857,13 +872,13 @@ def handle_exception(e):
     else:
         response = "Erreur {0}: {1} : {2}".format(e.code, e.name, e.description)
     print(response)
+    
+    app.logger.info("errorhandler(HTTPException)")
     app.logger.info(response)
     flash(response, "alert-danger")
     #return response
-    return redirect(url_for('home'))
+    return response #redirect(url_for('home'))
     
-
-
 
 
 if __name__ == '__main__':
