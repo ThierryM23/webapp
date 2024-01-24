@@ -310,7 +310,7 @@ def register():
             flash(f"Unexpected {err=}, {type(err)=}","alert-warning")
              
         
-    return redirect(url_for('home'))      
+    return redirect(url_for('home'))
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -336,7 +336,7 @@ def signup():
         flash('vous n''êtes pas autorisé!','alert-warning')
         app.logger.info("login failed")
         return redirect(url_for('home'))
-    return redirect(url_for('home'))        
+    return redirect(url_for('home'))
 
 @app.route('/logout')
 @login_required
