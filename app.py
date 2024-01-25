@@ -561,7 +561,7 @@ def get_gallery():
     results = textoxpage('get_gallery')
     if len(results) == 0:
         app.logger.info("NO encontro texto por esta pagina")
-        result = TextoXpagina('get_gallery',1,1)         
+        result = TextoXpagina('get_gallery',1,1)
         result.titulo = "titulo no usado"
         result.texto = "texto no usado"
         result.image="Auberge-devant.jpg"
@@ -646,12 +646,28 @@ def borrar_gallery(id):
 def menuqr():
     nombre_funcion = inspect.currentframe().f_code.co_name
     app.logger.info(nombre_funcion)
-    #results = []
-    #registros =Product.read_all()
+    results = textoxpage('menuqr')
+    if len(results) == 0:
+        app.logger.info("NO encontro texto por esta pagina")
+        titulo: str = 'Carte Saisonnière "Hivernale"'
+        result = TextoXpagina('menuqr',1,1)
+        result.titulo = titulo
+        result.texto = "Si tu veux faire une presentation de la carte"
+        result.image = "Entree_principL.jpeg"
+        bg_image = result.image
+        results.append(result)
+        TextoXpagina.save(result)
+       
+    else:
+        app.logger.info(results)       
+        app.logger.info(results[0].titulo)
+        app.logger.info(results[0].texto)
+        titulo: str = results[0].titulo
+        bg_image = results[0].image
+    app.logger.info(results[0].titulo)
+    app.logger.info("fin About")
     registros = Product.query.order_by(Product.ordercat.asc(), Product.idcat.asc()).all()
-    #ordercat,idcat
-    #app.logger.info(registros)
-    return render_template('menuqr.html', resultados=registros)
+    return render_template('menuqr.html', titulo=titulo, bg_image=bg_image, results=results, resultados=registros)
     
 @app.route('/carta')
 @login_required
