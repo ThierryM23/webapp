@@ -1,5 +1,5 @@
 {% extends "layout.html" %} 
-{% block title %}Search{% endblock %} 
+{% block title %}Notre carte{% endblock %} 
 {% block head %} 
 {{ super() }}
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -58,11 +58,8 @@
         {% endif %} 
 
 
-
-
-
-
-        {% set count = namespace(value=1) %} {% set vars = {'categorie': 'Entrées'} %}
+        {% set count = namespace(value=1) %} 
+        {% set vars = {'categorie': 'Entrées'} %}
     <div class="row align-items-center rounded-3 bg-danger m-2">
         <div class="col-12 col-sm-3">
             <img  src="static/images/gallery/chicken-caesar-salad-6sq.jpg" height="65" />

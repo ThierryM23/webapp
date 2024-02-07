@@ -1,0 +1,85 @@
+{% extends "layout.html" %} 
+{% block title %}{% endblock %} 
+{% block head %} 
+{{ super() }}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Libre+Baskerville&display=swap"
+  rel="stylesheet"
+/>
+<title>Plug and Play entre dos listas</title>
+<style>
+    /* Estilos básicos para mejorar la apariencia */
+    #lista1, #lista2, #lista3, #lista4 {
+        list-style-type: none;
+        padding: 10px;
+        border: 1px solid #ccc;
+        width: 80%;
+        margin: 10px;
+        cursor: pointer;
+       
+       
+        
+         
+    }
+</style>
+<style type="text/css"></style>
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container text-center">
+        <div class="row">
+          <div class="col">
+                <ul id="lista2" ondrop="drop(event)" ondragover="allowDrop(event)"  class="bg-light text-dark border rounded-3 p-2"  style="--bs-bg-opacity: .75;">
+                    <!-- Puedes dejarla vacía o agregar elementos si lo deseas -->
+                    <li draggable="true" ondragstart="drag(event)">linea de la lista 2</li>
+                </ul>
+                
+                <ul id="lista3" ondrop="drop(event)" ondragover="allowDrop(event)"  class="bg-light text-dark border rounded-3 p-2"  style="--bs-bg-opacity: .75;">
+                    <li draggable="true" ondragstart="drag(event)">linea de la lista 3</li>
+                </ul>
+                <ul id="lista4" ondrop="drop(event)" ondragover="allowDrop(event)"  class="bg-light text-dark border rounded-3 p-2"  style="--bs-bg-opacity: .75;">
+                    <li draggable="true" ondragstart="drag(event)">linea de la lista 4</li>
+                </ul>
+          </div>
+          <div class="col">
+            
+            <ul id="lista1" ondrop="drop(event)" ondragover="allowDrop(event)"  class="bg-light text-dark border rounded-3 p-2"  style="--bs-bg-opacity: .75;">
+                {% for row in registros %} 
+                <li draggable="true" ondragstart="drag(event)">{{ row['titre'] }}</li>
+               
+                {% endfor %}
+                {% for row in registros %} 
+                <option value="{{ row['id'] }}">{{ row['titre'] }}</option>
+                {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+   
+
+
+
+
+    <script>
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.textContent);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var newItem = document.createElement("li");
+            newItem.appendChild(document.createTextNode(data));
+            event.target.appendChild(newItem);
+        }
+    </script>
+{% endblock %}
+

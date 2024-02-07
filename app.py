@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, flash, abort
 from flask_sqlalchemy import SQLAlchemy
+
 from flask_login import LoginManager, UserMixin, login_user, login_required, current_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.exceptions import HTTPException
@@ -239,6 +240,60 @@ class TextoXpagina(db.Model):
     def get_orden(page, seccion):
         return TextoXpagina.query.filter_by(pagina=page, seccion=seccion).order_by(TextoXpagina.orden.desc()).first()
 
+
+
+class MenuFormula(db.Model):
+    __tablename__       = "menuformula" 
+    id                  = db.Column(db.Integer, primary_key=True)
+    nombremenu          = db.Column(db.String, nullable=False)
+    prix                = db.Column(db.Numeric, nullable=False)
+    boisson             = db.Column(db.String)
+    plus                = db.Column(db.String)
+    fecha_created       = db.Column(db.String)
+   
+    def __init__(self, nombremenu, prix, fecha_created=dt.datetime.today() ):
+        self.nombremenu = nombremenu
+        self.prix = prix
+        self.fecha_created = fecha_created   
+
+    def save(self):
+        if not self.id:
+            db.session.add(self)
+        db.session.commit()
+
+class ListaFormula(db.Model):
+    __tablename__       = "listaformula" 
+    id                  = db.Column(db.Integer, primary_key=True)
+    idmenu              = db.Column(db.Integer, nullable=False)
+    idseccion           = db.Column(db.Integer, nullable=False)
+    seccion             = db.Column(db.String, nullable=False)
+    nombre              = db.Column(db.String, nullable=False)
+    fecha_created       = db.Column(db.String)
+   
+    def __init__(self, idmenu, idseccion, seccion, nombre, fecha_created=dt.datetime.today() ):
+        self.idmenu = idmenu
+        self.idseccion = idseccion
+        self.seccion = seccion
+        self.nombre = nombre
+        self.fecha_created = fecha_created
+        
+    def save(self):
+        if not self.id:
+            db.session.add(self)
+        db.session.commit()
+
+# Define la clase que representa la vista
+class MenuView(db.Model):
+    __tablename__ = 'menuview'
+    id                  = db.Column(db.Integer, primary_key=True)
+    nombremenu          = db.Column(db.String, nullable=False)
+    prix                = db.Column(db.Numeric, nullable=False)
+    boisson             = db.Column(db.String)
+    plus                = db.Column(db.String)
+    idseccion           = db.Column(db.Integer)
+    seccion             = db.Column(db.String)
+    nombre              = db.Column(db.String)
+
 #busca en la tabla menu del dia los platos entre fecha_presentacion y fecha_fin
 def listamenudia(tipo: int = 0):
     fecha_actual = dt.datetime.today()
@@ -260,8 +315,6 @@ def textoxpage(page):
     app.logger.info(len(resultados))
     return resultados
 
-
-
 with app.app_context():
     db.create_all()
 
@@ -270,12 +323,14 @@ with app.app_context():
 *************************************************************
 Routes
 *************************************************************
+registros = Product.query.order_by(Product.ordercat.asc(), Product.idcat.asc()).all()
+    registros = db.session.query(Product).order_by(Product.ordercat.asc(), Product.idcat.asc
 
 """
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return db.session.get(User,user_id)  #User.query.get(int(user_id))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -403,6 +458,90 @@ def home():
     app.logger.info(bg_image)
     app.logger.info("fin home")
     return render_template("home.html", titulo="Bienvenue", registros=registros, results=results, bg_image=bg_image)
+
+@app.route('/plugui/<string:id>', methods=['GET', 'POST'])  
+@login_required 
+def plugui(id):
+    nombre_funcion = inspect.currentframe().f_code.co_name
+    app.logger.info(nombre_funcion)
+    #borrar el registro ID dem MenuFormula 
+    menuaborrar = MenuFormula.query.get(int(id))
+    flash("Le {0} a été effacé".format(menuaborrar.nombremenu), "alert-success")
+    db.session.delete(menuaborrar)
+    db.session.commit()
+    listaaborrar = db.session.query(ListaFormula).filter_by(idmenu=int(id)).all()
+    for registro in listaaborrar:
+        db.session.delete(registro)
+    db.session.commit()
+    
+    titulo = "Creation de menu"
+    listaM = MenuFormula.query.all()
+    menuseccion= {}
+    for menu in listaM:
+        menuseccion[menu.id] = db.session.query(ListaFormula).filter_by(idmenu=menu.id).order_by(ListaFormula.idseccion.asc()).all() 
+    registros = db.session.query(Product).order_by(Product.ordercat.asc(), Product.idcat.asc()).all()
+    return render_template("grid.html", titulo=titulo, registros=registros, menuseccion=menuseccion, listaM = listaM)
+
+@app.route('/plug', methods=['GET', 'POST'])  
+@login_required 
+def plug():
+    nombre_funcion = inspect.currentframe().f_code.co_name
+    app.logger.info(nombre_funcion)
+    menu = ""
+    if request.method == 'POST':
+        lista2 = []
+        lista3 = []
+        lista4 = []
+        # Guardar los elementos de la Lista 1
+        menu = request.form["lmname"] + "  á " + request.form["prix"] + "\n"
+        new_menu = MenuFormula(request.form["lmname"], float(request.form["prix"]))
+        if "boisson" in request.form: new_menu.boisson = request.form["boisson"]
+        if "plus" in request.form: new_menu.plus = request.form["plus"]
+        MenuFormula.save(new_menu)
+        newid = new_menu.id
+        
+        if "list2" in request.form:
+            menu += request.form["l2name"] +  "\n"
+            elementos_lista2 = request.form.getlist('list2')
+            for elemento in elementos_lista2:
+                menu += "  ou " + elemento +  "\n"
+                newelemento = ListaFormula(newid, 1, request.form["l2name"], elemento )
+                ListaFormula.save(newelemento)
+                lista2.append(elemento)
+        print(lista2)
+        if "list3" in request.form:
+            menu += request.form["l3name"] +  "\n"
+            elementos_lista3 = request.form.getlist('list3')
+            for elemento in elementos_lista3:
+                menu += "  ou " +elemento +  "\n"
+                newelemento = ListaFormula(newid, 2, request.form["l3name"], elemento )
+                ListaFormula.save(newelemento)
+                lista3.append(elemento)
+        print(lista3)
+        if "list4" in request.form:
+            menu += request.form["l4name"] +  "\n"
+            elementos_lista4 = request.form.getlist('list4')
+            for elemento in elementos_lista4:
+                menu += "  ou " +elemento +  "\n"
+                newelemento = ListaFormula(newid, 3, request.form["l4name"], elemento )
+                ListaFormula.save(newelemento)
+                lista4.append(elemento)
+        print(lista4)
+        menu += request.form["boisson"] +  "\n"
+        flash("Le '{0}' a été créé".format(new_menu.nombremenu), "alert-success")
+        
+    print(menu)
+    titulo = "Creation de menu"
+    listaM = MenuFormula.query.all()
+    menuseccion= {}
+    for menu in listaM:
+        menuseccion[menu.id] = db.session.query(ListaFormula).filter_by(idmenu=menu.id).order_by(ListaFormula.idseccion.asc()).all() 
+    #datos = MenuView.query.all()  #MenuView.query.filter_by(id=id).all()  query.order_by(cls.ordercat, cls.idcat).all()
+    #registros = Product.query.order_by(Product.ordercat.asc(), Product.idcat.asc()).all()
+    registros = db.session.query(Product).order_by(Product.ordercat.asc(), Product.idcat.asc()).all()
+    return render_template("grid.html", titulo=titulo, registros=registros, menuseccion=menuseccion, listaM = listaM)
+    #return render_template("grid2.html", titulo=titulo, registros=registros, datos=datos, listaM = listaM)
+    
 
 @app.route('/about')
 def about():
@@ -902,6 +1041,7 @@ if __name__ == '__main__':
     #pgloader sqlite://app2.sqlite2 postgresql://thierry:123456@localhost/auberge
     #with app.app_context():
     #    db.create_all()
-    app.run()
+    #app.run()
+    app.run(debug=True)
     
     

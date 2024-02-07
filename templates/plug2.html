@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copiar elementos entre listas</title>
+  <style>
+    .container {
+      display: flex;
+    }
+    ul {
+      list-style-type: none;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin: 10px;
+    }
+    button {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <ul id="lista1" class="lista" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <li draggable="true" ondragstart="drag(event)">Elemento 1</li>
+    <li draggable="true" ondragstart="drag(event)">Elemento 2</li>
+    <li draggable="true" ondragstart="drag(event)">Elemento 3</li>
+  </ul>
+
+  <button onclick="copiar('lista1', 'lista2')"> &rarr; </button>
+  <button onclick="copiar('lista2', 'lista1')"> &larr; </button>
+  <button onclick="copiar('lista2', 'lista3')"> &rarr; </button>
+  <button onclick="copiar('lista3', 'lista2')"> &larr; </button>
+  <button onclick="copiar('lista3', 'lista4')"> &rarr; </button>
+  <button onclick="copiar('lista4', 'lista3')"> &larr; </button>
+
+  <ul id="lista2" class="lista" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <!-- Lista vacía inicialmente -->
+  </ul>
+
+  <ul id="lista3" class="lista" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <!-- Lista vacía inicialmente -->
+  </ul>
+
+  <button onclick="copiar('lista4', 'lista3')"> &larr; </button>
+
+  <ul id="lista4" class="lista" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <!-- Lista vacía inicialmente -->
+  </ul>
+</div>
+
+<script>
+  function allowDrop(event) {
+    event.preventDefault();
+  }
+
+  function drag(event) {
+    event.dataTransfer.setData("text", event.target.textContent);
+  }
+
+  function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+    var draggedElement = document.createElement("li");
+    draggedElement.textContent = data;
+    event.target.appendChild(draggedElement);
+  }
+
+  function copiar(origenId, destinoId) {
+    var origen = document.getElementById(origenId);
+    var destino = document.getElementById(destinoId);
+
+    // Copiar el último elemento de la lista de origen a la lista de destino
+    if (origen.childElementCount > 0) {
+      var elementoCopiado = origen.lastElementChild.cloneNode(true);
+      destino.appendChild(elementoCopiado);
+    }
+  }
+</script>
+
+</body>
+</html>

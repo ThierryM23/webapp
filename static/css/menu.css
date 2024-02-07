@@ -1,0 +1,325 @@
+.pricing-table {
+    margin: 0 10px;
+    text-align: center;
+    background: #e95846;
+    max-width: 300px;
+    float: left;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    -webkit-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
+.pricing-table:hover {
+    -webkit-transform: scale(1.06);
+    -ms-transform: scale(1.06);
+    -o-transform: scale(1.06);
+    transform: scale(1.06);
+}
+
+.pricing-title {
+    color: #FFF;
+    background: #e95846;
+    padding: 20px 0;
+    font-size: 2em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.pricing-table.recommended .pricing-title {
+    background: #2db3cb;
+}
+
+.pricing-table.recommended .pricing-action {
+    background: #2db3cb;
+}
+
+.pricing-table .price {
+    background: rgb(233, 88, 70);
+    font-size: 1.6em;
+    font-weight: 700;
+    padding: 5px 0;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.pricing-table .price sup {
+    font-size: 0.4em;
+    position: relative;
+    left: 5px;
+}
+
+.table-list {
+    background: #FFF;
+    color: #403d3a;
+    padding-left: 0px;
+}
+
+.table-list li {
+    font-size: 1.4em;
+    font-weight: 700;
+    padding: 12px 8px;
+    list-style-type: none;
+    background: rgba(255, 228, 196, .4);
+}
+
+.table-list li:before {
+
+    font-family: 'FontAwesome';
+    color: rgba(38, 156, 128, 0.9);
+    display: inline-block;
+    position: relative;
+    right: 5px;
+    font-size: 16px;
+}
+
+.table-list li span {
+    font-weight: 400;
+}
+
+.table-list li span.unlimited {
+    color: #FFF;
+    background: #e95846;
+    font-size: 0.9em;
+    padding: 5px 7px;
+    display: inline-block;
+    -webkit-border-radius: 38px;
+    -moz-border-radius: 38px;
+    border-radius: 38px;
+}
+
+
+.table-list li:nth-child(2n) {
+    background: #F0F0F0;
+}
+
+.table-list hr {
+    height: 3px;
+    width: 100%;
+    text-align: center;
+    background-color: #ff0000;
+    border: none;
+}
+
+.table-buy {
+    background: #FFF;
+    padding: 15px;
+    text-align: left;
+    overflow: hidden;
+}
+
+.table-buy p {
+    float: left;
+    color: #37353a;
+    font-weight: 700;
+    font-size: 2.4em;
+}
+
+.table-buy p sup {
+    font-size: 0.5em;
+    position: relative;
+    left: 5px;
+}
+
+.table-buy .pricing-action {
+    float: right;
+    color: #FFF;
+    background: #e95846;
+    padding: 10px 16px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 1.4em;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    -webkit-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
+.table-buy .pricing-action:hover {
+    background: #cf4f3e;
+}
+
+.recommended .table-buy .pricing-action:hover {
+    background: #228799;
+}
+
+/** ================
+* Responsive
+===================*/
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    .pricing-wrapper {
+        width: 768px;
+    }
+
+    .pricing-table {
+        width: 236px;
+    }
+
+    .table-list li {
+        font-size: 1.3em;
+    }
+
+}
+
+@media only screen and (max-width: 767px) {
+    .pricing-wrapper {
+        width: 420px;
+    }
+
+    .pricing-table {
+        display: block;
+        float: none;
+        margin: 0 0 20px 0;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .pricing-wrapper {
+        width: 300px;
+    }
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-rows: 30px 30px 250px  30px 250px  30px 250px 30px 30px;
+    grid-template-columns: 3fr 1fr 3fr ;
+    grid-gap: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    justify-items: center;
+    align-items: center;
+    grid-template-areas:
+    "area1 area1 area1"
+    "area2 area2 area3"
+    "area4 area5 area6"
+    "area4   .   area7"
+    "area4 area8 area9"
+    "area4 .  area10"
+    "area4 area11 area12"
+    "area13 area14 area15"
+    "area16 area17 area18";
+    }
+
+.grid-item1 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area1;
+}
+
+.grid-item2 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area2;
+}
+
+.grid-item3 {
+    background: background: rgba(255, 255, 255, 0.5);;
+    text-align: center;
+    
+    grid-area: area3;
+}
+.grid-item4 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area4;
+}
+.grid-item5 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area5;
+}
+
+.grid-item6 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area6;
+}
+
+.grid-item7 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area7;
+}
+
+.grid-item8 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area8;
+}
+
+.grid-item9 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area9;
+}
+
+.grid-item10 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area10;
+}
+
+.grid-item11 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area11;
+}
+
+.grid-item12 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area12;
+}
+
+.grid-item13 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area13;
+}
+
+.grid-item14 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area14;
+}
+.grid-item15 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area15;
+}
+
+.grid-item16 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area16;
+    }
+.grid-item17 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area17;
+    }
+.grid-item18 {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    
+    grid-area: area18;
+    }

@@ -1,0 +1,37 @@
+<!-- Generacion de la vista de un Menu -->
+{%for menu in listaM %}
+{% set men = namespace(value=menu.id)%}
+{% set count = namespace(value=1) %}
+{% set isf = namespace(value=1)%} 
+<div class="modal" id="SubModal{{menu.id}}" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="pricing-table">
+        <h3 class="pricing-title">{{menu.nombremenu }}</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <ul class="table-list">
+        
+        {% for lista in menuseccion[menu.id] %}
+                {% if loop.first %}
+                    {% set isf.value = lista.idseccion %}         
+                        <li><p>{{lista.seccion}} au choix</p>
+                        
+                {%endif %}
+
+                {% if isf.value == lista.idseccion %}
+                        <h6> <p>{{lista.nombre}} </p>  </h6>             
+                {% else %}
+                    {% set isf.value = lista.idseccion %}   
+                            <hr>
+                        <li><p>{{lista.seccion}} au choix</p>
+                        <h6> <p>{{lista.nombre}}  </p>  </h6>             
+                {% endif %}
+                                    
+        {% endfor%}
+        </ul>    
+
+        <div class="price">{{ "€ {:,.2f}".format(menu['prix']) }}</div>
+    </div>
+</div>
+{% endfor %}
+
