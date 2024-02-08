@@ -9,12 +9,24 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
+
+        {% if menu.plus !="" or menu.boisson!=""  %}
+        <ul class="table-list">
+            {% if menu.plus !="" %}
+            <li><h5> <p> {{menu.plus}}</p></h5>
+            {% endif %}
+            {% if menu.boisson !="" %}
+            <li> <h5><p> {{menu.boisson}}</p></h5>
+            {% endif %}
+        </ul>
+        {% endif %}
         <ul class="table-list">
         
+        {% set cantidad_registros = menuseccion[menu.id]|length %}
         {% for lista in menuseccion[menu.id] %}
                 {% if loop.first %}
                     {% set isf.value = lista.idseccion %}         
-                        <li><p>{{lista.seccion}} au choix</p>
+                        <li><p>{{lista.seccion}}{% if lista.cant!=1 %} au choix {% endif %}</p>
                         
                 {%endif %}
 
@@ -23,7 +35,7 @@
                 {% else %}
                     {% set isf.value = lista.idseccion %}   
                             <hr>
-                        <li><p>{{lista.seccion}} au choix</p>
+                        <li><p>{{lista.seccion}}{% if lista.cant!=1 %} au choix {% endif %}</p>
                         <h6> <p>{{lista.nombre}}  </p>  </h6>             
                 {% endif %}
                                     

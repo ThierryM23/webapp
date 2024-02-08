@@ -8,6 +8,7 @@
   href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Libre+Baskerville&display=swap"
   rel="stylesheet"
 />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
 <style>
   .row {
     font-family: "Libre Baskerville", serif;
@@ -24,6 +25,15 @@
     <h1 class="bg-light  text-center text-dark border rounded-3 p-2"  style="--bs-bg-opacity: .55;">
     <!--h1 class="text-white row"-->{{ result.titulo }}</h1>{% endif %}       
     <div class="bg-light w-100 text-dark border rounded-3 p-2"  style="--bs-bg-opacity: .55;"> <b>{{ result.texto}}</b></div>
+    <div class="bg-light w-100 text-dark border rounded-3 p-2"  style="--bs-bg-opacity: .55;"> <b><div class="row">
+        {% for elem in listaM %}
+       <div class="col"> 
+            <a class="btn btn-danger" data-dismiss="modal"  href="#" data-toggle="modal" data-target="#SubModal{{elem['id'] }}">{{ elem['nombremenu'] }}</a>
+        </div>
+        
+        {% endfor%}  
+      </div></b>
+    </div>
     {% endfor %}
     
 
@@ -138,4 +148,9 @@
         </div>
     </div>
 </div>
+
+
+
+{% include 'partials/_menuformula.html' %}
+
 {% endblock %}

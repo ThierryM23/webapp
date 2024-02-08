@@ -269,13 +269,15 @@ class ListaFormula(db.Model):
     seccion             = db.Column(db.String, nullable=False)
     nombre              = db.Column(db.String, nullable=False)
     fecha_created       = db.Column(db.String)
+    cant                = db.Column(db.Integer)
    
-    def __init__(self, idmenu, idseccion, seccion, nombre, fecha_created=dt.datetime.today() ):
+    def __init__(self, idmenu, idseccion, seccion, nombre, fecha_created=dt.datetime.today(),cant=0 ):
         self.idmenu = idmenu
         self.idseccion = idseccion
         self.seccion = seccion
         self.nombre = nombre
         self.fecha_created = fecha_created
+        self.cant = cant
         
     def save(self):
         if not self.id:
@@ -477,10 +479,25 @@ def plugui(id):
     titulo = "Creation de menu"
     listaM = MenuFormula.query.all()
     menuseccion= {}
+    resultadoseccion = {}
     for menu in listaM:
         menuseccion[menu.id] = db.session.query(ListaFormula).filter_by(idmenu=menu.id).order_by(ListaFormula.idseccion.asc()).all() 
+        resultadoseccion[menu.id] = db.session.query(ListaFormula.idmenu, ListaFormula.idseccion, db.func.count().label('cantidad_elementos')) \
+                .filter_by(idmenu=menu.id) \
+                .group_by(ListaFormula.idmenu, ListaFormula.idseccion) \
+                .order_by(ListaFormula.idmenu, ListaFormula.idseccion) \
+                .all()
+               
+    for menu in listaM:
+       for i in range(len(menuseccion[menu.id])):
+            for j in range(len(resultadoseccion[menu.id])):
+                if menuseccion[menu.id][i].idseccion == resultadoseccion[menu.id][j].idseccion:
+                    menuseccion[menu.id][i].cant= resultadoseccion[menu.id][j][2]
+                    
+      
     registros = db.session.query(Product).order_by(Product.ordercat.asc(), Product.idcat.asc()).all()
     return render_template("grid.html", titulo=titulo, registros=registros, menuseccion=menuseccion, listaM = listaM)
+
 
 @app.route('/plug', methods=['GET', 'POST'])  
 @login_required 
@@ -534,14 +551,25 @@ def plug():
     titulo = "Creation de menu"
     listaM = MenuFormula.query.all()
     menuseccion= {}
+    resultadoseccion = {}
     for menu in listaM:
         menuseccion[menu.id] = db.session.query(ListaFormula).filter_by(idmenu=menu.id).order_by(ListaFormula.idseccion.asc()).all() 
-    #datos = MenuView.query.all()  #MenuView.query.filter_by(id=id).all()  query.order_by(cls.ordercat, cls.idcat).all()
-    #registros = Product.query.order_by(Product.ordercat.asc(), Product.idcat.asc()).all()
+        resultadoseccion[menu.id] = db.session.query(ListaFormula.idmenu, ListaFormula.idseccion, db.func.count().label('cantidad_elementos')) \
+                .filter_by(idmenu=menu.id) \
+                .group_by(ListaFormula.idmenu, ListaFormula.idseccion) \
+                .order_by(ListaFormula.idmenu, ListaFormula.idseccion) \
+                .all()
+               
+    for menu in listaM:
+       for i in range(len(menuseccion[menu.id])):
+            for j in range(len(resultadoseccion[menu.id])):
+                if menuseccion[menu.id][i].idseccion == resultadoseccion[menu.id][j].idseccion:
+                    menuseccion[menu.id][i].cant= resultadoseccion[menu.id][j][2]
+                       
     registros = db.session.query(Product).order_by(Product.ordercat.asc(), Product.idcat.asc()).all()
     return render_template("grid.html", titulo=titulo, registros=registros, menuseccion=menuseccion, listaM = listaM)
     #return render_template("grid2.html", titulo=titulo, registros=registros, datos=datos, listaM = listaM)
-    
+    #menuseccion[14][0].idseccion
 
 @app.route('/about')
 def about():
@@ -806,7 +834,25 @@ def menuqr():
     app.logger.info(results[0].titulo)
     app.logger.info("fin About")
     registros = Product.query.order_by(Product.ordercat.asc(), Product.idcat.asc()).all()
-    return render_template('menuqr.html', titulo=titulo, bg_image=bg_image, results=results, resultados=registros)
+    
+    listaM = MenuFormula.query.all()
+    menuseccion= {}
+    resultadoseccion = {}
+    for menu in listaM:
+        menuseccion[menu.id] = db.session.query(ListaFormula).filter_by(idmenu=menu.id).order_by(ListaFormula.idseccion.asc()).all() 
+        resultadoseccion[menu.id] = db.session.query(ListaFormula.idmenu, ListaFormula.idseccion, db.func.count().label('cantidad_elementos')) \
+                .filter_by(idmenu=menu.id) \
+                .group_by(ListaFormula.idmenu, ListaFormula.idseccion) \
+                .order_by(ListaFormula.idmenu, ListaFormula.idseccion) \
+                .all()
+               
+    for menu in listaM:
+       for i in range(len(menuseccion[menu.id])):
+            for j in range(len(resultadoseccion[menu.id])):
+                if menuseccion[menu.id][i].idseccion == resultadoseccion[menu.id][j].idseccion:
+                    menuseccion[menu.id][i].cant= resultadoseccion[menu.id][j][2]
+    
+    return render_template('menuqr.html', titulo=titulo, bg_image=bg_image, results=results, resultados=registros, listaM= listaM, menuseccion=menuseccion)
     
 @app.route('/carta')
 @login_required
