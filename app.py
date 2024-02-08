@@ -19,6 +19,7 @@ load_dotenv()
 db_user = os.getenv('DB_USER')
 db_clave = os.getenv('DB_CLAVE')
 db_base = os.getenv('DB_BASE')
+environment = os.getenv('ENVIRONMENT')
 
 
 __author__ = "ThierryM23"
@@ -241,7 +242,6 @@ class TextoXpagina(db.Model):
         return TextoXpagina.query.filter_by(pagina=page, seccion=seccion).order_by(TextoXpagina.orden.desc()).first()
 
 
-
 class MenuFormula(db.Model):
     __tablename__       = "menuformula" 
     id                  = db.Column(db.Integer, primary_key=True)
@@ -461,8 +461,8 @@ def home():
     app.logger.info("fin home")
     return render_template("home.html", titulo="Bienvenue", registros=registros, results=results, bg_image=bg_image)
 
-@app.route('/plugui/<string:id>', methods=['GET', 'POST'])  
-@login_required 
+@app.route('/plugui/<string:id>', methods=['GET', 'POST'])
+@login_required
 def plugui(id):
     nombre_funcion = inspect.currentframe().f_code.co_name
     app.logger.info(nombre_funcion)
@@ -481,26 +481,14 @@ def plugui(id):
     menuseccion= {}
     resultadoseccion = {}
     for menu in listaM:
-        menuseccion[menu.id] = db.session.query(ListaFormula).filter_by(idmenu=menu.id).order_by(ListaFormula.idseccion.asc()).all() 
-        resultadoseccion[menu.id] = db.session.query(ListaFormula.idmenu, ListaFormula.idseccion, db.func.count().label('cantidad_elementos')) \
-                .filter_by(idmenu=menu.id) \
-                .group_by(ListaFormula.idmenu, ListaFormula.idseccion) \
-                .order_by(ListaFormula.idmenu, ListaFormula.idseccion) \
-                .all()
-               
-    for menu in listaM:
-       for i in range(len(menuseccion[menu.id])):
-            for j in range(len(resultadoseccion[menu.id])):
-                if menuseccion[menu.id][i].idseccion == resultadoseccion[menu.id][j].idseccion:
-                    menuseccion[menu.id][i].cant= resultadoseccion[menu.id][j][2]
-                    
+        menuseccion[menu.id] = db.session.query(ListaFormula).filter_by(idmenu=menu.id).order_by(ListaFormula.idseccion.asc()).all()               
       
     registros = db.session.query(Product).order_by(Product.ordercat.asc(), Product.idcat.asc()).all()
     return render_template("grid.html", titulo=titulo, registros=registros, menuseccion=menuseccion, listaM = listaM)
 
 
-@app.route('/plug', methods=['GET', 'POST'])  
-@login_required 
+@app.route('/plug', methods=['GET', 'POST'])
+@login_required
 def plug():
     nombre_funcion = inspect.currentframe().f_code.co_name
     app.logger.info(nombre_funcion)
@@ -522,7 +510,7 @@ def plug():
             elementos_lista2 = request.form.getlist('list2')
             for elemento in elementos_lista2:
                 menu += "  ou " + elemento +  "\n"
-                newelemento = ListaFormula(newid, 1, request.form["l2name"], elemento )
+                newelemento = ListaFormula(newid, 1, request.form["l2name"], elemento,cant=len(elementos_lista2) )
                 ListaFormula.save(newelemento)
                 lista2.append(elemento)
         print(lista2)
@@ -531,7 +519,7 @@ def plug():
             elementos_lista3 = request.form.getlist('list3')
             for elemento in elementos_lista3:
                 menu += "  ou " +elemento +  "\n"
-                newelemento = ListaFormula(newid, 2, request.form["l3name"], elemento )
+                newelemento = ListaFormula(newid, 2, request.form["l3name"], elemento,cant=len(elementos_lista3) )
                 ListaFormula.save(newelemento)
                 lista3.append(elemento)
         print(lista3)
@@ -540,7 +528,7 @@ def plug():
             elementos_lista4 = request.form.getlist('list4')
             for elemento in elementos_lista4:
                 menu += "  ou " +elemento +  "\n"
-                newelemento = ListaFormula(newid, 3, request.form["l4name"], elemento )
+                newelemento = ListaFormula(newid, 3, request.form["l4name"], elemento,cant=len(elementos_lista4) )
                 ListaFormula.save(newelemento)
                 lista4.append(elemento)
         print(lista4)
@@ -554,18 +542,7 @@ def plug():
     resultadoseccion = {}
     for menu in listaM:
         menuseccion[menu.id] = db.session.query(ListaFormula).filter_by(idmenu=menu.id).order_by(ListaFormula.idseccion.asc()).all() 
-        resultadoseccion[menu.id] = db.session.query(ListaFormula.idmenu, ListaFormula.idseccion, db.func.count().label('cantidad_elementos')) \
-                .filter_by(idmenu=menu.id) \
-                .group_by(ListaFormula.idmenu, ListaFormula.idseccion) \
-                .order_by(ListaFormula.idmenu, ListaFormula.idseccion) \
-                .all()
                
-    for menu in listaM:
-       for i in range(len(menuseccion[menu.id])):
-            for j in range(len(resultadoseccion[menu.id])):
-                if menuseccion[menu.id][i].idseccion == resultadoseccion[menu.id][j].idseccion:
-                    menuseccion[menu.id][i].cant= resultadoseccion[menu.id][j][2]
-                       
     registros = db.session.query(Product).order_by(Product.ordercat.asc(), Product.idcat.asc()).all()
     return render_template("grid.html", titulo=titulo, registros=registros, menuseccion=menuseccion, listaM = listaM)
     #return render_template("grid2.html", titulo=titulo, registros=registros, datos=datos, listaM = listaM)
@@ -776,7 +753,7 @@ def add_gallery():
                 print('borrar el archivo')
                 flash("Image non sauvegardé ", "alert-warning")
             except:
-                app.logger.info("error a borrar archivo (no existe por exemple)")            
+                app.logger.info("error a borrar archivo (no existe por exemple)")
             #cargar las imagenes 
             image_directory = os.path.join(app.root_path, 'static/images/gallery')
             #images = [os.path.join('/static/images/gallery', file) for file in os.listdir(image_directory) if file.endswith(('.jpg', '.png', '.jpeg'))]
@@ -839,18 +816,7 @@ def menuqr():
     menuseccion= {}
     resultadoseccion = {}
     for menu in listaM:
-        menuseccion[menu.id] = db.session.query(ListaFormula).filter_by(idmenu=menu.id).order_by(ListaFormula.idseccion.asc()).all() 
-        resultadoseccion[menu.id] = db.session.query(ListaFormula.idmenu, ListaFormula.idseccion, db.func.count().label('cantidad_elementos')) \
-                .filter_by(idmenu=menu.id) \
-                .group_by(ListaFormula.idmenu, ListaFormula.idseccion) \
-                .order_by(ListaFormula.idmenu, ListaFormula.idseccion) \
-                .all()
-               
-    for menu in listaM:
-       for i in range(len(menuseccion[menu.id])):
-            for j in range(len(resultadoseccion[menu.id])):
-                if menuseccion[menu.id][i].idseccion == resultadoseccion[menu.id][j].idseccion:
-                    menuseccion[menu.id][i].cant= resultadoseccion[menu.id][j][2]
+        menuseccion[menu.id] = db.session.query(ListaFormula).filter_by(idmenu=menu.id).order_by(ListaFormula.idseccion.asc()).all()
     
     return render_template('menuqr.html', titulo=titulo, bg_image=bg_image, results=results, resultados=registros, listaM= listaM, menuseccion=menuseccion)
     
@@ -914,7 +880,7 @@ def carta_up(id):
 
             if fichier and allowed_file_images(fichier.filename):
                 # Genera un nuevo nombre de archivo para evitar conflictos
-                fichier.save(os.path.join(app.config['UPLOAD_FOLDER'], fichier.filename))  
+                fichier.save(os.path.join(app.config['UPLOAD_FOLDER'], fichier.filename))
                 nombre_destino = 'photos/' + fichier.filename
                 nombre_origen = 'static/images/photos/' + fichier.filename
                 app.logger.info(fichier.filename) 
@@ -925,7 +891,7 @@ def carta_up(id):
                 db.session.commit() # Hacer commit a la solicitud
                 
                 s3.upload_file(nombre_origen,'myappauberge',nombre_destino)
-                app.logger.info("actualizado el campo de image en la base por el product " + id) 
+                app.logger.info("actualizado el campo de image en la base por el product " + id)
                 flash('Photo ajoutée !','alert-success')
             else:
                 app.logger.info("Image refoule pour format incorrect ! ")
@@ -936,7 +902,7 @@ def carta_up(id):
             app.logger.info(request.files)
             nombre_image = data["nombre_archivo"]
             app.logger.info("nombre archivo = " + nombre_image)
-            app.logger.info("******** carta_up  POST   save  *************")                
+            app.logger.info("******** carta_up  POST   save  *************")
             if data['categorie'] == "Entrées": order = 1
             if data['categorie'] == "Plats": order = 2 
             if data['categorie'] == "Fromages & Planches": order = 3 
@@ -965,8 +931,8 @@ def carta_up(id):
             return redirect(url_for('carta'))
             
         elif data['accion']=='Delete':
-            app.logger.info("******** carta_up <string:id>  POST  Accion = Delete   *************")       
-            producto = Product.query.get(id) 
+            app.logger.info("******** carta_up <string:id>  POST  Accion = Delete   *************")
+            producto = Product.query.get(id)
             nom_origen = producto.image
             app.logger.info(producto)
             db.session.delete(producto)
@@ -980,8 +946,8 @@ def carta_up(id):
         
         elif data['accion']=='eliminer':
             app.logger.info("******** carta_up <string:id>  POST  Accion = eliminer   *************")       
-            producto = Product.query.get(id) 
-            nom_origen = producto.image 
+            producto = Product.query.get(id)
+            nom_origen = producto.image
             producto.image = 'fondo.png'
             if nom_origen != producto.image:
                 app.logger.info(producto)
@@ -1088,6 +1054,5 @@ if __name__ == '__main__':
     #with app.app_context():
     #    db.create_all()
     #app.run()
-    app.run(debug=True)
-    
-    
+    if environment == "debug":
+        app.run(debug=True)
