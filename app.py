@@ -467,7 +467,7 @@ def plugui(id):
     nombre_funcion = inspect.currentframe().f_code.co_name
     app.logger.info(nombre_funcion)
     #borrar el registro ID dem MenuFormula 
-    menuaborrar = MenuFormula.query.get(int(id))
+    menuaborrar = db.session.get(MenuFormula, int(id))
     flash("Le {0} a été effacé".format(menuaborrar.nombremenu), "alert-success")
     db.session.delete(menuaborrar)
     db.session.commit()

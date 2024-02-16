@@ -55,71 +55,66 @@
 
 
 <!-- grid de seleccion para crear Menus -->
-    <div class="collapse container bg-dark" id="collapseExample">
+    <div class="collapse container " id="collapseExample">
 
-        <form action={{ url_for('plug')  }} method="POST">
-            <div class="grid-container ">
-                <div class="grid-item1"><h3><input type="text" id="lmname" name="lmname" value="Menu découverte"><input type="number" min ="1.00" step ="0.10" id="prix" name="prix" value="40.00"></h3>
-                </div>
-                <div class="grid-item2">2</div>
-                <div class="grid-item3"><h3><input type="text" id="l2name" name="l2name" value="Entrées"></h3></div>
-                <div class="grid-item4"><select id="multiselect" name="multiselect" multiple size="35">
-                <!--optgroup label="Entrés"-->
+        <form class="grid-container " action={{ url_for('plug')  }}  method="POST">
+    
+            <input class="grid-item grid-item1" type="text" id="lmname" name="lmname" value="Menu découverte">
+           
+            <input  class="grid-item grid-item19" type="number" min="1.00" step="0.10" id="prix" name="prix" value="40.00" cols="5">
+            <input  class="grid-item grid-item3" type="text" id="l2name" name="l2name" value="Entrées">
+            <select class="grid-item grid-item4" id="multiselect" name="multiselect" multiple="" size="35">
+                   <!--optgroup label="Entrés"-->
                 {% for row in registros %} 
                 <option value="{{ row['titre'] }}">{{ row['titre'] }}</option>
                 {% endfor %}
                 <!-- Agrega más elementos según sea necesario -->
-            </select></div>
-                <div class="grid-item5"> 
-                    <button type="button" onclick="copyTo('multiselect','list2')">Copier a Entrées</button>
-                    <button type="button" onclick="agregarOpcion('list2')">Ajouter le texte a entrées </button></div>
-                <div class="grid-item6">
-                <select id="list2" name="list2" multiple size="5"></select>
+        </select>
+            <div class="grid-item grid-item5"> 
+                <button class="grid-item grid-item5" type="button" onclick="copyTo('multiselect','list2')">Copier a Entrées</button>
+                <button class="grid-item grid-item5" type="button" onclick="agregarOpcion('list2')">Ajouter le texte a entrées </button></div>
+            <div class="grid-item grid-item6">
+                <select class="grid-item grid-item6" id="list2" name="list2" multiple="" size="5"></select>
                 <br>                
                 <!-- Los elementos seleccionados se copiarán aquí -->
-                <button type="button" onclick="removeSelected('list2')">Eliminer Selectioné</button>
-                </div>
-        
-        
-                <div class="grid-item7"> <h3><input type="text" id="l3name" name="l3name" value="Plats"></h3></div>
-                <div class="grid-item8"> 
-                    <button type="button" onclick="copyTo('multiselect','list3')">Copier a Plats</button>
-                    <button type="button" onclick="agregarOpcion('list3')">Ajouter le texte a plats</button></div>
-                <div class="grid-item9">
-                <select id="list3" name="list3" multiple size="5"> </select>
-                <br>                     
-                <!-- Los elementos seleccionados se copiarán aquí -->
-                <button type="button" onclick="removeSelected('list3')">Eliminer Selectioné</button></div>
-        
-        
-                <div class="grid-item10"><h3> <input type="text" id="l4name" name="l4name" value="Desserts"></h3></div>
-                <div class="grid-item11"> 
-                    <button type="button" onclick="copyTo('multiselect','list4')">Copier a Desserts</button>
-                    <button type="button" onclick="agregarOpcion('list4')">Ajouter texte a desserts </button>
-                </div>
-                <div class="grid-item12">
-                <select id="list4" name="list4" multiple size="5"></select>
-                <br>        
-                        
-                <!-- Los elementos seleccionados se copiarán aquí -->
-                <button type="button" onclick="removeSelected('list4')">Eliminer Selectioné</button>
-                </div>
-                <div class="grid-item13"><input type="text" id="textoInput" placeholder="le texte a ajouter"></div>
-                <div class="grid-item14">14</div>
-                <div class="grid-item15">15</div>
-                <div class="grid-item16">
-                    <input type="text" id="boisson" name="boisson" placeholder="descrivez la boisson offerte" >  
-                </div>
-                <div class="grid-item17">
-                    <input type="text" id="plus" name="plus" placeholder="Ecrire texte suplementaire si necessaire" >   
-                </div>  
-                <div class="grid-item18"> 
-                    <button type="submit" name="accion" value="add" class=""  onclick="guardarListas()">Sauver le menu</button>
-                </div>
-            
+                <button class="grid-item " type="button" onclick="removeSelected('list2')">Eliminer Selectioné</button>
             </div>
-        </form>
+    
+    
+            <input class="grid-item grid-item7" type="text" id="l3name" name="l3name" value="Plats">
+            <div class="grid-item grid-item8"> 
+                
+                <button class="grid-item grid-item8" type="button" onclick="copyTo('multiselect','list3')">Copier a Plats</button>
+                <button class="grid-item grid-item8" type="button" onclick="agregarOpcion('list3')">Ajouter le texte a plats</button></div>
+            <div class="grid-item grid-item9">
+            <select class="grid-item grid-item9" id="list3" name="list3" multiple="" size="5"> </select>
+            <br>                     
+            <!-- Los elementos seleccionados se copiarán aquí -->
+            <button class="grid-item" type="button" onclick="removeSelected('list3')">Eliminer Selectioné</button></div>
+    
+    
+            <input class="grid-item grid-item10" type="text" id="l4name" name="l4name" value="Desserts">
+            <div class="grid-item grid-item11"> 
+                <button class="grid-item grid-item11" type="button" onclick="copyTo('multiselect','list4')">Copier a Desserts</button>
+                <button class="grid-item grid-item11" type="button" onclick="agregarOpcion('list4')">Ajouter texte a desserts </button>
+            </div>
+            <div class="grid-item grid-item12">
+            <select class="grid-item  grid-item12" id="list4" name="list4" multiple="" size="5"></select>
+            <br>        
+                    
+            <!-- Los elementos seleccionados se copiarán aquí -->
+            <button class="grid-item" type="button" onclick="removeSelected('list4')">Eliminer Selectioné</button>
+            </div>
+            <input class="grid-item grid-item13" type="text" id="textoInput" placeholder="le texte a ajouter">
+            <div class="grid-item grid-item14"></div>
+            <div class="grid-item grid-item17"></div>
+            <input class="grid-item grid-item16" type="text" id="boisson" name="boisson" placeholder="descrivez la boisson offerte">  
+            <input class="grid-item grid-item15" type="text" id="plus" name="plus" placeholder="Ecrire texte suplementaire si necessaire">   
+            <button class="grid-item18" type="submit" name="accion" value="add" onclick="guardarListas()">Sauver le menu</button>
+            
         
+        </div>
+    </form>    
 
     </div> 
 </div>

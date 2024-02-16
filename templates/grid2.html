@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+    
+        <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+        <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="../static/css/menu.css">
+</head>
+<body >
+
+<!-- grid de seleccion para crear Menus -->
+
+
+<form class="grid-container " action="/plug" method="POST">
+    
+        <input class="grid-item grid-item1" type="text" id="lmname" name="lmname" value="Menu découverte">
+       
+        <input  class="grid-item grid-item19" type="number" min="1.00" step="0.10" id="prix" name="prix" value="40.00" cols="5">
+        <input  class="grid-item grid-item3" type="text" id="l2name" name="l2name" value="Entrées">
+        <select class="grid-item grid-item4" id="multiselect" name="multiselect" multiple="" size="35">
+                <!--optgroup label="Entrés"-->    
+                <option value="Tartine Savoyarde">Tartine Savoyarde</option>        
+                <option value="Ravioles à la crème de St Marcellin ">Ravioles à la crème de St Marcellin </option>        
+                <option value="Brochette de gambas flambées">Brochette de gambas flambées</option>        
+                <option value="Tartare d'endives revisité">Tartare d'endives revisité</option>        
+                <option value="Gâteau de foies">Gâteau de foies</option>        
+                <option value="Œuf cocotte">Œuf cocotte</option>         
+                <option value="Noix de veau façon Rossini">Noix de veau façon Rossini</option>        
+                <option value="Faux-filet au beurre maître d'hôtel">Faux-filet au beurre maître d'hôtel</option>        
+                <option value="Filet de truite à la Grenobloise">Filet de truite à la Grenobloise</option>        
+                <option value="Pavé de sandre rôti">Pavé de sandre rôti</option>        
+                <option value="Burger Végétarien">Burger Végétarien</option>         
+                <option value="Burger Chartreux  (1 viande)">Burger Chartreux  (1 viande)</option>         
+                <option value="Burger Chartreux  (2 viandes)">Burger Chartreux  (2 viandes)</option>         
+                <option value="Suplement sauces (Morilles ou Bleu ou Poivre)">Suplement sauces (Morilles ou Bleu ou Poivre)</option>         
+                <option value="Fondue aux 4 fromages (minimum 2 pers)">Fondue aux 4 fromages (minimum 2 pers)</option>         
+                <option value="Fondue aux cèpes (minimum 2 pers)">Fondue aux cèpes (minimum 2 pers)</option>         
+                <option value="Fondue royale (cèpes ou 4 fromages) (minimum 2 pers)">Fondue royale (cèpes ou 4 fromages)</option>         
+                <option value="Tartiflette">Tartiflette</option>         
+                <option value="Mont d'or (1 pers)">Mont d'or (1 pers)</option>         
+                <option value="Planche de charcuterie ou fromage">Planche de charcuterie ou fromage</option>         
+                <option value="Planche Mixte charcuterie et fromage">Planche Mixte charcuterie et fromage</option>         
+                <option value="Parfait chartreuse">Parfait chartreuse</option>        
+                <option value="Snicker maison">Snicker maison</option>         
+                <option value="Royal chocolat">Royal chocolat</option>         
+                <option value="Tarte tatin">Tarte tatin</option>        
+                <option value="Charlotte aux poires">Charlotte aux poires</option>        
+                <option value="Café gourmand">Café gourmand</option>         
+                <option value="Faiselle de pays">Faiselle de pays</option>         
+                <option value="Bueno">Bueno</option>        
+                <option value="Colonel">Colonel</option>        
+                <option value="Chartreusette">Chartreusette</option>         
+                <option value="Suplements une unité">Suplements une unité</option>         
+                <option value="Suplement deux boules">Suplement deux boules</option>       
+                <!-- Agrega más elementos según sea necesario -->
+    </select></div>
+        <div class="grid-item grid-item5"> 
+            <button class="grid-item grid-item5" type="button" onclick="copyTo('multiselect','list2')">Copier a Entrées</button>
+            <button class="grid-item grid-item5" type="button" onclick="agregarOpcion('list2')">Ajouter le texte a entrées </button></div>
+        <div class="grid-item grid-item6">
+            <select class="grid-item grid-item6" id="list2" name="list2" multiple="" size="5"></select>
+            <br>                
+            <!-- Los elementos seleccionados se copiarán aquí -->
+            <button class="grid-item " type="button" onclick="removeSelected('list2')">Eliminer Selectioné</button>
+        </div>
+
+
+        <input class="grid-item grid-item7" type="text" id="l3name" name="l3name" value="Plats">
+        <div class="grid-item grid-item8"> 
+            
+            <button class="grid-item grid-item8" type="button" onclick="copyTo('multiselect','list3')">Copier a Plats</button>
+            <button class="grid-item grid-item8" type="button" onclick="agregarOpcion('list3')">Ajouter le texte a plats</button></div>
+        <div class="grid-item grid-item9">
+        <select class="grid-item grid-item9" id="list3" name="list3" multiple="" size="5"> </select>
+        <br>                     
+        <!-- Los elementos seleccionados se copiarán aquí -->
+        <button class="grid-item" type="button" onclick="removeSelected('list3')">Eliminer Selectioné</button></div>
+
+
+        <input class="grid-item grid-item10" type="text" id="l4name" name="l4name" value="Desserts">
+        <div class="grid-item grid-item11"> 
+            <button class="grid-item grid-item11" type="button" onclick="copyTo('multiselect','list4')">Copier a Desserts</button>
+            <button class="grid-item grid-item11" type="button" onclick="agregarOpcion('list4')">Ajouter texte a desserts </button>
+        </div>
+        <div class="grid-item grid-item12">
+        <select class="grid-item  grid-item12" id="list4" name="list4" multiple="" size="5"></select>
+        <br>        
+                
+        <!-- Los elementos seleccionados se copiarán aquí -->
+        <button class="grid-item" type="button" onclick="removeSelected('list4')">Eliminer Selectioné</button>
+        </div>
+        <input class="grid-item grid-item13" type="text" id="textoInput" placeholder="le texte a ajouter">
+        <div class="grid-item grid-item14"></div>
+        <div class="grid-item grid-item17"></div>
+        <input class="grid-item grid-item16" type="text" id="boisson" name="boisson" placeholder="descrivez la boisson offerte">  
+        <input class="grid-item grid-item15" type="text" id="plus" name="plus" placeholder="Ecrire texte suplementaire si necessaire">   
+        <button class="grid-item18" type="submit" name="accion" value="add" onclick="guardarListas()">Sauver le menu</button>
+        
+    
+    </div>
+</form>
+
+
+<script>
+    function copyTo(sourceId, destinationId) {
+        var sourceList = document.getElementById(sourceId);
+        var destinationList = document.getElementById(destinationId);
+
+        for (var i = 0; i < sourceList.options.length; i++) {
+            if (sourceList.options[i].selected) {
+                var option = sourceList.options[i];
+                var newOption = new Option(option.text, option.value);
+                destinationList.add(newOption);
+            }
+        }
+    }
+
+    function agregarOpcion(id) {
+        // Obtener el valor del campo de texto
+        var lista = document.getElementById(id)
+        var texto = document.getElementById("textoInput").value;
+        // Crear un elemento de opción
+        var opcion = document.createElement("option");
+        opcion.text = texto;
+        opcion.value = texto;
+        // Agregar la opción al select
+        lista.appendChild(opcion);
+    }
+
+
+    function removeSelected(columnId) {
+        var column = document.getElementById(columnId);
+        var selectedOptions = column.selectedOptions;
+
+        for (var option of selectedOptions) {
+            option.remove();
+        }
+    }
+
+    function copyTo(sourceId, destinationId) {
+        var sourceList = document.getElementById(sourceId);
+        var destinationList = document.getElementById(destinationId);
+
+        for (var i = 0; i < sourceList.options.length; i++) {
+            if (sourceList.options[i].selected) {
+                var option = sourceList.options[i];
+                var newOption = new Option(option.text, option.value);
+                destinationList.add(newOption);
+            }
+        }
+    }
+
+    function seleccionarTodos() {
+        var select = document.getElementById("list2");
+        for (var i = 0; i < select.options.length; i++) {
+            select.options[i].selected = true;
+        }
+        var select = document.getElementById("list3");
+        for (var i = 0; i < select.options.length; i++) {
+            select.options[i].selected = true;
+        }
+        var select = document.getElementById("list4");
+        for (var i = 0; i < select.options.length; i++) {
+            select.options[i].selected = true;
+        }
+    }
+
+    function guardarListas() {
+        seleccionarTodos()
+        var listas = {
+            lista1: obtenerContenidoLista('multiselect'),
+            lista2: obtenerContenidoLista('list2'),
+            lista3: obtenerContenidoLista('list3'),
+            lista4: obtenerContenidoLista('list4')
+        };
+
+        // Aquí enviaríamos los datos al servidor utilizando fetch()
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: JSON.stringify(listas),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+    }
+
+    function obtenerContenidoLista(id) {
+        var lista = document.getElementById(id);
+        var contenido = [];
+        for (var i = 0; i < lista.options.length; i++) {
+            contenido.push(lista.options[i].value);
+        }
+        return contenido;
+    }
+</script>
+        
+</body>
