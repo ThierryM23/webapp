@@ -75,7 +75,7 @@
           <div class="d-flex justify-content-between">
                 <div class="col-4 p-1 ">
                     <select name="categorie" class="form-control rounded-2 bg-dark border-0 text-white" required >
-                    <option value="Entrées" {{ "SELECTED"  if result['categorie'] == "Entrées" else "" }} >Entrées</option>
+                    <option value="Entrées"  >Entrées</option>
                     <option value="Plats" {{ "SELECTED" if result['categorie'] == "Plats" else "" }}>Plats</option>
                     <option value="Fromages & Planches" {{ "SELECTED" if result['categorie'] == "Fromages & Planches" else "" }}>Fromages & Planches</option>
                     <option value="Desserts" {{ "SELECTED" if result['categorie'] == "Desserts" else "" }}>Desserts</option>
@@ -130,7 +130,8 @@
                     class="form-control rounded-2 bg-dark border-0 text-white"
                     placeholder="12.50"
                   /></p>
-                 
+                  <input type="checkbox" id="active" name="active" value="{{ "True"  if result['active'] == 1 else "False" }}" {{ "CHECKED"  if result['active'] == 1 else "" }} >Active</input>
+                
                 <button type="submit" class="btn btn-primary btn-sm" name="accion" value="save">Enregistrer</button>
                 <button type="submit"  class="btn btn-danger btn-sm" name="accion" value="Delete">Eliminer</button>
                 </div>

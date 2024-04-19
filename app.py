@@ -133,6 +133,7 @@ class Product(db.Model):
     image       = db.Column(db.String(128))
     categorie   = db.Column(db.String(128))
     ordercat    = db.Column(db.Integer)
+    active      = db.Column(db.Boolean, default=True)
         
     def __init__(self, idcat, titre, prix, description=None, image='fondo.png', categorie=None, ordercat=None ):
         self.idcat = idcat
@@ -141,7 +142,8 @@ class Product(db.Model):
         self.description = description
         self.image = image
         self.categorie = categorie
-        self.ordercat =  ordercat        
+        self.ordercat =  ordercat     
+        self.active = True   
 
     # Función para guardar un nuevo producto en la base de datos
     def save(self):
@@ -810,7 +812,7 @@ def menuqr():
         bg_image = results[0].image
     app.logger.info(results[0].titulo)
     app.logger.info("fin About")
-    registros = Product.query.order_by(Product.ordercat.asc(), Product.idcat.asc()).all()
+    registros = Product.query.filter_by(active=True).order_by(Product.ordercat.asc(), Product.idcat.asc()).all()
     
     listaM = MenuFormula.query.all()
     menuseccion= {}
@@ -923,6 +925,10 @@ def carta_up(id):
             producto_up.categorie = data['categorie']
             producto_up.ordercat = int(order)
             producto_up.image = nombre_image
+            if 'active' in request.form:
+                producto_up.active = True
+            else:
+                producto_up.active = False
             app.logger.info(producto_up)
             db.session.add(producto_up) # Agregar objeto a la solicitud
             db.session.commit() # Hacer commit a la solicitud

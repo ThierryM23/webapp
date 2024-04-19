@@ -110,7 +110,7 @@
 
                     </div>  
                 {% else %} 
-                {% set count.value = count.value + 1 %}
+                {% set count.value = row['ordercat']|int  %}
         <!--</div>-->
     <div class="row align-items-center rounded-3 bg-danger m-2">
         <div class="col-12 col-sm-3">
