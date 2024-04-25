@@ -15,7 +15,9 @@
         {% if result.titulo %}<h2>{{ result.titulo }}</h2>{% endif %}       
         <div> <b>{{ result.texto}}</b></div>
         {% endfor %}
-
+        <p style="text-align: center;">
+        <iframe class="center" width="560" height="315" src="https://www.youtube.com/embed/RVVuhTh6eiE?si=rT1KMnzILXpdaB5B" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
+        </p>
         {% if current_user.is_authenticated %}
         <div> <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"  aria-controls="collapseExample">Editer la page?</a>
         </div>
@@ -52,6 +54,7 @@
     <div class="col-7"> </div>
     <div class="col-5"><img src="/static/images/signaturetrans.png" alt="" width="140" height="50"></div>
   </div>
+</div>
 
 {% endblock %}
 
